@@ -101,6 +101,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             if (level >1){
                 new Score().showMessage("Level Up :)", this);
             }
+            //Win Game once reach Lvl 18
             if (level == 18) {
                 new Score().showWin(this);
                 return;

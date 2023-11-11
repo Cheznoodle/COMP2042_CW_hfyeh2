@@ -1,8 +1,8 @@
 # COMP2042_CW_hfyeh2
-## Push: 1
+### Push: 1
 No changes made
 
-## Push: 2
+### Push: 2
 **Block.java**
 1) Added Encapsulation: Fields are now private with appropriate getters and setters.
 2) Added Resource Management: The 'loadImagePatternBasedOnType' method improves resource handling.
@@ -21,3 +21,9 @@ No changes made
 **GameEngine.java**
 1) Added a Volatile Boolean Flag: Volatile boolean flag is added that indicates whether the thread should keep running.
 2) Implemented a Safe Stop Method: Implemented a method in 'GameEngine' to safely stop the thread by setting this flag to false.
+
+**Score.java**
+1) Replaced manual thread creation with JavaFX Timeline for animations.
+2) Extracted redundant code into createLabel() and animateLabel() methods.
+3) Improved code formatting for better readability.
+4) Simplified the string concatenation in the show() method.
