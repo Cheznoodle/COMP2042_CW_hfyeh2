@@ -5,47 +5,54 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoadSave {
-    public boolean          isExistHeartBlock;
-    public boolean          isGoldStauts;
-    public boolean          goDownBall;
-    public boolean          goRightBall;
-    public boolean          colideToBreak;
-    public boolean          colideToBreakAndMoveToRight;
-    public boolean          colideToRightWall;
-    public boolean          colideToLeftWall;
-    public boolean          colideToRightBlock;
-    public boolean          colideToBottomBlock;
-    public boolean          colideToLeftBlock;
-    public boolean          colideToTopBlock;
-    public int              level;
-    public int              score;
-    public int              heart;
-    public int              destroyedBlockCount;
-    public double           xBall;
-    public double           yBall;
-    public double           xBreak;
-    public double           yBreak;
-    public double           centerBreakX;
-    public long             time;
-    public long             goldTime;
-    public double           vX;
-    public ArrayList<BlockSerializable> blocks = new ArrayList<BlockSerializable>();
+    // Logger for logging error messages
+    private static final Logger LOGGER = Logger.getLogger(LoadSave.class.getName());
 
+    // Fields to store the game state
+    public boolean isExistHeartBlock;
+    public boolean isGoldStatus;
+    public boolean goDownBall;
+    public boolean goRightBall;
+    public boolean collideToBreak;
+    public boolean collideToBreakAndMoveToRight;
+    public boolean collideToRightWall;
+    public boolean collideToLeftWall;
+    public boolean collideToRightBlock;
+    public boolean collideToBottomBlock;
+    public boolean collideToLeftBlock;
+    public boolean collideToTopBlock;
+    public int level;
+    public int score;
+    public int heart;
+    public int destroyedBlockCount;
+    public double xBall;
+    public double yBall;
+    public double xBreak;
+    public double yBreak;
+    public double centerBreakX;
+    public long time;
+    public long goldTime;
+    public double vX;
+    public ArrayList<BlockSerializable> blocks = new ArrayList<>();
 
+    /**
+     * Reads the game state from a file.
+     */
     public void read() {
+        // Prepare the file to read from
+        File file = new File(Main.savePath);
 
-
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(new File(Main.savePath)));
-
-
+        // Use try-with-resources for automatic resource management
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
+            // Read and assign values from the file to the fields
             level = inputStream.readInt();
             score = inputStream.readInt();
             heart = inputStream.readInt();
             destroyedBlockCount = inputStream.readInt();
-
 
             xBall = inputStream.readDouble();
             yBall = inputStream.readDouble();
@@ -56,30 +63,27 @@ public class LoadSave {
             goldTime = inputStream.readLong();
             vX = inputStream.readDouble();
 
-
             isExistHeartBlock = inputStream.readBoolean();
-            isGoldStauts = inputStream.readBoolean();
+            isGoldStatus = inputStream.readBoolean();
             goDownBall = inputStream.readBoolean();
             goRightBall = inputStream.readBoolean();
-            colideToBreak = inputStream.readBoolean();
-            colideToBreakAndMoveToRight = inputStream.readBoolean();
-            colideToRightWall = inputStream.readBoolean();
-            colideToLeftWall = inputStream.readBoolean();
-            colideToRightBlock = inputStream.readBoolean();
-            colideToBottomBlock = inputStream.readBoolean();
-            colideToLeftBlock = inputStream.readBoolean();
-            colideToTopBlock = inputStream.readBoolean();
+            collideToBreak = inputStream.readBoolean();
+            collideToBreakAndMoveToRight = inputStream.readBoolean();
+            collideToRightWall = inputStream.readBoolean();
+            collideToLeftWall = inputStream.readBoolean();
+            collideToRightBlock = inputStream.readBoolean();
+            collideToBottomBlock = inputStream.readBoolean();
+            collideToLeftBlock = inputStream.readBoolean();
+            collideToTopBlock = inputStream.readBoolean();
 
-
-            try {
-                blocks = (ArrayList<BlockSerializable>) inputStream.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
+            // Cast the read object to the expected ArrayList type
+            blocks = (ArrayList<BlockSerializable>) inputStream.readObject();
+        } catch (ClassNotFoundException e) {
+            // Log class not found exceptions
+            LOGGER.log(Level.SEVERE, "Class not found while reading from the file", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            // Log IO exceptions
+            LOGGER.log(Level.SEVERE, "IO Exception while reading from the file", e);
         }
-
     }
 }

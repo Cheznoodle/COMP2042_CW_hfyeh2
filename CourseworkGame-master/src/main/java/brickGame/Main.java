@@ -534,17 +534,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
         isExistHeartBlock = loadSave.isExistHeartBlock;
-        isGoldStauts = loadSave.isGoldStauts;
+        isGoldStauts = loadSave.isGoldStatus;
         goDownBall = loadSave.goDownBall;
         goRightBall = loadSave.goRightBall;
-        colideToBreak = loadSave.colideToBreak;
-        colideToBreakAndMoveToRight = loadSave.colideToBreakAndMoveToRight;
-        colideToRightWall = loadSave.colideToRightWall;
-        colideToLeftWall = loadSave.colideToLeftWall;
-        colideToRightBlock = loadSave.colideToRightBlock;
-        colideToBottomBlock = loadSave.colideToBottomBlock;
-        colideToLeftBlock = loadSave.colideToLeftBlock;
-        colideToTopBlock = loadSave.colideToTopBlock;
+        colideToBreak = loadSave.collideToBreak;
+        colideToBreakAndMoveToRight = loadSave.collideToBreakAndMoveToRight;
+        colideToRightWall = loadSave.collideToRightWall;
+        colideToLeftWall = loadSave.collideToLeftWall;
+        colideToRightBlock = loadSave.collideToRightBlock;
+        colideToBottomBlock = loadSave.collideToBottomBlock;
+        colideToLeftBlock = loadSave.collideToLeftBlock;
+        colideToTopBlock = loadSave.collideToTopBlock;
         level = loadSave.level;
         score = loadSave.score;
         heart = loadSave.heart;
