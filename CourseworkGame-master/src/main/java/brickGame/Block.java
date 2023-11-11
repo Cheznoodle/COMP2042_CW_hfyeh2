@@ -1,6 +1,5 @@
 package brickGame;
 
-
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -9,38 +8,29 @@ import javafx.scene.shape.Rectangle;
 import java.io.Serializable;
 
 public class Block implements Serializable {
-    private static Block block = new Block(-1, -1, Color.TRANSPARENT, 99);
+    private static final int BLOCK_NORMAL = 99;
+    private static final int BLOCK_CHOCO = 100;
+    private static final int BLOCK_STAR = 101;
+    private static final int BLOCK_HEART = 102;
+    private static final int NO_HIT = -1;
+    private static final int HIT_RIGHT = 0;
+    private static final int HIT_BOTTOM = 1;
+    private static final int HIT_LEFT = 2;
+    private static final int HIT_TOP = 3;
 
-    public int row;
-    public int column;
-
-
-    public boolean isDestroyed = false;
-
+    private int row;
+    private int column;
+    private boolean isDestroyed = false;
     private Color color;
-    public int type;
+    private int type;
+    private int x;
+    private int y;
+    private Rectangle rect;
 
-    public int x;
-    public int y;
-
-    private int width = 100;
-    private int height = 30;
-    private int paddingTop = height * 2;
-    private int paddingH = 50;
-    public Rectangle rect;
-
-
-    public static int NO_HIT = -1;
-    public static int HIT_RIGHT = 0;
-    public static int HIT_BOTTOM = 1;
-    public static int HIT_LEFT = 2;
-    public static int HIT_TOP = 3;
-
-    public static int BLOCK_NORMAL = 99;
-    public static int BLOCK_CHOCO = 100;
-    public static int BLOCK_STAR = 101;
-    public static int BLOCK_HEART = 102;
-
+    private static int width = 100;
+    private static int height = 30;
+    private static int paddingTop = height * 2;
+    private static int paddingH = 50;
 
     public Block(int row, int column, Color color, int type) {
         this.row = row;
@@ -61,27 +51,34 @@ public class Block implements Serializable {
         rect.setX(x);
         rect.setY(y);
 
-        if (type == BLOCK_CHOCO) {
-            Image image = new Image("choco.jpg");
-            ImagePattern pattern = new ImagePattern(image);
-            rect.setFill(pattern);
-        } else if (type == BLOCK_HEART) {
-            Image image = new Image("heart.jpg");
-            ImagePattern pattern = new ImagePattern(image);
-            rect.setFill(pattern);
-        } else if (type == BLOCK_STAR) {
-            Image image = new Image("star.jpg");
-            ImagePattern pattern = new ImagePattern(image);
+        ImagePattern pattern = loadImagePatternBasedOnType(type);
+        if (pattern != null) {
             rect.setFill(pattern);
         } else {
             rect.setFill(color);
         }
-
     }
 
+    private ImagePattern loadImagePatternBasedOnType(int type) {
+        String imagePath;
+        switch (type) {
+            case BLOCK_CHOCO:
+                imagePath = "choco.jpg";
+                break;
+            case BLOCK_HEART:
+                imagePath = "heart.jpg";
+                break;
+            case BLOCK_STAR:
+                imagePath = "star.jpg";
+                break;
+            default:
+                return null;
+        }
+        Image image = new Image(imagePath);
+        return new ImagePattern(image);
+    }
 
     public int checkHitToBlock(double xBall, double yBall) {
-
         if (isDestroyed) {
             return NO_HIT;
         }
@@ -105,20 +102,125 @@ public class Block implements Serializable {
         return NO_HIT;
     }
 
+    // Getters and Setters
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isDestroyed() {
+        return isDestroyed;
+    }
+    //If it doesn't work. Try this ' return this.isDestroyed; '
+
+    public void setDestroyed(boolean isDestroyed) {
+        this.isDestroyed = isDestroyed;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public void setRect(Rectangle rect) {
+        this.rect = rect;
+    }
+
     public static int getPaddingTop() {
-        return block.paddingTop;
+        return paddingTop;
     }
 
     public static int getPaddingH() {
-        return block.paddingH;
+        return paddingH;
     }
 
     public static int getHeight() {
-        return block.height;
+        return height;
     }
 
     public static int getWidth() {
-        return block.width;
+        return width;
+    }
+
+    //Fix: Add Getter methods for the constants
+
+    public static int getBlockNormal() {
+        return BLOCK_NORMAL;
+    }
+
+    public static int getBlockChoco() {
+        return BLOCK_CHOCO;
+    }
+
+    public static int getBlockStar() {
+        return BLOCK_STAR;
+    }
+
+    public static int getBlockHeart() {
+        return BLOCK_HEART;
+    }
+
+    // Public static getter methods for hit constants
+    public static int getNoHit() {
+        return NO_HIT;
+    }
+
+    public static int getHitRight() {
+        return HIT_RIGHT;
+    }
+
+    public static int getHitBottom() {
+        return HIT_BOTTOM;
+    }
+
+    public static int getHitLeft() {
+        return HIT_LEFT;
+    }
+
+    public static int getHitTop() {
+        return HIT_TOP;
     }
 
 }

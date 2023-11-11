@@ -131,9 +131,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         } else {
             root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
         }
+
+        //Fixed: Replace direct access to the rect property of Block with the getter method.
         for (Block block : blocks) {
-            root.getChildren().add(block.rect);
+            root.getChildren().add(block.getRect());
         }
+
         Scene scene = new Scene(root, sceneWidth, sceneHeigt);
         scene.getStylesheets().add("style.css");
         scene.setOnKeyPressed(this);
@@ -185,6 +188,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
+    //Fix: Replaced the direct access to the Block constants with the appropriate getter methods
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < level + 1; j++) {
@@ -194,24 +198,24 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
                 int type;
                 if (r % 10 == 1) {
-                    type = Block.BLOCK_CHOCO;
+                    type = Block.getBlockChoco(); // Updated
                 } else if (r % 10 == 2) {
                     if (!isExistHeartBlock) {
-                        type = Block.BLOCK_HEART;
+                        type = Block.getBlockHeart(); // Updated
                         isExistHeartBlock = true;
                     } else {
-                        type = Block.BLOCK_NORMAL;
+                        type = Block.getBlockNormal(); // Updated
                     }
                 } else if (r % 10 == 3) {
-                    type = Block.BLOCK_STAR;
+                    type = Block.getBlockStar(); // Updated
                 } else {
-                    type = Block.BLOCK_NORMAL;
+                    type = Block.getBlockNormal(); // Updated
                 }
                 blocks.add(new Block(j, i, colors[r % (colors.length)], type));
-                //System.out.println("colors " + r % (colors.length));
             }
         }
     }
+
 
 
     public static void main(String[] args) {
@@ -490,13 +494,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     outputStream.writeBoolean(colideToLeftBlock);
                     outputStream.writeBoolean(colideToTopBlock);
 
+                    //Fix: Getter method for the isDestroyed
                     ArrayList<BlockSerializable> blockSerializables = new ArrayList<BlockSerializable>();
                     for (Block block : blocks) {
-                        if (block.isDestroyed) {
+                        if (block.isDestroyed()) {  // Updated to use the getter method
                             continue;
                         }
-                        blockSerializables.add(new BlockSerializable(block.row, block.column, block.type));
+                        blockSerializables.add(new BlockSerializable(block.getRow(), block.getColumn(), block.getType()));
                     }
+
 
                     outputStream.writeObject(blockSerializables);
 
@@ -653,19 +659,22 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
             for (final Block block : blocks) {
                 int hitCode = block.checkHitToBlock(xBall, yBall);
-                if (hitCode != Block.NO_HIT) {
+                if (hitCode != Block.getNoHit()) { // Updated to use the getter method
                     score += 1;
 
-                    new Score().show(block.x, block.y, 1, this);
+                    // Use getters to access the properties of Block
+                    new Score().show(block.getX(), block.getY(), 1, this);
 
-                    block.rect.setVisible(false);
-                    block.isDestroyed = true;
+                    // Use the setter methods to modify Block instances
+                    block.getRect().setVisible(false);
+                    block.setDestroyed(true);
+
                     destroyedBlockCount++;
-                    //System.out.println("size is " + blocks.size());
                     resetColideFlags();
 
-                    if (block.type == Block.BLOCK_CHOCO) {
-                        final Bonus choco = new Bonus(block.row, block.column);
+                    // Use getters for block type checks
+                    if (block.getType() == Block.getBlockChoco()) {
+                        final Bonus choco = new Bonus(block.getRow(), block.getColumn());
                         choco.timeCreated = time;
                         Platform.runLater(new Runnable() {
                             @Override
@@ -676,35 +685,38 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         chocos.add(choco);
                     }
 
-                    if (block.type == Block.BLOCK_STAR) {
+                    if (block.getType() == Block.getBlockStar()) {
                         goldTime = time;
                         ball.setFill(new ImagePattern(new Image("goldball.png")));
-                        System.out.println("gold ball");
                         root.getStyleClass().add("goldRoot");
                         isGoldStauts = true;
                     }
 
-                    if (block.type == Block.BLOCK_HEART) {
+                    if (block.getType() == Block.getBlockHeart()) {
                         heart++;
                     }
 
-                    if (hitCode == Block.HIT_RIGHT) {
+                    // Update the collision logic based on hitCode using getters
+                    if (hitCode == Block.getHitRight()) {
                         colideToRightBlock = true;
-                    } else if (hitCode == Block.HIT_BOTTOM) {
+                    } else if (hitCode == Block.getHitBottom()) {
                         colideToBottomBlock = true;
-                    } else if (hitCode == Block.HIT_LEFT) {
+                    } else if (hitCode == Block.getHitLeft()) {
                         colideToLeftBlock = true;
-                    } else if (hitCode == Block.HIT_TOP) {
+                    } else if (hitCode == Block.getHitTop()) {
                         colideToTopBlock = true;
                     }
-
                 }
-
-                //TODO hit to break and some work here....
-                //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
             }
         }
-    }
+
+
+
+        //TODO hit to break and some work here....
+                //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
+            }
+
+
 
 
     @Override
