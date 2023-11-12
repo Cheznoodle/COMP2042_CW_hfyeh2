@@ -49,7 +49,7 @@ Explanation for Use of `Logger`:
 This approach is more flexible and robust compared to using `printStackTrace()`. You can further configure the `Logger` to write to files, use different formats, or adjust logging levels depending on your application's needs.
 
 ***Main.java***
-1) Corrected Class Names
+1) Corrected Class Names.
 
 ***module-info.java***
 1) Added `requires java.logging;` to module-info.java. (NOTE: EXPLAIN WHY LATER !!)
@@ -63,13 +63,17 @@ This approach is more flexible and robust compared to using `printStackTrace()`.
 4) Ternary operator is used in `draw()` for concise code.
 5) Basic error handling is included for image loading.
 
-
-
-
-
-
-
 ### Push: 6
+
+***Block.java***
+1) Remove unused methods and classes.
+2) Multiple fields were made final. This is to improve the readability and safety of your code by clearly communicating that the value is meant to be constant after object construction.
+3) Added additional comments.
+
+***Main.java***
+1) Added Terminal Message for Goldball.
+2) Corrected Attribute Names.
+
 
 ### Push: 7
 
