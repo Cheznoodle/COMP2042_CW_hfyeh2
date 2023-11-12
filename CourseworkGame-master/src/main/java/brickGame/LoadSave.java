@@ -87,3 +87,5 @@ public class LoadSave {
         }
     }
 }
+
+//Note: Possible Future Feature: Configure Logger for specific needs (eg:setting a different logging level, formatting the output, or directing the log messages to a file.)

@@ -3,42 +3,67 @@ package brickGame;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Represents a bonus object in the game.
+ */
 public class Bonus implements Serializable {
+    // Constants for the size of the bonus and the offset in positioning
+    private static final int CHOCO_SIZE = 30;
+    private static final int OFFSET = 15;
+
+    // Static random number generator for random image selection
+    private static final Random rand = new Random();
+
+    // The graphical representation of the bonus
     public Rectangle choco;
 
+    // Positional attributes for the bonus
     public double x;
     public double y;
+
+    // Time when the bonus was created
     public long timeCreated;
+
+    // Flag to check if the bonus has been taken
     public boolean taken = false;
 
+    /**
+     * Constructs a Bonus object at a specified row and column.
+     *
+     * @param row    The row in the game grid.
+     * @param column The column in the game grid.
+     */
     public Bonus(int row, int column) {
-        x = (column * (Block.getWidth())) + Block.getPaddingH() + (Block.getWidth() / 2) - 15;
-        y = (row * (Block.getHeight())) + Block.getPaddingTop() + (Block.getHeight() / 2) - 15;
+        // Calculate the position of the bonus based on the row and column
+        x = (column * Block.getWidth()) + Block.getPaddingH() + (Block.getWidth() / 2.0) - OFFSET;
+        y = (row * Block.getHeight()) + Block.getPaddingTop() + (Block.getHeight() / 2.0) - OFFSET;
 
+        // Call the method to draw the bonus
         draw();
     }
 
+    /**
+     * Draws the bonus on the screen.
+     */
     private void draw() {
+        // Initialize the rectangle representing the bonus
         choco = new Rectangle();
-        choco.setWidth(30);
-        choco.setHeight(30);
+        choco.setWidth(CHOCO_SIZE);
+        choco.setHeight(CHOCO_SIZE);
         choco.setX(x);
         choco.setY(y);
 
-        String url;
-        if (new Random().nextInt(20) % 2 == 0) {
-            url = "bonus1.png";
-        } else {
-            url = "bonus2.png";
+        // Select a random image for the bonus
+        String url = rand.nextInt(20) % 2 == 0 ? "bonus1.png" : "bonus2.png";
+
+        // Set the image of the bonus, handling any errors in image loading
+        try {
+            choco.setFill(new ImagePattern(new Image(url)));
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error loading image: " + url);
         }
-
-        choco.setFill(new ImagePattern(new Image(url)));
     }
-
-
-
 }

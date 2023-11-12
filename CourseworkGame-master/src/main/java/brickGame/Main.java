@@ -88,8 +88,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean loadFromSave = false;
 
     Stage  primaryStage;
-    Button load    = null;
-    Button newGame = null;
+    Button load    = null;  //Potential Error here causing Game crash
+    Button newGame = null;  //Potential Error here causing Game crash
 
     @Override
     public void start(Stage primaryStage) throws Exception {
