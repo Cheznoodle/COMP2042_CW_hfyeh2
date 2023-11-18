@@ -20,6 +20,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
 
@@ -139,7 +140,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
-        scene.getStylesheets().add("style.css");
+
+        // Load the CSS file
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
         scene.setOnKeyPressed(this);
 
         primaryStage.setTitle("Game");
@@ -718,7 +722,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
             }
 
+    @Override
+    public void onRender() {
 
+    }
 
 
     @Override
