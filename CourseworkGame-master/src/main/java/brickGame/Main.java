@@ -35,6 +35,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private double centerBreakX;
     private double yBreak = 640.0f;
 
+    private MediaPlayer backgroundMediaPlayer;
+
     private int breakWidth     = 130;
     private int breakHeight    = 30;
     private int halfBreakWidth = breakWidth / 2;
@@ -290,21 +292,25 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     //Background Sound Method
     private void playBackgroundSound() {
-        try {
-            // Replace 'background.mp3' with the path to your sound file.
-            URL resource = getClass().getResource("/Can You Hear The Music.mp3");
-            if (resource == null) {
-                System.err.println("Audio file not found!");
-                return;
+        if (backgroundMediaPlayer == null) { // Only initialize if not already done
+            try {
+                URL resource = getClass().getResource("/wii.mp3");
+                if (resource == null) {
+                    System.err.println("Audio file not found!");
+                    return;
+                }
+                Media media = new Media(resource.toString());
+                backgroundMediaPlayer = new MediaPlayer(media);
+                backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
+                backgroundMediaPlayer.play();
+            } catch (Exception e) {
+                e.printStackTrace(); // Handle exceptions
             }
-            Media media = new Media(resource.toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
-            mediaPlayer.play();
-        } catch (Exception e) {
-            e.printStackTrace(); // Handle exceptions
         }
     }
+
+
+
 
 
     private void initBall() {
@@ -757,6 +763,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public void onInit() {
 
     }
+
+    @Override
+    public void stop() {
+        if (backgroundMediaPlayer != null) {
+            backgroundMediaPlayer.stop();
+        }
+    }
+
 
     @Override
     public void onPhysicsUpdate() {

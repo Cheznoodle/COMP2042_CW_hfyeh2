@@ -1,6 +1,6 @@
 # COMP2042_CW_hfyeh2
 
-Compilation Instructions:
+***Compilation Instructions:***
 Step 1) Press `Code` dropdown menu and download zip file.
 
 Using Intellij:
@@ -14,14 +14,16 @@ Step 5) Press 'Configure Maven Tools'
 
 Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
 
-Implemented and Working Properly:
+***Implemented and Working Properly:***
+1) Added Background Image
+2) Added Background Sound
 
-Implemented but Not Working Properly:
+***Implemented but Not Working Properly:***
 
-Features Not Implemented:
+***Features Not Implemented:***
 
-New Java Classes:
+***New Java Classes:***
 
-Modified Java Classes:
+***Modified Java Classes:***
 
-Unexpected Problems:
+***Unexpected Problems:***
