@@ -3,7 +3,7 @@ package brickGame;
 public class GameEngine {
 
     private OnAction onAction;
-    private int fps = 60;  // Set a default fps value, can be adjusted
+    private int fps = 60;
 
     private Thread updateThread;
     private Thread renderThread;
