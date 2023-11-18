@@ -49,6 +49,7 @@ public class Block implements Serializable {
      */
 
     public Block(int row, int column, Color color, int type) {
+        // Initialize the block's properties
         this.row = row;
         this.column = column;
         this.color = color;
@@ -62,17 +63,19 @@ public class Block implements Serializable {
      */
 
     private void draw() {
+        // Calculate and set the block's position based on its grid location
         x = (column * width) + paddingH;
         y = (row * height) + paddingTop;
 
-        // Initialize and set properties of the rectangle representing the block
-        rect = new Rectangle();
+
+        rect = new Rectangle(); // Create a new Rectangle to visually represent the block
+        // Set the rectangle's dimensions and position
         rect.setWidth(width);
         rect.setHeight(height);
         rect.setX(x);
         rect.setY(y);
 
-        // Set the fill pattern based on the block's type
+        // Apply a pattern or color to the block based on its type
         ImagePattern pattern = loadImagePatternBasedOnType(type);
         if (pattern != null) {
             rect.setFill(pattern);
@@ -89,6 +92,7 @@ public class Block implements Serializable {
      */
 
     private ImagePattern loadImagePatternBasedOnType(int type) {
+        // Determine the image path based on the block type
         String imagePath;
         switch (type) {
             case BLOCK_CHOCO:
@@ -103,6 +107,7 @@ public class Block implements Serializable {
             default:
                 return null;
         }
+        // Load and return the image as a pattern
         Image image = new Image(imagePath);
         return new ImagePattern(image);
     }
@@ -116,10 +121,12 @@ public class Block implements Serializable {
      */
 
     public int checkHitToBlock(double xBall, double yBall) {
+        // If the block is already destroyed, return NO_HIT
         if (isDestroyed) {
             return NO_HIT;
         }
 
+        // Check for collisions on each side of the block
         if (xBall >= x && xBall <= x + width && yBall == y + height) {
             return HIT_BOTTOM;
         }
@@ -136,7 +143,7 @@ public class Block implements Serializable {
             return HIT_LEFT;
         }
 
-        return NO_HIT;
+        return NO_HIT; // Return NO_HIT if no collision is detected
     }
 
     // Getters and Setters for the block's properties
