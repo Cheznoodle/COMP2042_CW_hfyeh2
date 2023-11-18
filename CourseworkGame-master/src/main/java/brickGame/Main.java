@@ -139,7 +139,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
-        scene.getStylesheets().add("style.css");
+
+        // Load the CSS file
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
         scene.setOnKeyPressed(this);
 
         primaryStage.setTitle("Game");
