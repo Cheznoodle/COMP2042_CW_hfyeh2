@@ -718,7 +718,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
             }
 
+    @Override
+    public void onRender() {
 
+    }
 
 
     @Override
