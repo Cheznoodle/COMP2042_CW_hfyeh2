@@ -9,6 +9,13 @@ import javafx.util.Duration;
 
 public class Score {
 
+    // Constants for label positioning and animation
+    private static final double MESSAGE_X = 220;
+    private static final double MESSAGE_Y = 340;
+    private static final int ANIMATION_DURATION = 15; // in milliseconds
+    private static final int ANIMATION_COUNT = 20;
+    private static final double SCALE_INCREMENT = 0.1;
+
     /**
      * Displays a score indicator at a specified location in the game.
      *
@@ -19,8 +26,8 @@ public class Score {
      */
     public void show(final double x, final double y, int score, final Main main) {
         String sign = (score >= 0) ? "+" : "";
-        final Label label = createLabel(sign + score, x, y);
-        animateLabel(label, main);
+        Label label = createLabel(sign + score, x, y);
+        animateAndAddLabel(label, main);
     }
 
     /**
@@ -30,8 +37,8 @@ public class Score {
      * @param main    Reference to the main game class for accessing the game's root pane.
      */
     public void showMessage(String message, final Main main) {
-        final Label label = createLabel(message, 220, 340);
-        animateLabel(label, main);
+        Label label = createLabel(message, MESSAGE_X, MESSAGE_Y);
+        animateAndAddLabel(label, main);
     }
 
     /**
@@ -50,22 +57,23 @@ public class Score {
     }
 
     /**
-     * Animates a label by increasing its scale and fading it out.
+     * Animates a label by increasing its scale and fading it out, then adds it to the game's root pane.
      *
      * @param label The label to animate.
      * @param main  Reference to the main game class for adding the label to the game's root pane.
      */
-    private void animateLabel(final Label label, final Main main) {
-        Platform.runLater(() -> main.root.getChildren().add(label));
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(15), e -> {
-            double scale = label.getScaleX() + 0.1;
-            label.setScaleX(scale);
-            label.setScaleY(scale);
-            label.setOpacity(1 - scale / 2.1);
-        }));
-        timeline.setCycleCount(20);
-        timeline.play();
+    private void animateAndAddLabel(final Label label, final Main main) {
+        Platform.runLater(() -> {
+            main.root.getChildren().add(label);
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(ANIMATION_DURATION), e -> {
+                double scale = label.getScaleX() + SCALE_INCREMENT;
+                label.setScaleX(scale);
+                label.setScaleY(scale);
+                label.setOpacity(1 - scale / 2.1);
+            }));
+            timeline.setCycleCount(ANIMATION_COUNT);
+            timeline.play();
+        });
     }
 
     /**
