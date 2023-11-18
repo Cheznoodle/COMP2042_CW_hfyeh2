@@ -26,6 +26,7 @@ import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
 
+
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
 
@@ -37,15 +38,18 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private MediaPlayer backgroundMediaPlayer;
 
-    private int breakWidth     = 130;
-    private int breakHeight    = 30;
-    private int halfBreakWidth = breakWidth / 2;
+    private final int breakWidth     = 130;
+    private final int breakHeight    = 30;
+    private final int halfBreakWidth = breakWidth / 2;
 
-    private int sceneWidth = 500;
-    private int sceneHeight = 700;
+    private final int sceneWidth = 500;
+    private final int sceneHeight = 700;
 
-    private static int LEFT  = 1;
-    private static int RIGHT = 2;
+    private static final int LEFT  = 1;
+    private static final int RIGHT = 2;
+
+    private Button load = new Button("Load Game");
+    private Button newGame = new Button("Start New Game");
 
     private Circle ball;
     private double xBall;
@@ -55,11 +59,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean isExistHeartBlock = false;
 
     private Rectangle rect;
-    private int       ballRadius = 10;
+    private final int       ballRadius = 10;
 
     private int destroyedBlockCount = 0;
 
-    private double v = 1.000;
+    private final double v = 1.000;
 
     private int  heart    = 3;
     private int  score    = 0;
@@ -71,9 +75,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public static String savePath    = "D:/save/save.mdds";
     public static String savePathDir = "D:/save/";
 
-    private ArrayList<Block> blocks = new ArrayList<Block>();
-    private ArrayList<Bonus> chocos = new ArrayList<Bonus>();
-    private Color[]          colors = new Color[]{
+    private final ArrayList<Block> blocks = new ArrayList<Block>();
+    private final ArrayList<Bonus> chocos = new ArrayList<Bonus>();
+    private final Color[]          colors = new Color[]{
             Color.MAGENTA,
             Color.RED,
             Color.GOLD,
@@ -96,8 +100,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean loadFromSave = false;
 
     Stage  primaryStage;
-    Button load    = null;  //Potential Error here causing Game crash
-    Button newGame = null;  //Potential Error here causing Game crash
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -106,7 +108,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         //Call the Method in Application's Start Method
         playBackgroundSound();
 
-        if (loadFromSave == false) {
+        if (!loadFromSave) {
             level++;
             if (level >1){
                 new Score().showMessage("Level Up :)", this);
@@ -130,20 +132,18 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         }
 
-
         root = new Pane();
         scoreLabel = new Label("Score: " + score);
         levelLabel = new Label("Level: " + level);
         levelLabel.setTranslateY(20);
         heartLabel = new Label("Heart : " + heart);
         heartLabel.setTranslateX(sceneWidth - 70);
-        if (loadFromSave == false) {
-            root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, newGame);
-        } else {
-            root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
+
+        root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
+        if (!loadFromSave) {
+            root.getChildren().addAll(load, newGame);
         }
 
-        //Fixed: Replace direct access to the rect property of Block with the getter method.
         for (Block block : blocks) {
             root.getChildren().add(block.getRect());
         }
@@ -232,9 +232,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 
     @Override
     public void handle(KeyEvent event) {
@@ -309,9 +307,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
-
-
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     private void initBall() {
         Random random = new Random();
@@ -674,8 +672,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     @Override
     public void onUpdate() {
         Platform.runLater(new Runnable() {
+
             @Override
             public void run() {
+
 
                 scoreLabel.setText("Score: " + score);
                 heartLabel.setText("Heart : " + heart);
