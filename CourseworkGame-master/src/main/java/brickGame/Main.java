@@ -20,6 +20,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.net.URL;
+
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
 
@@ -95,6 +99,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
 
+        //Call the Method in Application's Start Method
+        playBackgroundSound();
 
         if (loadFromSave == false) {
             level++;
@@ -278,6 +284,24 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }).start();
 
 
+    }
+
+    //Background Sound Method
+    private void playBackgroundSound() {
+        try {
+            // Replace 'background.mp3' with the path to your sound file.
+            URL resource = getClass().getResource("/Can You Hear The Music.mp3");
+            if (resource == null) {
+                System.err.println("Audio file not found!");
+                return;
+            }
+            Media media = new Media(resource.toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
+            mediaPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle exceptions
+        }
     }
 
 
