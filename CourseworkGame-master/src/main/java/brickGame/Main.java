@@ -750,8 +750,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
         //TODO hit to break and some work here....
-                //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
-            }
+        //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
+    }
 
     @Override
     public void onRender() {

@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * This class is responsible for loading the saved game state from a file.
+ */
 public class LoadSave {
-    // Logger for logging error messages
+    // Logger for recording any errors that occur during the file loading process.
     private static final Logger LOGGER = Logger.getLogger(LoadSave.class.getName());
 
-    // Fields to store the game state
+    // Fields representing the different aspects of the game's state.
     public boolean isExistHeartBlock;
     public boolean isGoldStatus;
     public boolean goDownBall;
@@ -37,23 +40,18 @@ public class LoadSave {
     public long time;
     public long goldTime;
     public double vX;
-    public ArrayList<BlockSerializable> blocks = new ArrayList<>();
+    public ArrayList<BlockSerializable> blocks;
 
     /**
-     * Reads the game state from a file.
+     * Reads the saved game state from a file.
      */
     public void read() {
-        // Prepare the file to read from
         File file = new File(Main.savePath);
-
-        // Use try-with-resources for automatic resource management
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
-            // Read and assign values from the file to the fields
             level = inputStream.readInt();
             score = inputStream.readInt();
             heart = inputStream.readInt();
             destroyedBlockCount = inputStream.readInt();
-
             xBall = inputStream.readDouble();
             yBall = inputStream.readDouble();
             xBreak = inputStream.readDouble();
@@ -62,7 +60,6 @@ public class LoadSave {
             time = inputStream.readLong();
             goldTime = inputStream.readLong();
             vX = inputStream.readDouble();
-
             isExistHeartBlock = inputStream.readBoolean();
             isGoldStatus = inputStream.readBoolean();
             goDownBall = inputStream.readBoolean();
@@ -76,16 +73,17 @@ public class LoadSave {
             collideToLeftBlock = inputStream.readBoolean();
             collideToTopBlock = inputStream.readBoolean();
 
-            // Cast the read object to the expected ArrayList type
-            blocks = (ArrayList<BlockSerializable>) inputStream.readObject();
+            // Safe type casting with validation
+            Object readObject = inputStream.readObject();
+            if (readObject instanceof ArrayList<?> tempList) {
+                if (!tempList.isEmpty() && tempList.get(0) instanceof BlockSerializable) {
+                    blocks = (ArrayList<BlockSerializable>) tempList;
+                }
+            }
         } catch (ClassNotFoundException e) {
-            // Log class not found exceptions
-            LOGGER.log(Level.SEVERE, "Class not found while reading from the file", e);
+            LOGGER.log(Level.SEVERE, "Class not found in LoadSave", e);
         } catch (IOException e) {
-            // Log IO exceptions
-            LOGGER.log(Level.SEVERE, "IO Exception while reading from the file", e);
+            LOGGER.log(Level.SEVERE, "IO Exception in LoadSave", e);
         }
     }
 }
-
-//Note: Possible Future Feature: Configure Logger for specific needs (eg:setting a different logging level, formatting the output, or directing the log messages to a file.)
