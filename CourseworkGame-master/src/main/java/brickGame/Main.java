@@ -169,28 +169,21 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 engine.start();
             }
 
-            load.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    loadGame();
-
-                    load.setVisible(false);
-                    newGame.setVisible(false);
-                }
+            load.setOnAction(event -> {
+                loadGame();
+                load.setVisible(false);
+                newGame.setVisible(false);
             });
 
-            newGame.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    engine = new GameEngine();
-                    engine.setOnAction(Main.this);
-                    engine.setFps(120);
-                    engine.start();
-
-                    load.setVisible(false);
-                    newGame.setVisible(false);
-                }
+            newGame.setOnAction(event -> {
+                engine = new GameEngine();
+                engine.setOnAction(this);
+                engine.setFps(120);
+                engine.start();
+                load.setVisible(false);
+                newGame.setVisible(false);
             });
+
         } else {
             engine = new GameEngine();
             engine.setOnAction(this);
@@ -202,6 +195,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
+    //REFACTOR BELOW
     //Fix: Replaced the direct access to the Block constants with the appropriate getter methods
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
@@ -252,9 +246,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 break;
         }
     }
+    //REFACTOR ABOVE
 
-    float oldXBreak;
 
+    //REFACTOR HERE
     private void move(final int direction) {
         new Thread(new Runnable() {
             @Override
@@ -287,7 +282,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     }
+    //REFACTOR ABOVE
 
+    //REFACTOR HER
     //Background Sound Method
     private void playBackgroundSound() {
         if (backgroundMediaPlayer == null) { // Only initialize if not already done
@@ -306,18 +303,20 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
     }
+    //REFACTOR ABOVE
 
     public static void main(String[] args) {
         launch(args);
     }
 
+    //REFACTOR DONE
     private void initBall() {
         Random random = new Random();
         xBall = random.nextInt(sceneWidth) + 1;
         yBall = random.nextInt(sceneHeight - 200) + ((level + 1) * Block.getHeight()) + 15;
         ball = new Circle();
         ball.setRadius(ballRadius);
-        ball.setFill(new ImagePattern(new Image("ball.png")));
+        ball.setFill(loadImagePattern("ball.png"));
     }
 
     private void initBreak() {
@@ -326,13 +325,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         rect.setHeight(breakHeight);
         rect.setX(xBreak);
         rect.setY(yBreak);
-
-        ImagePattern pattern = new ImagePattern(new Image("block.png"));
-
-        rect.setFill(pattern);
+        rect.setFill(loadImagePattern("block.png"));
     }
 
+    private ImagePattern loadImagePattern(String imagePath) {
+        return new ImagePattern(new Image(imagePath));
+    }
+    //REFACTOR DONE
 
+    //ADD ENUMERATION OR A STATE OBJECT FOR THE BALL'S VARIOUS STATES
     private boolean goDownBall                  = true;
     private boolean goRightBall                 = true;
     private boolean collideToBreak = false;
@@ -346,8 +347,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private double vX = 1.000;
     private double vY = 1.000;
+    //REFACTOR ABOVE
 
-
+    //REFACTOR DONE
     private void resetCollideFlags() {
 
         collideToBreak = false;
@@ -360,7 +362,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         collideToLeftBlock = false;
         collideToTopBlock = false;
     }
+    //REFACTOR DONE
 
+    //REFACTOR BELOW
     private void setPhysicsToBall() {
         //v = ((time - hitTime) / 1000.000) + 1.000;
 
@@ -478,8 +482,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     }
+    //REFACTOR ABOVE
 
 
+    //WHAT TO DO IN LAST LEVEL?
     private void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
             //TODO win level todo...
