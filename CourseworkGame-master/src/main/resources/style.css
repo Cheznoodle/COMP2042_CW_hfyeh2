@@ -17,3 +17,15 @@
     -fx-font-weight: bold;
 }
 
+#heartLabel {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+
+#levelLabel {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-label-padding: 10px;
+    -fx-margin: -50px;
+}
+

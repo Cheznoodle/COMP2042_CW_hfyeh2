@@ -138,6 +138,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         heartLabel = new Label("Heart : " + heart);
         heartLabel.setTranslateX(sceneWidth - 70);
 
+        scoreLabel.setId("scoreLabel");
+        heartLabel.setId("heartLabel");
+        levelLabel.setId("levelLabel");
+
         root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame);
         if (!loadFromSave) {
             //root.getChildren().addAll(load, newGame);
