@@ -13,4 +13,7 @@
     -fx-text-fill: #FFF;
     -fx-label-padding: 8px;
     -fx-font-size: 15px;
+    -fx-font-family: Papyrus;
+    -fx-font-weight: bold;
 }
+
