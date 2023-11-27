@@ -20,12 +20,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
-
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
@@ -129,16 +129,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             newGame = new Button("Start New Game");
             exitGame = new Button("Exit Game");
 
-//            load.setTranslateX(220);
-//            load.setTranslateY(300);
-//            newGame.setTranslateX(220);
-//            newGame.setTranslateY(340);
-
-//            load.setLayoutX((sceneWidth - load.getWidth()) / 2);
-//            load.setLayoutY((sceneHeight - load.getHeight()) / 2 - 30); // Adjust these values as needed
-//            newGame.setLayoutX((sceneWidth - newGame.getWidth()) / 2);
-//            newGame.setLayoutY((sceneHeight - newGame.getHeight()) / 2 + 10);
-
         }
 
         root = new Pane();
@@ -224,8 +214,33 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             loadFromSave = false;
         }
 
-
     }
+
+    private void shakeStage() {
+        final double originalX = primaryStage.getX();
+        final double originalY = primaryStage.getY();
+        final int shakeDistance = 5;
+        final int shakeCycles = 10;
+
+        for (int i = 0; i < shakeCycles; i++) {
+            Platform.runLater(() -> {
+                primaryStage.setX(originalX + Math.random() * shakeDistance - shakeDistance / 2);
+                primaryStage.setY(originalY + Math.random() * shakeDistance - shakeDistance / 2);
+            });
+
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            Platform.runLater(() -> {
+                primaryStage.setX(originalX);
+                primaryStage.setY(originalY);
+            });
+        }
+    }
+
 
     //REFACTOR BELOW
     //Fix: Replaced the direct access to the Block constants with the appropriate getter methods
@@ -424,6 +439,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             if (!isGoldStatus) {
                 //TODO gameover
                 heart--;
+                shakeStage();
                 new Score().show(sceneWidth / 2, sceneHeight / 2, -1, this);
 
                 if (heart == 0) {
