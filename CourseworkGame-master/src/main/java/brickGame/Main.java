@@ -311,9 +311,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     //REFACTOR DONE
     private void initBall() {
-        Random random = new Random();
-        xBall = random.nextInt(sceneWidth) + 1;
-        yBall = random.nextInt(sceneHeight - 200) + ((level + 1) * Block.getHeight()) + 15;
+        // Set fixed coordinates for the ball's initial position
+        xBall = sceneWidth / 2.0; // Spawn in the middle of the scene width-wise
+        yBall = sceneHeight / 2.0; // Spawn in the middle of the scene height-wise
+
         ball = new Circle();
         ball.setRadius(ballRadius);
         ball.setFill(loadImagePattern("ball.png"));
