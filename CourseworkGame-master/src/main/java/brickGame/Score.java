@@ -7,6 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
+/**
+ * Manages the display of scores and messages within the game.
+ * This class is responsible for showing score updates, game-over messages, and win messages
+ * with animation effects on the game screen.
+ */
 public class Score {
 
     // Constants for label positioning and animation
@@ -31,7 +36,7 @@ public class Score {
     }
 
     /**
-     * Displays a message on the screen.
+     * Displays a message on the screen at a predefined position.
      *
      * @param message The message to be displayed.
      * @param main    Reference to the main game class for accessing the game's root pane.
@@ -77,7 +82,7 @@ public class Score {
     }
 
     /**
-     * Displays the 'Game Over' message with a restart button.
+     * Displays the 'Game Over' message with a restart button on the screen.
      *
      * @param main Reference to the main game class for adding elements to the game's root pane.
      */
@@ -99,7 +104,7 @@ public class Score {
     }
 
     /**
-     * Displays the 'You Win' message.
+     * Displays the 'You Win' message on the screen.
      *
      * @param main Reference to the main game class for adding elements to the game's root pane.
      */

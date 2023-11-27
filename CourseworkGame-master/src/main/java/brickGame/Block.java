@@ -8,11 +8,13 @@ import javafx.scene.shape.Rectangle;
 import java.io.Serializable;
 
 /**
- * Represents a block in the brick game, which can have different types and be hit by a ball.
+ * The {@code Block} class represents a block in a brick game.
+ * Each block is characterized by its position in the grid (row and column),
+ * its color, and its type. Blocks can be hit by a ball, which may alter their state.
  */
-
 public class Block implements Serializable {
-    // Constants to represent different types of blocks and hit outcomes
+
+    // Constants representing different types of blocks and hit outcomes
     private static final int BLOCK_NORMAL = 99;
     private static final int BLOCK_CHOCO = 100;
     private static final int BLOCK_STAR = 101;
@@ -40,14 +42,13 @@ public class Block implements Serializable {
     private static final int paddingH = 50;
 
     /**
-     * Constructs a new Block with specified parameters.
+     * Constructs a new Block at a specified position in the grid, with a given color and type.
      *
      * @param row    The row in the grid where the block is placed.
      * @param column The column in the grid where the block is placed.
      * @param color  The color of the block.
-     * @param type   The type of the block, determining its behavior.
+     * @param type   The type of the block, which determines its behavior and appearance.
      */
-
     public Block(int row, int column, Color color, int type) {
         // Initialize the block's properties
         this.row = row;
@@ -59,23 +60,22 @@ public class Block implements Serializable {
     }
 
     /**
-     * Draws the block, setting up its visual representation.
+     * Draws the block by setting its visual representation.
+     * This includes calculating its position and applying a color or pattern based on its type.
      */
-
     private void draw() {
-        // Calculate and set the block's position based on its grid location
+        // Set the block's position based on its grid location
         x = (column * width) + paddingH;
         y = (row * height) + paddingTop;
 
-
-        rect = new Rectangle(); // Create a new Rectangle to visually represent the block
-        // Set the rectangle's dimensions and position
+        // Create and set the rectangle's dimensions and position
+        rect = new Rectangle();
         rect.setWidth(width);
         rect.setHeight(height);
         rect.setX(x);
         rect.setY(y);
 
-        // Apply a pattern or color to the block based on its type
+        // Apply a pattern or color based on the block type
         ImagePattern pattern = loadImagePatternBasedOnType(type);
         if (pattern != null) {
             rect.setFill(pattern);
@@ -90,7 +90,6 @@ public class Block implements Serializable {
      * @param type The type of the block.
      * @return An ImagePattern to fill the block, or null if there's no specific pattern.
      */
-
     private ImagePattern loadImagePatternBasedOnType(int type) {
         // Determine the image path based on the block type
         String imagePath;
@@ -117,11 +116,9 @@ public class Block implements Serializable {
      *
      * @param xBall The x-coordinate of the ball.
      * @param yBall The y-coordinate of the ball.
-     * @return An integer representing the side of the block that was hit.
+     * @return An integer representing the side of the block that was hit, or NO_HIT if not hit.
      */
-
     public int checkHitToBlock(double xBall, double yBall) {
-        // If the block is already destroyed, return NO_HIT
         if (isDestroyed) {
             return NO_HIT;
         }
@@ -130,20 +127,16 @@ public class Block implements Serializable {
         if (xBall >= x && xBall <= x + width && yBall == y + height) {
             return HIT_BOTTOM;
         }
-
         if (xBall >= x && xBall <= x + width && yBall == y) {
             return HIT_TOP;
         }
-
         if (yBall >= y && yBall <= y + height && xBall == x + width) {
             return HIT_RIGHT;
         }
-
         if (yBall >= y && yBall <= y + height && xBall == x) {
             return HIT_LEFT;
         }
-
-        return NO_HIT; // Return NO_HIT if no collision is detected
+        return NO_HIT;
     }
 
     // Getters and Setters for the block's properties

@@ -1,5 +1,9 @@
 package brickGame;
 
+/**
+ * Represents the game engine for a brick game.
+ * Manages game logic, rendering, physics, and timing through separate threads.
+ */
 public class GameEngine {
 
     private OnAction onAction;
@@ -7,9 +11,7 @@ public class GameEngine {
 
     private Thread updateThread;
     private Thread renderThread;
-
     private Thread physicsThread;
-
     private Thread timeThread;
 
     private volatile boolean running = false; // Flag to control the threads
@@ -17,7 +19,7 @@ public class GameEngine {
 
     /**
      * Sets the action listener for game updates.
-     * @param onAction Interface instance containing game update methods
+     * @param onAction Interface instance containing methods for game update actions.
      */
     public void setOnAction(OnAction onAction) {
         this.onAction = onAction;
@@ -25,14 +27,14 @@ public class GameEngine {
 
     /**
      * Sets the frames per second for the game.
-     * @param fps Frames per second
+     * @param fps Frames per second.
      */
     public void setFps(int fps) {
         this.fps = 1000 / fps;
     }
 
     /**
-     * Starts the update thread for game logic.
+     * Starts the update thread for handling game logic.
      */
     private synchronized void Update() {
         updateThread = new Thread(() -> {
@@ -49,14 +51,14 @@ public class GameEngine {
     }
 
     /**
-     * Initializes the game state.
+     * Initializes the game state using the action listener.
      */
     private void Initialize() {
         onAction.onInit();
     }
 
     /**
-     * Starts the thread for physics calculations.
+     * Starts the thread for physics calculations in the game.
      */
     private synchronized void PhysicsCalculation() {
         physicsThread = new Thread(() -> {
@@ -73,7 +75,7 @@ public class GameEngine {
     }
 
     /**
-     * Starts the game engine, including all threads for updating game state and rendering.
+     * Starts the game engine, initiating threads for updating game state, rendering, and physics calculations.
      */
     public void start() {
         running = true;
@@ -86,7 +88,7 @@ public class GameEngine {
     }
 
     /**
-     * Stops the game engine, terminating all threads gracefully.
+     * Stops the game engine, terminating all threads in a graceful manner.
      */
     public void stop() {
         running = false;
@@ -97,8 +99,8 @@ public class GameEngine {
     }
 
     /**
-     * Helper method to safely join a thread.
-     * @param thread The thread to join
+     * Safely joins a given thread, ensuring it stops gracefully.
+     * @param thread The thread to join.
      */
     private void joinThread(Thread thread) {
         if (thread != null) {
@@ -111,7 +113,7 @@ public class GameEngine {
     }
 
     /**
-     * Starts the rendering thread for the game.
+     * Starts the rendering thread for the game's graphical output.
      */
     private synchronized void Render() {
         renderThread = new Thread(() -> {
@@ -128,7 +130,7 @@ public class GameEngine {
     }
 
     /**
-     * Manages the in-game time.
+     * Manages and updates the in-game time.
      */
     private void TimeStart() {
         timeThread = new Thread(() -> {
@@ -146,7 +148,8 @@ public class GameEngine {
     }
 
     /**
-     * Interface for handling various actions in the game.
+     * Interface defining methods for handling various actions during the game's execution.
+     * Methods include updates for game logic, rendering, initialization, physics, and time tracking.
      */
     public interface OnAction {
         void onUpdate();

@@ -9,7 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * This class is responsible for loading the saved game state from a file.
+ * Handles loading of saved game state from a file.
+ * This class is responsible for reading the game's state, including various status flags,
+ * level information, scores, positions, and more, from a serialized file.
  */
 public class LoadSave {
     // Logger for recording any errors that occur during the file loading process.
@@ -43,11 +45,13 @@ public class LoadSave {
     public ArrayList<BlockSerializable> blocks;
 
     /**
-     * Reads the saved game state from a file.
+     * Reads the saved game state from a file and updates the game state accordingly.
+     * Deserializes various game attributes from a file and loads them into the game.
      */
     public void read() {
         File file = new File(Main.savePath);
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
+            // Reading and setting each saved attribute of the game
             level = inputStream.readInt();
             score = inputStream.readInt();
             heart = inputStream.readInt();
@@ -73,7 +77,7 @@ public class LoadSave {
             collideToLeftBlock = inputStream.readBoolean();
             collideToTopBlock = inputStream.readBoolean();
 
-            // Safe type casting with validation
+            // Safe type casting with validation for deserializing the list of blocks
             Object readObject = inputStream.readObject();
             if (readObject instanceof ArrayList<?> tempList) {
                 if (!tempList.isEmpty() && tempList.get(0) instanceof BlockSerializable) {

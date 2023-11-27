@@ -7,7 +7,9 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Represents a bonus object in the game.
+ * Represents a bonus object in the brick game.
+ * This class handles the creation and visual representation of bonuses
+ * that appear during the game.
  */
 public class Bonus implements Serializable {
     // Constants for the size of the bonus and the offset in positioning
@@ -31,10 +33,12 @@ public class Bonus implements Serializable {
     public boolean taken = false;
 
     /**
-     * Constructs a Bonus object at a specified row and column.
+     * Constructs a new Bonus object at a specified location on the game grid.
+     * The position is calculated based on the row and column, and the bonus
+     * is visually represented by a rectangle.
      *
-     * @param row    The row in the game grid.
-     * @param column The column in the game grid.
+     * @param row    The row in the game grid where the bonus is located.
+     * @param column The column in the game grid where the bonus is located.
      */
     public Bonus(int row, int column) {
         // Calculate the position of the bonus based on the row and column
@@ -46,7 +50,8 @@ public class Bonus implements Serializable {
     }
 
     /**
-     * Draws the bonus on the screen.
+     * Initializes and draws the graphical representation of the bonus.
+     * Sets the position, size, and image of the bonus based on predefined parameters.
      */
     private void draw() {
         // Initialize the rectangle representing the bonus
