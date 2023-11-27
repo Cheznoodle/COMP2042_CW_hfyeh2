@@ -51,6 +51,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private Button load = new Button("Load Game");
     private Button newGame = new Button("Start New Game");
 
+    private Button exitGame = new Button("Exit Game");
+
     private Circle ball;
     private double xBall;
     private double yBall;
@@ -125,10 +127,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
             load = new Button("Load Game");
             newGame = new Button("Start New Game");
-            load.setTranslateX(220);
-            load.setTranslateY(300);
-            newGame.setTranslateX(220);
-            newGame.setTranslateY(340);
+            exitGame = new Button("Exit Game");
+
+//            load.setTranslateX(220);
+//            load.setTranslateY(300);
+//            newGame.setTranslateX(220);
+//            newGame.setTranslateY(340);
+
+//            load.setLayoutX((sceneWidth - load.getWidth()) / 2);
+//            load.setLayoutY((sceneHeight - load.getHeight()) / 2 - 30); // Adjust these values as needed
+//            newGame.setLayoutX((sceneWidth - newGame.getWidth()) / 2);
+//            newGame.setLayoutY((sceneHeight - newGame.getHeight()) / 2 + 10);
 
         }
 
@@ -139,9 +148,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         heartLabel = new Label("Heart : " + heart);
         heartLabel.setTranslateX(sceneWidth - 70);
 
-        root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
+        root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame);
         if (!loadFromSave) {
-            root.getChildren().addAll(load, newGame);
+            //root.getChildren().addAll(load, newGame);
         }
 
         for (Block block : blocks) {
@@ -159,10 +168,27 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // Centering buttons after the scene is rendered
+        Platform.runLater(() -> {
+            double loadButtonWidth = load.getWidth();
+            double newGameButtonWidth = newGame.getWidth();
+            double exitButtonWidth = exitGame.getWidth();
+
+            load.setLayoutX((sceneWidth - loadButtonWidth) / 2);
+            load.setLayoutY(sceneHeight / 2 - 50); // Vertical positioning
+
+            newGame.setLayoutX((sceneWidth - newGameButtonWidth) / 2);
+            newGame.setLayoutY(sceneHeight / 2 + 10); // Vertical positioning
+
+            exitGame.setLayoutX((sceneWidth - exitButtonWidth) / 2);
+            exitGame.setLayoutY(sceneHeight / 2 + 70);
+        });
+
         if (loadFromSave == false) {
             if (level > 1 && level < 18) {
                 load.setVisible(false);
                 newGame.setVisible(false);
+                exitGame.setVisible(false);
                 engine = new GameEngine();
                 engine.setOnAction(this);
                 engine.setFps(120);
@@ -173,6 +199,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 loadGame();
                 load.setVisible(false);
                 newGame.setVisible(false);
+                exitGame.setVisible(false);
             });
 
             newGame.setOnAction(event -> {
@@ -182,6 +209,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 engine.start();
                 load.setVisible(false);
                 newGame.setVisible(false);
+                exitGame.setVisible(false);
+            });
+
+            exitGame.setOnAction(event -> {
+                Platform.exit();
             });
 
         } else {
@@ -201,9 +233,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < level + 1; j++) {
                 int r = new Random().nextInt(500);
-                if (r % 5 == 0) {
-                    continue;
-                }
+//                if (r % 5 == 0) {
+//                    continue;
+//                }
                 int type;
                 if (r % 10 == 1) {
                     type = Block.getBlockChoco(); // Updated
