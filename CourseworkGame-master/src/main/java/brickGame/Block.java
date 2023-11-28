@@ -118,24 +118,28 @@ public class Block implements Serializable {
      * @param yBall The y-coordinate of the ball.
      * @return An integer representing the side of the block that was hit, or NO_HIT if not hit.
      */
-    public int checkHitToBlock(double xBall, double yBall) {
+    public int checkHitToBlock(double xBall, double yBall, double ballRadius) {
+
         if (isDestroyed) {
             return NO_HIT;
         }
 
-        // Check for collisions on each side of the block
-        if (xBall >= x && xBall <= x + width && yBall == y + height) {
+        if (xBall >= x && xBall <= x + width && yBall - ballRadius <= y + height && yBall + ballRadius > y + height) {
             return HIT_BOTTOM;
         }
-        if (xBall >= x && xBall <= x + width && yBall == y) {
+
+        if (xBall >= x && xBall <= x + width && yBall + ballRadius >= y && yBall - ballRadius < y) {
             return HIT_TOP;
         }
-        if (yBall >= y && yBall <= y + height && xBall == x + width) {
+
+        if (yBall >= y && yBall <= y + height && xBall - ballRadius <= x + width && xBall + ballRadius > x + width) {
             return HIT_RIGHT;
         }
-        if (yBall >= y && yBall <= y + height && xBall == x) {
+
+        if (yBall >= y && yBall <= y + height && xBall + ballRadius >= x && xBall - ballRadius < x) {
             return HIT_LEFT;
         }
+
         return NO_HIT;
     }
 

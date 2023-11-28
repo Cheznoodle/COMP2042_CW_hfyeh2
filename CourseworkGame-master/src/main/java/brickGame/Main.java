@@ -27,6 +27,13 @@ import java.net.URL;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Pos;
+
+import javafx.animation.FadeTransition;
+
+
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
 
@@ -245,6 +252,51 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
+    private void showHeartDeductedImage() {
+        Platform.runLater(() -> {
+            // Create an ImageView and attempt to load the image
+            Image image = new Image("minusHeart.png", 200, 200, true, true);
+            ImageView heartImage = new ImageView(image);
+
+            // Check if the image has been loaded correctly
+            if (image.isError()) {
+                System.out.println("Error loading heart image");
+                return; // Exit if the image hasn't been loaded correctly
+            }
+
+            VBox imageContainer = new VBox(heartImage);
+            imageContainer.setAlignment(Pos.CENTER);
+            imageContainer.setPrefSize(sceneWidth, sceneHeight);
+
+            // Initially set the image to be transparent
+            imageContainer.setOpacity(0);
+
+            root.getChildren().add(imageContainer);
+
+            // Fade in transition
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), imageContainer);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            // Fade out transition
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), imageContainer);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+            fadeOut.setDelay(Duration.seconds(1)); // Delay to keep the image visible
+
+            // Start fade in transition
+            fadeIn.play();
+
+            // After fade in, start fade out
+            fadeIn.setOnFinished(event -> fadeOut.play());
+
+            // After fade out, remove the image container
+            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
+        });
+    }
+
 
     //REFACTOR BELOW
     //Fix: Replaced the direct access to the Block constants with the appropriate getter methods
@@ -444,6 +496,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 //TODO gameover
                 heart--;
                 shakeStage();
+                showHeartDeductedImage();
                 new Score().show(sceneWidth / 2, sceneHeight / 2, -1, this);
 
                 if (heart == 0) {
@@ -753,7 +806,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
             for (final Block block : blocks) {
-                int hitCode = block.checkHitToBlock(xBall, yBall);
+                int hitCode = block.checkHitToBlock(xBall, yBall, ballRadius);
                 if (hitCode != Block.getNoHit()) { // Updated to use the getter method
                     score += 1;
 
