@@ -33,9 +33,13 @@ import javafx.geometry.Pos;
 
 import javafx.animation.FadeTransition;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     private int level = 0;
 
@@ -84,8 +88,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public static String savePath    = "D:/save/save.mdds";
     public static String savePathDir = "D:/save/";
 
-    private final ArrayList<Block> blocks = new ArrayList<Block>();
-    private final ArrayList<Bonus> chocos = new ArrayList<Bonus>();
+    private final ArrayList<Block> blocks = new ArrayList<>();
+    private final ArrayList<Bonus> chocos = new ArrayList<>();
+
     private final Color[]          colors = new Color[]{
             Color.MAGENTA,
             Color.RED,
@@ -150,9 +155,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         levelLabel.setId("levelLabel");
 
         root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame);
-        if (!loadFromSave) {
-            //root.getChildren().addAll(load, newGame);
-        }
+//        if (!loadFromSave) {
+//            //root.getChildren().addAll(load, newGame);
+//        }
 
         for (Block block : blocks) {
             root.getChildren().add(block.getRect());
@@ -160,8 +165,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
 
-        // Load the CSS file
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        // Load the CSS file with error handling
+        URL resource = getClass().getResource("/style.css");
+        if (resource == null) {
+            System.err.println("Unable to load style.css");
+
+        } else {
+            scene.getStylesheets().add(resource.toExternalForm());
+        }
 
         scene.setOnKeyPressed(this);
 
@@ -176,16 +187,16 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             double exitButtonWidth = exitGame.getWidth();
 
             load.setLayoutX((sceneWidth - loadButtonWidth) / 2);
-            load.setLayoutY(sceneHeight / 2 - 50); // Vertical positioning
+            load.setLayoutY(sceneHeight / 2.0 - 50); // Vertical positioning
 
             newGame.setLayoutX((sceneWidth - newGameButtonWidth) / 2);
-            newGame.setLayoutY(sceneHeight / 2 + 10); // Vertical positioning
+            newGame.setLayoutY(sceneHeight / 2.0 + 10); // Vertical positioning
 
             exitGame.setLayoutX((sceneWidth - exitButtonWidth) / 2);
-            exitGame.setLayoutY(sceneHeight / 2 + 70);
+            exitGame.setLayoutY(sceneHeight / 2.0 + 70);
         });
 
-        if (loadFromSave == false) {
+        if (!loadFromSave) {
             if (level > 1 && level < 18) {
                 load.setVisible(false);
                 newGame.setVisible(false);
@@ -213,9 +224,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 exitGame.setVisible(false);
             });
 
-            exitGame.setOnAction(event -> {
-                Platform.exit();
-            });
+            exitGame.setOnAction(event -> Platform.exit());
 
         } else {
             engine = new GameEngine();
@@ -235,8 +244,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         for (int i = 0; i < shakeCycles; i++) {
             Platform.runLater(() -> {
-                primaryStage.setX(originalX + Math.random() * shakeDistance - shakeDistance / 2);
-                primaryStage.setY(originalY + Math.random() * shakeDistance - shakeDistance / 2);
+                primaryStage.setX(originalX + Math.random() * shakeDistance - shakeDistance / 2.0);
+                primaryStage.setY(originalY + Math.random() * shakeDistance - shakeDistance / 2.0);
             });
 
             try {
@@ -274,17 +283,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             root.getChildren().add(imageContainer);
 
             // Fade in transition
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), imageContainer);
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
             fadeIn.setFromValue(0);
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
 
             // Fade out transition
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), imageContainer);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
             fadeOut.setFromValue(1);
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
-            fadeOut.setDelay(Duration.seconds(1)); // Delay to keep the image visible
+            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
 
             // Start fade in transition
             fadeIn.play();
@@ -354,9 +363,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     //REFACTOR HERE
     private void move(final int direction) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        new Thread(() -> {
+
                 int sleepTime = 4;
                 for (int i = 0; i < 30; i++) {
                     if (xBreak == (sceneWidth - breakWidth) && direction == RIGHT) {
@@ -374,13 +382,16 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     try {
                         Thread.sleep(sleepTime);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        // Replace printStackTrace with a logging statement
+                        LOGGER.log(Level.SEVERE, "Interrupted exception in move method", e);
+                        // Restore interrupted state
+                        Thread.currentThread().interrupt();
                     }
                     if (i >= 20) {
                         sleepTime = i;
                     }
                 }
-            }
+
         }).start();
 
 
@@ -402,7 +413,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
                 backgroundMediaPlayer.play();
             } catch (Exception e) {
-                e.printStackTrace(); // Handle exceptions
+                // Replace printStackTrace with a logging statement
+                LOGGER.log(Level.SEVERE, "Exception in playBackgroundSound method", e);
             }
         }
     }
@@ -497,7 +509,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 heart--;
                 shakeStage();
                 showHeartDeductedImage();
-                new Score().show(sceneWidth / 2, sceneHeight / 2, -1, this);
+                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
 
                 if (heart == 0) {
                     new Score().showGameOver(this);
@@ -516,7 +528,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 collideToBreak = true;
                 goDownBall = false;
 
-                double relation = (xBall - centerBreakX) / (breakWidth / 2);
+                double relation = (xBall - centerBreakX) / (breakWidth / 2.0);
 
                 if (Math.abs(relation) <= 0.3) {
                     //vX = 0;
@@ -529,11 +541,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     //System.out.println("vX " + vX);
                 }
 
-                if (xBall - centerBreakX > 0) {
-                    collideToBreakAndMoveToRight = true;
-                } else {
-                    collideToBreakAndMoveToRight = false;
-                }
+                collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
                 //System.out.println("Collide2");
             }
         }
@@ -551,11 +559,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (collideToBreak) {
-            if (collideToBreakAndMoveToRight) {
-                goRightBall = true;
-            } else {
-                goRightBall = false;
-            }
+            goRightBall = collideToBreakAndMoveToRight;
         }
 
         //Wall Collide
@@ -640,8 +644,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     outputStream.writeBoolean(collideToLeftBlock);
                     outputStream.writeBoolean(collideToTopBlock);
 
-                    //Fix: Getter method for the isDestroyed
-                    ArrayList<BlockSerializable> blockSerializable = new ArrayList<BlockSerializable>();
+
+                    ArrayList<BlockSerializable> blockSerializable = new ArrayList<>();
+
                     for (Block block : blocks) {
                         if (block.isDestroyed()) {  // Updated to use the getter method
                             continue;
@@ -656,7 +661,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Exception in method", e);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
