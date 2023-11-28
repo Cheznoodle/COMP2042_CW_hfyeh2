@@ -509,7 +509,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 heart--;
                 shakeStage();
                 showHeartDeductedImage();
-                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
+//                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
 
                 if (heart == 0) {
                     new Score().showGameOver(this);
