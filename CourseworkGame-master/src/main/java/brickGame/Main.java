@@ -853,20 +853,21 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
                 } catch (FileNotFoundException e) {
-                    LOGGER.log(Level.SEVERE, "Exception in method", e);
+                    LOGGER.log(Level.SEVERE, "FileNotFoundException in saveGame method", e);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "IOException in saveGame method", e);
                 } finally {
-                    try {
-                        outputStream.flush();
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (outputStream != null) {
+                        try {
+                            outputStream.flush();
+                            outputStream.close();
+                        } catch (IOException e) {
+                            LOGGER.log(Level.SEVERE, "IOException in saveGame method during flush/close", e);
+                        }
                     }
                 }
             }
         }).start();
-
     }
 
     private void loadGame() {
