@@ -36,7 +36,10 @@ import javafx.animation.FadeTransition;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * Main application class for the brick game.
+ * This class sets up the game environment, manages game states, and handles user interactions.
+ */
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
@@ -115,6 +118,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     Stage  primaryStage;
 
+    /**
+     * Starts and initializes the game.
+     * Sets up the game scene, creates game objects, and initializes event handling.
+     *
+     * @param primaryStage The primary stage for this application, onto which
+     *                     the application scene can be set.
+     * @throws Exception if an error occurs during startup.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -236,6 +247,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
+    /**
+     * Shakes the game stage to create a visual effect.
+     * Used to indicate certain game events like losing a heart.
+     */
     private void shakeStage() {
         final double originalX = primaryStage.getX();
         final double originalY = primaryStage.getY();
@@ -261,6 +276,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
+    /**
+     * Displays an image indicating a heart deduction.
+     * This method is typically called when the player loses a heart.
+     */
     private void showHeartDeductedImage() {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
@@ -306,9 +325,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
     }
 
-
-    //REFACTOR BELOW
-    //Fix: Replaced the direct access to the Block constants with the appropriate getter methods
+    /**
+     * Initializes the game board by creating and placing blocks.
+     * The number and types of blocks depend on the current game level.
+     */
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < level + 1; j++) {
@@ -337,9 +357,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
-
-
-
+    /**
+     * Handles keyboard events for controlling the game.
+     * Supports movement, game actions, and other controls based on key presses.
+     *
+     * @param event The keyboard event that occurred.
+     */
     @Override
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
@@ -358,10 +381,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 break;
         }
     }
-    //REFACTOR ABOVE
 
 
-    //REFACTOR HERE
+    /**
+     * Moves the player's paddle in a specified direction.
+     * Creates a new thread for the movement to provide smooth control.
+     *
+     * @param direction The direction to move the paddle (LEFT or RIGHT).
+     */
     private void move(final int direction) {
         new Thread(() -> {
 
@@ -396,10 +423,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     }
-    //REFACTOR ABOVE
 
-    //REFACTOR HER
-    //Background Sound Method
+
+
+    /**
+     * Plays background sound for the game.
+     * The sound loops indefinitely until stopped.
+     */
     private void playBackgroundSound() {
         if (backgroundMediaPlayer == null) { // Only initialize if not already done
             try {
@@ -418,13 +448,22 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
     }
-    //REFACTOR ABOVE
 
+    /**
+     * The main entry point for the application.
+     * Launches the JavaFX application.
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
-    //REFACTOR DONE
+
+    /**
+     * Initializes the ball for the game.
+     * Sets the initial position and graphical representation of the ball.
+     */
     private void initBall() {
         // Set fixed coordinates for the ball's initial position
         xBall = sceneWidth / 2.0; // Spawn in the middle of the scene width-wise
@@ -435,6 +474,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         ball.setFill(loadImagePattern("ball.png"));
     }
 
+
+    /**
+     * Initializes the player's paddle (breaker).
+     * Sets the initial position and graphical representation of the paddle.
+     */
     private void initBreak() {
         rect = new Rectangle();
         rect.setWidth(breakWidth);
@@ -444,10 +488,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         rect.setFill(loadImagePattern("block.png"));
     }
 
+    /**
+     * Loads an image pattern from a given file path.
+     * Used to create graphical representations for game objects.
+     *
+     * @param imagePath The path to the image file.
+     * @return The loaded ImagePattern.
+     */
     private ImagePattern loadImagePattern(String imagePath) {
         return new ImagePattern(new Image(imagePath));
     }
-    //REFACTOR DONE
+
 
     //ADD ENUMERATION OR A STATE OBJECT FOR THE BALL'S VARIOUS STATES
     private boolean goDownBall                  = true;
