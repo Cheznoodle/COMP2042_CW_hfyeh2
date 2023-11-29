@@ -288,7 +288,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
             // Check if the image has been loaded correctly
             if (image.isError()) {
-                System.out.println("Error loading heart image");
+                System.out.println("Error loading minus heart image");
                 return; // Exit if the image hasn't been loaded correctly
             }
 
@@ -323,7 +323,111 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             // After fade out, remove the image container
             fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
         });
+
+
     }
+
+    private void showHeartAddedImage() {
+        Platform.runLater(() -> {
+            // Create an ImageView and attempt to load the image
+            Image image = new Image("plusHeart.png", 400, 400, true, true);
+            ImageView heartImage = new ImageView(image);
+
+            // Check if the image has been loaded correctly
+            if (image.isError()) {
+                System.out.println("Error loading plus heart image");
+                return; // Exit if the image hasn't been loaded correctly
+            }
+
+            VBox imageContainer = new VBox(heartImage);
+            imageContainer.setAlignment(Pos.CENTER);
+            imageContainer.setPrefSize(sceneWidth, sceneHeight);
+
+            // Initially set the image to be transparent
+            imageContainer.setOpacity(0);
+
+            root.getChildren().add(imageContainer);
+
+            // Fade in transition
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            // Fade out transition
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
+
+            // Start fade in transition
+            fadeIn.play();
+
+            // After fade in, start fade out
+            fadeIn.setOnFinished(event -> fadeOut.play());
+
+            // After fade out, remove the image container
+            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
+        });
+
+
+    }
+
+
+
+    /**
+     * Displays an image indicating a bonus ball activation.
+     * This method is called when a bonus ball is activated.
+     */
+    private void showBonusImage() {
+        Platform.runLater(() -> {
+            // Create an ImageView and attempt to load the image
+            Image image = new Image("bonusPicture.png", 250, 250, true, true);
+            ImageView heartImage = new ImageView(image);
+
+            // Check if the image has been loaded correctly
+            if (image.isError()) {
+                System.out.println("Error loading bonus image");
+                return; // Exit if the image hasn't been loaded correctly
+            }
+
+            VBox imageContainer = new VBox(heartImage);
+            imageContainer.setAlignment(Pos.CENTER);
+            imageContainer.setPrefSize(sceneWidth, sceneHeight);
+
+            // Initially set the image to be transparent
+            imageContainer.setOpacity(0);
+
+            root.getChildren().add(imageContainer);
+
+            // Fade in transition
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            // Fade out transition
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
+
+            // Start fade in transition
+            fadeIn.play();
+
+            // After fade in, start fade out
+            fadeIn.setOnFinished(event -> fadeOut.play());
+
+            // After fade out, remove the image container
+            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
+        });
+
+
+    }
+
+
 
     /**
      * Initializes the game board by creating and placing blocks.
@@ -391,38 +495,31 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
      */
     private void move(final int direction) {
         new Thread(() -> {
-
-                int sleepTime = 4;
-                for (int i = 0; i < 30; i++) {
-                    if (xBreak == (sceneWidth - breakWidth) && direction == RIGHT) {
-                        return;
-                    }
-                    if (xBreak == 0 && direction == LEFT) {
-                        return;
-                    }
-                    if (direction == RIGHT) {
-                        xBreak++;
-                    } else {
-                        xBreak--;
-                    }
-                    centerBreakX = xBreak + halfBreakWidth;
-                    try {
-                        Thread.sleep(sleepTime);
-                    } catch (InterruptedException e) {
-                        // Replace printStackTrace with a logging statement
-                        LOGGER.log(Level.SEVERE, "Interrupted exception in move method", e);
-                        // Restore interrupted state
-                        Thread.currentThread().interrupt();
-                    }
-                    if (i >= 20) {
-                        sleepTime = i;
-                    }
+            int sleepTime = 4;
+            for (int i = 0; i < 30; i++) {
+                // Check for right boundary
+                if (direction == RIGHT && xBreak + breakWidth < sceneWidth) {
+                    xBreak++;
+                }
+                // Check for left boundary
+                else if (direction == LEFT && xBreak > 0) {
+                    xBreak--;
                 }
 
+                centerBreakX = xBreak + halfBreakWidth;
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    LOGGER.log(Level.SEVERE, "Interrupted exception in move method", e);
+                    Thread.currentThread().interrupt();
+                }
+                if (i >= 20) {
+                    sleepTime = i;
+                }
+            }
         }).start();
-
-
     }
+
 
 
 
@@ -895,10 +992,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         ball.setFill(new ImagePattern(new Image("goldball.png")));
                         root.getStyleClass().add("goldRoot");
                         isGoldStatus = true;
+
+//                        showBonusImage(); // Call to display the bonus image
                     }
 
                     if (block.getType() == Block.getBlockHeart()) {
                         heart++;
+                        showHeartAddedImage();
                     }
 
                     // Update the collision logic based on hitCode using getters
@@ -961,6 +1061,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 choco.taken = true;
                 choco.choco.setVisible(false);
                 score += 3;
+
+                showBonusImage();
+
                 new Score().show(choco.x, choco.y, 3, this);
             }
             choco.y += ((time - choco.timeCreated) / 1000.000) + 1.000;
