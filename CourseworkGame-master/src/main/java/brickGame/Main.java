@@ -376,10 +376,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
 
-    /**
-     * Displays an image indicating a bonus ball activation.
-     * This method is called when a bonus ball is activated.
-     */
+
     private void showBonusImage() {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
@@ -389,6 +386,53 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             // Check if the image has been loaded correctly
             if (image.isError()) {
                 System.out.println("Error loading bonus image");
+                return; // Exit if the image hasn't been loaded correctly
+            }
+
+            VBox imageContainer = new VBox(heartImage);
+            imageContainer.setAlignment(Pos.CENTER);
+            imageContainer.setPrefSize(sceneWidth, sceneHeight);
+
+            // Initially set the image to be transparent
+            imageContainer.setOpacity(0);
+
+            root.getChildren().add(imageContainer);
+
+            // Fade in transition
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setCycleCount(1);
+
+            // Fade out transition
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
+            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
+
+            // Start fade in transition
+            fadeIn.play();
+
+            // After fade in, start fade out
+            fadeIn.setOnFinished(event -> fadeOut.play());
+
+            // After fade out, remove the image container
+            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
+        });
+
+
+    }
+
+    private void showGoldenBallImage() {
+        Platform.runLater(() -> {
+            // Create an ImageView and attempt to load the image
+            Image image = new Image("goldBonus.png", 250, 250, true, true);
+            ImageView heartImage = new ImageView(image);
+
+            // Check if the image has been loaded correctly
+            if (image.isError()) {
+                System.out.println("Error loading golden ball image");
                 return; // Exit if the image hasn't been loaded correctly
             }
 
@@ -993,7 +1037,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         root.getStyleClass().add("goldRoot");
                         isGoldStatus = true;
 
-//                        showBonusImage(); // Call to display the bonus image
+                        showGoldenBallImage(); // Call to display the golden ball image
                     }
 
                     if (block.getType() == Block.getBlockHeart()) {
