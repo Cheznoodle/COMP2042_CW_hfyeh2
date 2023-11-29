@@ -427,7 +427,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private void showGoldenBallImage() {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
-            Image image = new Image("goldBonus.png", 250, 250, true, true);
+            Image image = new Image("goldenBonus.png", 250, 250, true, true);
             ImageView heartImage = new ImageView(image);
 
             // Check if the image has been loaded correctly
