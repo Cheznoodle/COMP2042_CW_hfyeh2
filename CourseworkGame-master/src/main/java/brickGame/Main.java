@@ -36,9 +36,15 @@ import javafx.animation.FadeTransition;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.scene.layout.StackPane;
+
+import javafx.scene.shape.Rectangle;
+
+
 /**
- * Main application class for the brick game.
+ * Main class for the Brick Game.
  * This class sets up the game environment, manages game states, and handles user interactions.
+ * It creates the main game window, initializes game components, and starts the game loop.
  */
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
@@ -66,6 +72,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private Button newGame = new Button("Start New Game");
 
     private Button exitGame = new Button("Exit Game");
+
+    private StackPane layeredRoot; // New StackPane to manage layers
+    private VBox startMenuVBox; // Class-level variable for the VBox
 
     private Circle ball;
     private double xBall;
@@ -119,16 +128,26 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     Stage  primaryStage;
 
     /**
-     * Starts and initializes the game.
-     * Sets up the game scene, creates game objects, and initializes event handling.
+     * Initializes and starts the game.
+     * This method sets up the primary stage, initializes game elements,
+     * and handles the main game loop and events.
      *
-     * @param primaryStage The primary stage for this application, onto which
-     *                     the application scene can be set.
+     * @param primaryStage The primary stage for this application.
      * @throws Exception if an error occurs during startup.
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
+
+        // Create the layered root
+        layeredRoot = new StackPane();
+        root = new Pane(); // Your existing root pane
+        createStartMenu(); // Call the method to create the start menu
+
+        // Add the game root and the start menu to the layered root
+        layeredRoot.getChildren().addAll(root, startMenuVBox);
+
+//        Scene scene = new Scene(layeredRoot, sceneWidth, sceneHeight);
 
         //Call the Method in Application's Start Method
         playBackgroundSound();
@@ -151,6 +170,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             load = new Button("Load Game");
             newGame = new Button("Start New Game");
             exitGame = new Button("Exit Game");
+
+            // Call the method to create the start menu
+            createStartMenu();
 
         }
 
@@ -249,7 +271,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     /**
      * Shakes the game stage to create a visual effect.
-     * Used to indicate certain game events like losing a heart.
+     * This effect is typically used to indicate game events like losing a heart.
      */
     private void shakeStage() {
         final double originalX = primaryStage.getX();
@@ -278,7 +300,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     /**
      * Displays an image indicating a heart deduction.
-     * This method is typically called when the player loses a heart.
+     * This method is invoked when the player loses a heart.
      */
     private void showHeartDeductedImage() {
         Platform.runLater(() -> {
@@ -375,8 +397,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
-
-
     private void showBonusImage() {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
@@ -470,6 +490,23 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     }
+
+    private void createStartMenu() {
+        startMenuVBox = new VBox(80);
+        load = new Button("Load Game");
+        newGame = new Button("Start New Game");
+        exitGame = new Button("Exit Game");
+
+        startMenuVBox.getChildren().addAll(load, newGame, exitGame);
+        startMenuVBox.setAlignment(Pos.CENTER); // Center the VBox in the scene
+
+        // startMenuVBox.setPrefWidth(200); // Example width
+        // startMenuVBox.setPrefHeight(150); // Example height
+
+        // Add the VBox to the root pane
+        root.getChildren().add(startMenuVBox);
+    }
+
 
 
 
