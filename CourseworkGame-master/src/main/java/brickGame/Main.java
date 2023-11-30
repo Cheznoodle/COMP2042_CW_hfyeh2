@@ -350,6 +350,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     private void showHeartAddedImage() {
+        // Play heart added sound effect
+        playSoundEffect("/ting.mp3");
+
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
             Image image = new Image("plusHeart.png", 400, 400, true, true);
@@ -507,6 +510,25 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         root.getChildren().add(startMenuVBox);
     }
 
+    /**
+     * Plays a given sound effect file.
+     *
+     * @param soundFileName The name of the sound file to be played.
+     */
+    private void playSoundEffect(String soundFileName) {
+        try {
+            URL resource = getClass().getResource(soundFileName);
+            if (resource == null) {
+                LOGGER.log(Level.SEVERE, "Sound file not found: " + soundFileName);
+                return;
+            }
+            Media sound = new Media(resource.toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Exception in playSoundEffect method", e);
+        }
+    }
 
 
 
