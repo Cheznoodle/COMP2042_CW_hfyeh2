@@ -586,6 +586,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             case S:
                 saveGame();
                 break;
+            case ESCAPE:
+                togglePause();
+                break;
         }
     }
 
@@ -623,7 +626,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }).start();
     }
 
+    private void togglePause() {
+        if (engine.isPaused()) {
+            engine.resume();
+        } else {
+            engine.pause();
+        }
+    }
 
+    
 
 
     /**

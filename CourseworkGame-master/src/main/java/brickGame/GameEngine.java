@@ -17,6 +17,8 @@ public class GameEngine {
     private volatile boolean running = false; // Flag to control the threads
     private long time = 0;
 
+    private volatile boolean isPaused = false;
+
     /**
      * Sets the action listener for game updates.
      * @param onAction Interface instance containing methods for game update actions.
@@ -39,11 +41,20 @@ public class GameEngine {
     private synchronized void Update() {
         updateThread = new Thread(() -> {
             while (running) {
+                synchronized (this) {
+                    while (isPaused) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                }
                 try {
                     onAction.onUpdate();
                     Thread.sleep(fps);
                 } catch (InterruptedException e) {
-                    // Optional: handle the InterruptedException
+                    Thread.currentThread().interrupt();
                 }
             }
         });
@@ -63,11 +74,20 @@ public class GameEngine {
     private synchronized void PhysicsCalculation() {
         physicsThread = new Thread(() -> {
             while (running) {
+                synchronized (this) {
+                    while (isPaused) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                }
                 try {
                     onAction.onPhysicsUpdate();
                     Thread.sleep(fps);
                 } catch (InterruptedException e) {
-                    // Optional: handle the InterruptedException
+                    Thread.currentThread().interrupt();
                 }
             }
         });
@@ -118,11 +138,20 @@ public class GameEngine {
     private synchronized void Render() {
         renderThread = new Thread(() -> {
             while (running) {
+                synchronized (this) {
+                    while (isPaused) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                }
                 try {
                     onAction.onRender();
                     Thread.sleep(fps); // Adjust as needed for rendering
                 } catch (InterruptedException e) {
-                    // Optional: handle the InterruptedException
+                    Thread.currentThread().interrupt();
                 }
             }
         });
@@ -146,6 +175,21 @@ public class GameEngine {
         });
         timeThread.start();
     }
+
+    public synchronized void pause() {
+        isPaused = true;
+    }
+
+    public synchronized void resume() {
+        isPaused = false;
+        notifyAll();
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+
 
     /**
      * Interface defining methods for handling various actions during the game's execution.
