@@ -10,21 +10,21 @@
 }
 
 .label {
-    -fx-text-fill: #FFF;
+    -fx-text-fill: #000;
     -fx-label-padding: 8px;
     -fx-font-size: 15px;
-    -fx-font-family: Papyrus;
-    -fx-font-weight: bold;
+    -fx-font-family: Georgia;
+    -fx-font-weight: 400;
 }
 
 #heartLabel {
-    -fx-border-color: black;
-    -fx-border-width: 2px;
+    /*-fx-border-color: black;
+    -fx-border-width: 2px;*/
 }
 
 #levelLabel {
-    -fx-border-color: black;
-    -fx-border-width: 2px;
+    /*-fx-border-color: black;
+    -fx-border-width: 2px;*/
     -fx-label-padding: 10px;
     -fx-margin: -50px;
 }
