@@ -17,9 +17,22 @@
     -fx-font-weight: 400;
 }
 
+#scoreLabel {
+    /*-fx-border-color: black;
+    -fx-border-width: 2px;*/
+    -fx-background-color: white;
+    -fx-background-radius: 1;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
+}
+
 #heartLabel {
     /*-fx-border-color: black;
     -fx-border-width: 2px;*/
+    -fx-background-color: white;
+    -fx-background-radius: 1;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
 }
 
 #levelLabel {
@@ -27,6 +40,10 @@
     -fx-border-width: 2px;*/
     -fx-label-padding: 10px;
     -fx-margin: -50px;
+    -fx-background-color: white;
+    -fx-background-radius: 1;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
 }
 
 #startMenuVBox {
@@ -49,3 +66,4 @@
 .button:hover {
     -fx-background-color: #e55347;
 }
+

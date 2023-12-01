@@ -38,8 +38,6 @@ import java.util.logging.Logger;
 
 import javafx.scene.layout.StackPane;
 
-import javafx.scene.shape.Rectangle;
-
 
 /**
  * Main class for the Brick Game.
@@ -188,9 +186,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         levelLabel.setId("levelLabel");
 
         root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame);
-//        if (!loadFromSave) {
-//            //root.getChildren().addAll(load, newGame);
-//        }
 
         for (Block block : blocks) {
             root.getChildren().add(block.getRect());
@@ -529,6 +524,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             LOGGER.log(Level.SEVERE, "Exception in playSoundEffect method", e);
         }
     }
+
 
 
 
