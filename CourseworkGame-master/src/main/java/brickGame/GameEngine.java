@@ -190,7 +190,6 @@ public class GameEngine {
     }
 
 
-
     /**
      * Interface defining methods for handling various actions during the game's execution.
      * Methods include updates for game logic, rendering, initialization, physics, and time tracking.
