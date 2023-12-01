@@ -625,8 +625,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private void togglePause() {
         if (engine.isPaused()) {
             engine.resume();
+            if (backgroundMediaPlayer != null) {
+                backgroundMediaPlayer.play(); // Resume the background sound
+            }
         } else {
             engine.pause();
+            if (backgroundMediaPlayer != null) {
+                backgroundMediaPlayer.pause(); // Pause the background sound
+            }
         }
     }
 
