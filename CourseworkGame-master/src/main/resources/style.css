@@ -21,7 +21,7 @@
     /*-fx-border-color: black;
     -fx-border-width: 2px;*/
     -fx-background-color: white;
-    -fx-background-radius: 1;
+    -fx-background-radius: 3;
     -fx-opacity: 1;
     -fx-background-insets: 10;
 }
@@ -30,7 +30,7 @@
     /*-fx-border-color: black;
     -fx-border-width: 2px;*/
     -fx-background-color: white;
-    -fx-background-radius: 1;
+    -fx-background-radius: 3;
     -fx-opacity: 1;
     -fx-background-insets: 10;
 }
@@ -41,7 +41,7 @@
     -fx-label-padding: 10px;
     -fx-margin: -50px;
     -fx-background-color: white;
-    -fx-background-radius: 1;
+    -fx-background-radius: 3;
     -fx-opacity: 1;
     -fx-background-insets: 10;
 }

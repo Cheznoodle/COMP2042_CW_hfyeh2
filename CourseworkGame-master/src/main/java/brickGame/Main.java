@@ -513,6 +513,23 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
+    private void initializePauseMenu() {
+        pauseMenuVBox = new VBox(10);
+        pauseMenuVBox.setAlignment(Pos.CENTER);
+        // Center the VBox in the middle of the scene
+        pauseMenuVBox.setTranslateX((sceneWidth - pauseMenuVBox.getWidth()) / 2.0);
+        pauseMenuVBox.setTranslateY((sceneHeight - pauseMenuVBox.getHeight()) / 2.0);
+
+        Label pauseLabel = new Label("Game Paused");
+        Button resumeButton = new Button("Resume Game");
+        resumeButton.setOnAction(e -> togglePause());
+        pauseMenuVBox.getChildren().addAll(pauseLabel, resumeButton);
+        pauseMenuVBox.setVisible(false); // Initially invisible
+
+        // Add the pause menu to the main layout
+        layeredRoot.getChildren().add(pauseMenuVBox);
+    }
+
     private void playAddHeartSoundEffect() {
         try {
             URL resource = getClass().getResource("/ting.mp3");
@@ -529,25 +546,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Exception in playAddHeartSoundEffect method", e);
         }
-    }
-
-
-
-    private void initializePauseMenu() {
-        pauseMenuVBox = new VBox(10);
-        pauseMenuVBox.setAlignment(Pos.CENTER);
-        // Center the VBox in the middle of the scene
-        pauseMenuVBox.setTranslateX((sceneWidth - pauseMenuVBox.getWidth()) / 2.0);
-        pauseMenuVBox.setTranslateY((sceneHeight - pauseMenuVBox.getHeight()) / 2.0);
-
-        Label pauseLabel = new Label("Game Paused");
-        Button resumeButton = new Button("Resume Game");
-        resumeButton.setOnAction(e -> togglePause());
-        pauseMenuVBox.getChildren().addAll(pauseLabel, resumeButton);
-        pauseMenuVBox.setVisible(false); // Initially invisible
-
-        // Add the pause menu to the main layout
-        layeredRoot.getChildren().add(pauseMenuVBox);
     }
 
     private void playMinusHeartSoundEffect() {
@@ -577,10 +575,32 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
     }
 
+    private void playBonusSoundEffect() {
+        Platform.runLater(() -> {
+            try {
+                URL resource = getClass().getResource("/minikit.mp3"); // Replace with your bonus sound file path
+                if (resource == null) {
+                    LOGGER.log(Level.SEVERE, "Sound file not found: /minikit.mp3");
+                    return;
+                }
+                Media sound = new Media(resource.toExternalForm());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
+                mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
 
+                mediaPlayer.setOnReady(() -> {
+                    if (mediaPlayer.getStatus() == MediaPlayer.Status.READY) {
+                        mediaPlayer.play();
+                    }
+                });
 
+                mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); // Dispose the player after playing
 
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Exception in playBonusSoundEffect method", e);
+            }
+        });
+    }
 
 
     /**
@@ -1238,6 +1258,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 score += 3;
 
                 showBonusImage();
+                playBonusSoundEffect();
 
                 new Score().show(choco.x, choco.y, 3, this);
             }
