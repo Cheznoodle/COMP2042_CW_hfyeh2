@@ -38,6 +38,9 @@ import java.util.logging.Logger;
 
 import javafx.scene.layout.StackPane;
 
+import brickGame.soundEffects.SoundEffectUtil;
+
+
 
 /**
  * Main class for the Brick Game.
@@ -353,7 +356,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void showHeartAddedImage() {
         // Play heart added sound effect
-        playAddHeartSoundEffect();
+        SoundEffectUtil.playAddHeartSoundEffect();
 
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
@@ -530,77 +533,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         layeredRoot.getChildren().add(pauseMenuVBox);
     }
 
-    private void playAddHeartSoundEffect() {
-        try {
-            URL resource = getClass().getResource("/ting.mp3");
-            if (resource == null) {
-                LOGGER.log(Level.SEVERE, "Sound file not found: /ting.mp3");
-                return;
-            }
-            Media sound = new Media(resource.toExternalForm());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
-            mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
-
-            mediaPlayer.setOnReady(() -> mediaPlayer.play());
-        } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Exception in playAddHeartSoundEffect method", e);
-        }
-    }
-
-    private void playMinusHeartSoundEffect() {
-        Platform.runLater(() -> {
-            try {
-                URL resource = getClass().getResource("/oof.mp3");
-                if (resource == null) {
-                    LOGGER.log(Level.SEVERE, "Sound file not found: /oof.mp3");
-                    return;
-                }
-                Media sound = new Media(resource.toExternalForm());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
-                mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
-
-                mediaPlayer.setOnReady(() -> {
-                    if (mediaPlayer.getStatus() == MediaPlayer.Status.READY) {
-                        mediaPlayer.play();
-                    }
-                });
-
-                mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); // Dispose the player after playing
-
-            } catch (Exception e) {
-                LOGGER.log(Level.SEVERE, "Exception in playMinusHeartSoundEffect method", e);
-            }
-        });
-    }
-
-    private void playBonusSoundEffect() {
-        Platform.runLater(() -> {
-            try {
-                URL resource = getClass().getResource("/minikit.mp3"); // Replace with your bonus sound file path
-                if (resource == null) {
-                    LOGGER.log(Level.SEVERE, "Sound file not found: /minikit.mp3");
-                    return;
-                }
-                Media sound = new Media(resource.toExternalForm());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-
-                mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
-
-                mediaPlayer.setOnReady(() -> {
-                    if (mediaPlayer.getStatus() == MediaPlayer.Status.READY) {
-                        mediaPlayer.play();
-                    }
-                });
-
-                mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); // Dispose the player after playing
-
-            } catch (Exception e) {
-                LOGGER.log(Level.SEVERE, "Exception in playBonusSoundEffect method", e);
-            }
-        });
-    }
 
 
     /**
@@ -848,7 +781,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             if (!isGoldStatus) {
                 //TODO gameover
                 heart--;
-                playMinusHeartSoundEffect();
+                SoundEffectUtil.playMinusHeartSoundEffect();
                 shakeStage();
                 showHeartDeductedImage();
 //                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
@@ -1258,7 +1191,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 score += 3;
 
                 showBonusImage();
-                playBonusSoundEffect();
+                SoundEffectUtil.playBonusSoundEffect();
 
                 new Score().show(choco.x, choco.y, 3, this);
             }

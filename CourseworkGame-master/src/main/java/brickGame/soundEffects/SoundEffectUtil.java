@@ -1,0 +1,89 @@
+package brickGame.soundEffects;
+
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.application.Platform;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+public class SoundEffectUtil {
+
+    private static final Logger LOGGER = Logger.getLogger(SoundEffectUtil.class.getName());
+
+    public static void playAddHeartSoundEffect() {
+        try {
+            URL resource = SoundEffectUtil.class.getResource("/ting.mp3");
+            if (resource == null) {
+                LOGGER.log(Level.SEVERE, "Sound file not found: /ting.mp3");
+                return;
+            }
+            Media sound = new Media(resource.toExternalForm());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+            mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
+
+            mediaPlayer.setOnReady(() -> mediaPlayer.play());
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Exception in playAddHeartSoundEffect method", e);
+        }
+    }
+
+    public static void playMinusHeartSoundEffect() {
+        Platform.runLater(() -> {
+            try {
+                URL resource = SoundEffectUtil.class.getResource("/oof.mp3");
+                if (resource == null) {
+                    LOGGER.log(Level.SEVERE, "Sound file not found: /oof.mp3");
+                    return;
+                }
+                Media sound = new Media(resource.toExternalForm());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+                mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
+
+                mediaPlayer.setOnReady(() -> {
+                    if (mediaPlayer.getStatus() == MediaPlayer.Status.READY) {
+                        mediaPlayer.play();
+                    }
+                });
+
+                mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); // Dispose the player after playing
+
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Exception in playMinusHeartSoundEffect method", e);
+            }
+        });
+    }
+
+    public static void playBonusSoundEffect() {
+        Platform.runLater(() -> {
+            try {
+                URL resource = SoundEffectUtil.class.getResource("/minikit.mp3");
+                if (resource == null) {
+                    LOGGER.log(Level.SEVERE, "Sound file not found: /minikit.mp3");
+                    return;
+                }
+                Media sound = new Media(resource.toExternalForm());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+                mediaPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + mediaPlayer.getError().getMessage()));
+
+                mediaPlayer.setOnReady(() -> {
+                    if (mediaPlayer.getStatus() == MediaPlayer.Status.READY) {
+                        mediaPlayer.play();
+                    }
+                });
+
+                mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.dispose()); // Dispose the player after playing
+
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Exception in playBonusSoundEffect method", e);
+            }
+        });
+    }
+
+
+
+}
