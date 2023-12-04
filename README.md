@@ -22,7 +22,7 @@ Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
 5) Added sound effects when the ball hits the heart block, deducted heart, bonus ball, golden ball block
 6) Added pause button
 7) Changes font style and background color to heart, score, level label
-8) 
+8) Shake stage when heart is deducted
 
 ***Implemented but Not Working Properly:***
 1) Pause button menu
