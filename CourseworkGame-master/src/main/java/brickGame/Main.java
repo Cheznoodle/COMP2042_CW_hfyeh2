@@ -40,7 +40,9 @@ import javafx.scene.layout.StackPane;
 
 import brickGame.soundEffects.SoundEffectUtil;
 
+import brickGame.imageEffects.ImageEffectUtil;
 
+import static brickGame.imageEffects.ImageEffectUtil.*;
 
 /**
  * Main class for the Brick Game.
@@ -303,201 +305,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-    /**
-     * Displays an image indicating a heart deduction.
-     * This method is invoked when the player loses a heart.
-     */
-    private void showHeartDeductedImage() {
-        Platform.runLater(() -> {
-            // Create an ImageView and attempt to load the image
-            Image image = new Image("minusHeart.png", 200, 200, true, true);
-            ImageView heartImage = new ImageView(image);
 
-            // Check if the image has been loaded correctly
-            if (image.isError()) {
-                System.out.println("Error loading minus heart image");
-                return; // Exit if the image hasn't been loaded correctly
-            }
-
-            VBox imageContainer = new VBox(heartImage);
-            imageContainer.setAlignment(Pos.CENTER);
-            imageContainer.setPrefSize(sceneWidth, sceneHeight);
-
-            // Initially set the image to be transparent
-            imageContainer.setOpacity(0);
-
-            root.getChildren().add(imageContainer);
-
-            // Fade in transition
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
-
-            // Fade out transition
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
-            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
-
-            // Start fade in transition
-            fadeIn.play();
-
-            // After fade in, start fade out
-            fadeIn.setOnFinished(event -> fadeOut.play());
-
-            // After fade out, remove the image container
-            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
-        });
-
-
-    }
-
-    private void showHeartAddedImage() {
-        // Play heart added sound effect
-        SoundEffectUtil.playAddHeartSoundEffect();
-
-        Platform.runLater(() -> {
-            // Create an ImageView and attempt to load the image
-            Image image = new Image("plusHeart.png", 400, 400, true, true);
-            ImageView heartImage = new ImageView(image);
-
-            // Check if the image has been loaded correctly
-            if (image.isError()) {
-                System.out.println("Error loading plus heart image");
-                return; // Exit if the image hasn't been loaded correctly
-            }
-
-            VBox imageContainer = new VBox(heartImage);
-            imageContainer.setAlignment(Pos.CENTER);
-            imageContainer.setPrefSize(sceneWidth, sceneHeight);
-
-            // Initially set the image to be transparent
-            imageContainer.setOpacity(0);
-
-            root.getChildren().add(imageContainer);
-
-            // Fade in transition
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
-
-            // Fade out transition
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
-            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
-
-            // Start fade in transition
-            fadeIn.play();
-
-            // After fade in, start fade out
-            fadeIn.setOnFinished(event -> fadeOut.play());
-
-            // After fade out, remove the image container
-            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
-        });
-
-
-    }
-
-
-    private void showBonusImage() {
-        Platform.runLater(() -> {
-            // Create an ImageView and attempt to load the image
-            Image image = new Image("bonusPicture.png", 250, 250, true, true);
-            ImageView heartImage = new ImageView(image);
-
-            // Check if the image has been loaded correctly
-            if (image.isError()) {
-                System.out.println("Error loading bonus image");
-                return; // Exit if the image hasn't been loaded correctly
-            }
-
-            VBox imageContainer = new VBox(heartImage);
-            imageContainer.setAlignment(Pos.CENTER);
-            imageContainer.setPrefSize(sceneWidth, sceneHeight);
-
-            // Initially set the image to be transparent
-            imageContainer.setOpacity(0);
-
-            root.getChildren().add(imageContainer);
-
-            // Fade in transition
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
-
-            // Fade out transition
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
-            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
-
-            // Start fade in transition
-            fadeIn.play();
-
-            // After fade in, start fade out
-            fadeIn.setOnFinished(event -> fadeOut.play());
-
-            // After fade out, remove the image container
-            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
-        });
-
-
-    }
-
-    private void showGoldenBallImage() {
-        Platform.runLater(() -> {
-            // Create an ImageView and attempt to load the image
-            Image image = new Image("goldenBonus.png", 350, 350, true, true);
-            ImageView heartImage = new ImageView(image);
-
-            // Check if the image has been loaded correctly
-            if (image.isError()) {
-                System.out.println("Error loading golden ball image");
-                return; // Exit if the image hasn't been loaded correctly
-            }
-
-            VBox imageContainer = new VBox(heartImage);
-            imageContainer.setAlignment(Pos.CENTER);
-            imageContainer.setPrefSize(sceneWidth, sceneHeight);
-
-            // Initially set the image to be transparent
-            imageContainer.setOpacity(0);
-
-            root.getChildren().add(imageContainer);
-
-            // Fade in transition
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
-
-            // Fade out transition
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), imageContainer);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
-            fadeOut.setDelay(Duration.seconds(0.5)); // Delay to keep the image visible
-
-            // Start fade in transition
-            fadeIn.play();
-
-            // After fade in, start fade out
-            fadeIn.setOnFinished(event -> fadeOut.play());
-
-            // After fade out, remove the image container
-            fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
-        });
-
-
-    }
 
     private void createStartMenu() {
         startMenuVBox = new VBox(80);
@@ -533,7 +341,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         layeredRoot.getChildren().add(pauseMenuVBox);
     }
 
-
+    private void toggleSound() {
+        if (backgroundMediaPlayer != null) {
+            backgroundMediaPlayer.setMute(!backgroundMediaPlayer.isMute());
+        }
+        SoundEffectUtil.toggleMute(); // Toggle mute for sound effects
+    }
 
 
     /**
@@ -589,6 +402,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 break;
             case S:
                 saveGame();
+                break;
+            case M:
+                toggleSound();
                 break;
             case ESCAPE:
                 togglePause();
@@ -671,6 +487,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
     }
+
+
 
     /**
      * The main entry point for the application.
@@ -783,7 +601,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 heart--;
                 SoundEffectUtil.playMinusHeartSoundEffect();
                 shakeStage();
-                showHeartDeductedImage();
+                ImageEffectUtil.showHeartDeductedImage(root, sceneWidth, sceneHeight);
 //                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
 
                 if (heart == 0) {
@@ -1121,12 +939,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         root.getStyleClass().add("goldRoot");
                         isGoldStatus = true;
 
-                        showGoldenBallImage(); // Call to display the golden ball image
+                        ImageEffectUtil.showGoldenBallImage(root, sceneWidth, sceneHeight); // Call to display the golden ball image
                     }
 
                     if (block.getType() == Block.getBlockHeart()) {
                         heart++;
-                        showHeartAddedImage();
+                        ImageEffectUtil.showHeartAddedImage(root, sceneWidth, sceneHeight);
                     }
 
                     // Update the collision logic based on hitCode using getters
@@ -1190,7 +1008,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 choco.choco.setVisible(false);
                 score += 3;
 
-                showBonusImage();
+                ImageEffectUtil.showBonusImage(root, sceneWidth, sceneHeight);
                 SoundEffectUtil.playBonusSoundEffect();
 
                 new Score().show(choco.x, choco.y, 3, this);

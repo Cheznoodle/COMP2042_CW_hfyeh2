@@ -12,7 +12,15 @@ public class SoundEffectUtil {
 
     private static final Logger LOGGER = Logger.getLogger(SoundEffectUtil.class.getName());
 
+    private static boolean isMuted = false;
+
+    public static void toggleMute() { // New method
+        isMuted = !isMuted;
+    }
+
     public static void playAddHeartSoundEffect() {
+        if (isMuted) return; // Check mute state
+
         try {
             URL resource = SoundEffectUtil.class.getResource("/ting.mp3");
             if (resource == null) {
@@ -31,6 +39,8 @@ public class SoundEffectUtil {
     }
 
     public static void playMinusHeartSoundEffect() {
+        if (isMuted) return; // Check mute state
+
         Platform.runLater(() -> {
             try {
                 URL resource = SoundEffectUtil.class.getResource("/oof.mp3");
@@ -58,6 +68,8 @@ public class SoundEffectUtil {
     }
 
     public static void playBonusSoundEffect() {
+        if (isMuted) return; // Check mute state
+
         Platform.runLater(() -> {
             try {
                 URL resource = SoundEffectUtil.class.getResource("/minikit.mp3");
