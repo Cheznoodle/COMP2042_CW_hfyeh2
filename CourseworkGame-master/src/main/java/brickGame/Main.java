@@ -2,7 +2,6 @@ package brickGame;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,14 +23,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
-
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
-
-import javafx.animation.FadeTransition;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -356,9 +349,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < level + 1; j++) {
                 int r = new Random().nextInt(500);
-//                if (r % 5 == 0) {
-//                    continue;
-//                }
+
+
                 int type;
                 if (r % 10 == 1) {
                     type = Block.getBlockChoco(); // Updated
@@ -471,7 +463,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private void playBackgroundSound() {
         if (backgroundMediaPlayer == null) { // Only initialize if not already done
             try {
-                URL resource = getClass().getResource("/wii.mp3");
+                URL resource = getClass().getResource("/backgroundSound/wii.mp3");
                 if (resource == null) {
                     System.err.println("Audio file not found!");
                     return;

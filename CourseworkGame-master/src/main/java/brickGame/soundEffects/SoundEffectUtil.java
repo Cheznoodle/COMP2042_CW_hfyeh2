@@ -22,7 +22,7 @@ public class SoundEffectUtil {
         if (isMuted) return; // Check mute state
 
         try {
-            URL resource = SoundEffectUtil.class.getResource("/ting.mp3");
+            URL resource = SoundEffectUtil.class.getResource("/soundFX/ting.mp3");
             if (resource == null) {
                 LOGGER.log(Level.SEVERE, "Sound file not found: /ting.mp3");
                 return;
@@ -43,7 +43,7 @@ public class SoundEffectUtil {
 
         Platform.runLater(() -> {
             try {
-                URL resource = SoundEffectUtil.class.getResource("/oof.mp3");
+                URL resource = SoundEffectUtil.class.getResource("/soundFX/oof.mp3");
                 if (resource == null) {
                     LOGGER.log(Level.SEVERE, "Sound file not found: /oof.mp3");
                     return;
@@ -72,7 +72,7 @@ public class SoundEffectUtil {
 
         Platform.runLater(() -> {
             try {
-                URL resource = SoundEffectUtil.class.getResource("/minikit.mp3");
+                URL resource = SoundEffectUtil.class.getResource("/soundFX/minikit.mp3");
                 if (resource == null) {
                     LOGGER.log(Level.SEVERE, "Sound file not found: /minikit.mp3");
                     return;

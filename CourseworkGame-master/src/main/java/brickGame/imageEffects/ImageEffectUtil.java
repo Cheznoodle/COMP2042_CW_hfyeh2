@@ -19,7 +19,7 @@ public class ImageEffectUtil {
     public static void showHeartDeductedImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
-            Image image = new Image("minusHeart.png", 200, 200, true, true);
+            Image image = new Image("imagefx/minusHeart.png", 200, 200, true, true);
             ImageView heartImage = new ImageView(image);
 
             // Check if the image has been loaded correctly
@@ -69,7 +69,7 @@ public class ImageEffectUtil {
 
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
-            Image image = new Image("plusHeart.png", 400, 400, true, true);
+            Image image = new Image("imagefx/plusHeart.png", 400, 400, true, true);
             ImageView heartImage = new ImageView(image);
 
             // Check if the image has been loaded correctly
@@ -117,7 +117,7 @@ public class ImageEffectUtil {
     public static void showBonusImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
-            Image image = new Image("bonusPicture.png", 250, 250, true, true);
+            Image image = new Image("imagefx/bonusPicture.png", 250, 250, true, true);
             ImageView heartImage = new ImageView(image);
 
             // Check if the image has been loaded correctly
@@ -164,7 +164,7 @@ public class ImageEffectUtil {
     public static void showGoldenBallImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {
             // Create an ImageView and attempt to load the image
-            Image image = new Image("goldenBonus.png", 350, 350, true, true);
+            Image image = new Image("imagefx/goldenBonus.png", 350, 350, true, true);
             ImageView heartImage = new ImageView(image);
 
             // Check if the image has been loaded correctly
