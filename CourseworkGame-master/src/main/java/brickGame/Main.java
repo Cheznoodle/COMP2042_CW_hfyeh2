@@ -174,7 +174,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             exitGame = new Button("Exit Game");
 
             // Call the method to create the start menu
-            createStartMenu();
+//            createStartMenu();
 
         }
 

@@ -65,5 +65,9 @@
 
 .button:hover {
     -fx-background-color: #e55347;
+    -fx-scale-x: 1.2; /* Scales the button in the X direction */
+    -fx-scale-y: 1.2; /* Scales the button in the Y direction */
+    -fx-cursor: hand; /* Changes the cursor to a hand when hovering */
+    -fx-effect: dropshadow(gaussian, rgba(255,253,228,10.0), 20, 0, 0, 0); /* Adds a pink glowing border effect */
 }
 
