@@ -42,7 +42,6 @@ import brickGame.soundEffects.SoundEffectUtil;
 
 import brickGame.imageEffects.ImageEffectUtil;
 
-import static brickGame.imageEffects.ImageEffectUtil.*;
 
 /**
  * Main class for the Brick Game.
@@ -699,127 +698,123 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     private void saveGame() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                new File(savePathDir).mkdirs();
-                File file = new File(savePath);
-                ObjectOutputStream outputStream = null;
-                try {
-                    outputStream = new ObjectOutputStream(new FileOutputStream(file));
+        new Thread(() -> {
+            // Define the relative path for the directory
+            String relativeDir = "saves";
+            File directory = new File(relativeDir);
+            if (!directory.exists()) {
+                directory.mkdirs(); // Create the directory if it doesn't exist
+            }
 
-                    outputStream.writeInt(level);
-                    outputStream.writeInt(score);
-                    outputStream.writeInt(heart);
-                    outputStream.writeInt(destroyedBlockCount);
+            // Define the file name
+            String saveFileName = "save.mdds";
+            File file = new File(directory, saveFileName);
 
+            // Save game data to the file
+            try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file))) {
+                // Write game data to the file
+                outputStream.writeInt(level);
+                outputStream.writeInt(score);
+                outputStream.writeInt(heart);
+                outputStream.writeInt(destroyedBlockCount);
+                outputStream.writeDouble(xBall);
+                outputStream.writeDouble(yBall);
+                outputStream.writeDouble(xBreak);
+                outputStream.writeDouble(yBreak);
+                outputStream.writeDouble(centerBreakX);
+                outputStream.writeLong(time);
+                outputStream.writeLong(goldTime);
+                outputStream.writeDouble(vX);
+                outputStream.writeBoolean(isExistHeartBlock);
+                outputStream.writeBoolean(isGoldStatus);
+                outputStream.writeBoolean(goDownBall);
+                outputStream.writeBoolean(goRightBall);
+                outputStream.writeBoolean(collideToBreak);
+                outputStream.writeBoolean(collideToBreakAndMoveToRight);
+                outputStream.writeBoolean(collideToRightWall);
+                outputStream.writeBoolean(collideToLeftWall);
+                outputStream.writeBoolean(collideToRightBlock);
+                outputStream.writeBoolean(collideToBottomBlock);
+                outputStream.writeBoolean(collideToLeftBlock);
+                outputStream.writeBoolean(collideToTopBlock);
 
-                    outputStream.writeDouble(xBall);
-                    outputStream.writeDouble(yBall);
-                    outputStream.writeDouble(xBreak);
-                    outputStream.writeDouble(yBreak);
-                    outputStream.writeDouble(centerBreakX);
-                    outputStream.writeLong(time);
-                    outputStream.writeLong(goldTime);
-                    outputStream.writeDouble(vX);
-
-
-                    outputStream.writeBoolean(isExistHeartBlock);
-                    outputStream.writeBoolean(isGoldStatus);
-                    outputStream.writeBoolean(goDownBall);
-                    outputStream.writeBoolean(goRightBall);
-                    outputStream.writeBoolean(collideToBreak);
-                    outputStream.writeBoolean(collideToBreakAndMoveToRight);
-                    outputStream.writeBoolean(collideToRightWall);
-                    outputStream.writeBoolean(collideToLeftWall);
-                    outputStream.writeBoolean(collideToRightBlock);
-                    outputStream.writeBoolean(collideToBottomBlock);
-                    outputStream.writeBoolean(collideToLeftBlock);
-                    outputStream.writeBoolean(collideToTopBlock);
-
-
-                    ArrayList<BlockSerializable> blockSerializable = new ArrayList<>();
-
-                    for (Block block : blocks) {
-                        if (block.isDestroyed()) {  // Updated to use the getter method
-                            continue;
-                        }
+                // Serialize and write the blocks array
+                ArrayList<BlockSerializable> blockSerializable = new ArrayList<>();
+                for (Block block : blocks) {
+                    if (!block.isDestroyed()) {
                         blockSerializable.add(new BlockSerializable(block.getRow(), block.getColumn(), block.getType()));
                     }
-
-
-                    outputStream.writeObject(blockSerializable);
-
-                    new Score().showMessage("Game Saved", Main.this);
-
-
-                } catch (FileNotFoundException e) {
-                    LOGGER.log(Level.SEVERE, "FileNotFoundException in saveGame method", e);
-                } catch (IOException e) {
-                    LOGGER.log(Level.SEVERE, "IOException in saveGame method", e);
-                } finally {
-                    if (outputStream != null) {
-                        try {
-                            outputStream.flush();
-                            outputStream.close();
-                        } catch (IOException e) {
-                            LOGGER.log(Level.SEVERE, "IOException in saveGame method during flush/close", e);
-                        }
-                    }
                 }
+                outputStream.writeObject(blockSerializable);
+
+                LOGGER.info("Game saved successfully to " + file.getPath());
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "Error saving game", e);
             }
         }).start();
     }
 
+
     private void loadGame() {
+        // Define the relative path for the directory and file
+        String relativeDir = "saves";
+        String saveFileName = "save.mdds";
+        File file = new File(relativeDir, saveFileName);
 
-        LoadSave loadSave = new LoadSave();
-        loadSave.read();
+        // Load game data from the file
+        if (file.exists()) {
+            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
+                // Read game data from the file
+                level = inputStream.readInt();
+                score = inputStream.readInt();
+                heart = inputStream.readInt();
+                destroyedBlockCount = inputStream.readInt();
+                xBall = inputStream.readDouble();
+                yBall = inputStream.readDouble();
+                xBreak = inputStream.readDouble();
+                yBreak = inputStream.readDouble();
+                centerBreakX = inputStream.readDouble();
+                time = inputStream.readLong();
+                goldTime = inputStream.readLong();
+                vX = inputStream.readDouble();
+                isExistHeartBlock = inputStream.readBoolean();
+                isGoldStatus = inputStream.readBoolean();
+                goDownBall = inputStream.readBoolean();
+                goRightBall = inputStream.readBoolean();
+                collideToBreak = inputStream.readBoolean();
+                collideToBreakAndMoveToRight = inputStream.readBoolean();
+                collideToRightWall = inputStream.readBoolean();
+                collideToLeftWall = inputStream.readBoolean();
+                collideToRightBlock = inputStream.readBoolean();
+                collideToBottomBlock = inputStream.readBoolean();
+                collideToLeftBlock = inputStream.readBoolean();
+                collideToTopBlock = inputStream.readBoolean();
 
+                // Deserialize and read the blocks array
+                ArrayList<BlockSerializable> blockSerializable = (ArrayList<BlockSerializable>) inputStream.readObject();
+                blocks.clear();
+                chocos.clear();
+                for (BlockSerializable ser : blockSerializable) {
+                    int r = new Random().nextInt(colors.length);
+                    blocks.add(new Block(ser.row, ser.j, colors[r], ser.type));
+                }
 
-        isExistHeartBlock = loadSave.isExistHeartBlock;
-        isGoldStatus = loadSave.isGoldStatus;
-        goDownBall = loadSave.goDownBall;
-        goRightBall = loadSave.goRightBall;
-        collideToBreak = loadSave.collideToBreak;
-        collideToBreakAndMoveToRight = loadSave.collideToBreakAndMoveToRight;
-        collideToRightWall = loadSave.collideToRightWall;
-        collideToLeftWall = loadSave.collideToLeftWall;
-        collideToRightBlock = loadSave.collideToRightBlock;
-        collideToBottomBlock = loadSave.collideToBottomBlock;
-        collideToLeftBlock = loadSave.collideToLeftBlock;
-        collideToTopBlock = loadSave.collideToTopBlock;
-        level = loadSave.level;
-        score = loadSave.score;
-        heart = loadSave.heart;
-        destroyedBlockCount = loadSave.destroyedBlockCount;
-        xBall = loadSave.xBall;
-        yBall = loadSave.yBall;
-        xBreak = loadSave.xBreak;
-        yBreak = loadSave.yBreak;
-        centerBreakX = loadSave.centerBreakX;
-        time = loadSave.time;
-        goldTime = loadSave.goldTime;
-        vX = loadSave.vX;
+                LOGGER.info("Game loaded successfully from " + file.getPath());
+                loadFromSave = true;
 
-        blocks.clear();
-        chocos.clear();
-
-        for (BlockSerializable ser : loadSave.blocks) {
-            int r = new Random().nextInt(200);
-            blocks.add(new Block(ser.row, ser.j, colors[r % colors.length], ser.type));
+                try {
+                    start(primaryStage);
+                } catch (Exception e) {
+                    LOGGER.log(Level.SEVERE, "Error starting the game from loadGame", e);
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                LOGGER.log(Level.SEVERE, "Error loading game", e);
+            }
+        } else {
+            LOGGER.log(Level.WARNING, "Save file does not exist: " + file.getPath());
         }
-
-
-        try {
-            loadFromSave = true;
-            start(primaryStage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
     }
+
 
     private void nextLevel() {
         Platform.runLater(new Runnable() {
