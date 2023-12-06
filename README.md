@@ -22,15 +22,18 @@ Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
 5) Added sound effects when the ball hits the heart block, deducted heart, bonus ball, golden ball block
 6) Added pause button
 7) Changes font style and background color to heart, score, level label
-8) Shake stage when heart is deducted
+8) Shake stage when the heart is deducted
+9) Mute sound button when the user presses 'M'
+10) Ball spawn is fixed to the center of the scene
+11) Added more interactive start menu buttons
 
 ***Implemented but Not Working Properly:***
 1) Pause button menu
+2) Load Game function
+3) Save Game function
 
 ***Features Not Implemented:***
 1) Special block multiplier
-2) Load Game function
-3) Save Game function
 
 ***New Java Classes:***
 
@@ -38,6 +41,7 @@ Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
 
 ***Unexpected Problems:***
 1) JavaFX runtime error (NullExceptionPointer)
-2) Ball would freeze but the game is playing in the background
-3) Sound effects would occasionally either be played halfway or not at all
-4) The game would end randomly crash when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many
+2) The ball would freeze but the game is playing in the background.
+3) Sound effects would occasionally be played halfway or not at all.
+4) The game would end randomly crashing when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many.
+5) The ball velocity is faster After loading a save game file. As well as the levels would occasionally skip from a certain level to a much higher level.
