@@ -35,6 +35,8 @@ import brickGame.soundEffects.SoundEffectUtil;
 
 import brickGame.imageEffects.ImageEffectUtil;
 
+import brickGame.Controller.GameController;
+
 
 /**
  * Main class for the Brick Game.
@@ -60,8 +62,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
 
-    private static final int LEFT  = 1;
-    private static final int RIGHT = 2;
+    public static final int LEFT  = 1;
+    public static final int RIGHT = 2;
 
     private Button load = new Button("Load Game");
     private Button newGame = new Button("Start New Game");
@@ -122,7 +124,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private boolean loadFromSave = false;
 
+    private GameController gameController;
+
     Stage  primaryStage;
+
+
 
     /**
      * Initializes and starts the game.
@@ -195,6 +201,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             root.getChildren().add(block.getRect());
         }
 
+        this.gameController = new GameController(this);
         Scene scene = new Scene(root, sceneWidth, sceneHeight);
 
         // Load the CSS file with error handling
@@ -207,6 +214,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         scene.setOnKeyPressed(this);
+
+        // Instantiate GameController and set it as the event handler
+        GameController gameController = new GameController(this);
+        scene.setOnKeyPressed(gameController);
 
         primaryStage.setTitle("Game");
         primaryStage.setScene(scene);
@@ -305,6 +316,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         newGame = new Button("Start New Game");
         exitGame = new Button("Exit Game");
 
+        // Attach hover listeners
+        attachHoverListener(load);
+        attachHoverListener(newGame);
+        attachHoverListener(exitGame);
+
         startMenuVBox.getChildren().addAll(load, newGame, exitGame);
         startMenuVBox.setAlignment(Pos.CENTER); // Center the VBox in the scene
 
@@ -315,6 +331,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         root.getChildren().add(startMenuVBox);
     }
 
+    // Method to attach hover listener to a button
+    private void attachHoverListener(Button button) {
+        button.setOnMouseEntered(e -> SoundEffectUtil.playHoverSound());
+    }
 
     private void initializePauseMenu() {
         pauseMenuVBox = new VBox(10);
@@ -333,7 +353,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         layeredRoot.getChildren().add(pauseMenuVBox);
     }
 
-    private void toggleSound() {
+    public void toggleSound() {
         if (backgroundMediaPlayer != null) {
             backgroundMediaPlayer.setMute(!backgroundMediaPlayer.isMute());
         }
@@ -371,36 +391,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
-    /**
-     * Handles keyboard events for controlling the game.
-     * Supports movement, game actions, and other controls based on key presses.
-     *
-     * @param event The keyboard event that occurred.
-     */
     @Override
     public void handle(KeyEvent event) {
-        switch (event.getCode()) {
-            case LEFT:
-                move(LEFT);
-                break;
-            case RIGHT:
-
-                move(RIGHT);
-                break;
-            case DOWN:
-                //setPhysicsToBall();
-                break;
-            case S:
-                saveGame();
-                break;
-            case M:
-                toggleSound();
-                break;
-            case ESCAPE:
-                togglePause();
-                break;
-        }
+        gameController.handle(event);
     }
 
 
@@ -410,16 +403,16 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
      *
      * @param direction The direction to move the paddle (LEFT or RIGHT).
      */
-    private void move(final int direction) {
+    public void move(Direction direction) {
         new Thread(() -> {
             int sleepTime = 4;
             for (int i = 0; i < 30; i++) {
                 // Check for right boundary
-                if (direction == RIGHT && xBreak + breakWidth < sceneWidth) {
+                if (direction == Direction.RIGHT && xBreak + breakWidth < sceneWidth) {
                     xBreak++;
                 }
                 // Check for left boundary
-                else if (direction == LEFT && xBreak > 0) {
+                else if (direction == Direction.LEFT && xBreak > 0) {
                     xBreak--;
                 }
 
@@ -437,7 +430,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }).start();
     }
 
-    private void togglePause() {
+    public void togglePause() {
         if (engine.isPaused()) {
             engine.resume();
             pauseMenuVBox.setVisible(false);
@@ -478,6 +471,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
     }
+
+
 
 
 
@@ -689,7 +684,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-    private void saveGame() {
+    public void saveGame() {
         new Thread(() -> {
             // Define the relative path for the directory
             String relativeDir = "saves";

@@ -96,6 +96,28 @@ public class SoundEffectUtil {
         });
     }
 
+    // Method to play hover button sound effect
+    public static void playHoverSound() {
+        try {
+            URL resource = SoundEffectUtil.class.getResource("/soundFX/hoverSound.mp3");
+            if (resource == null) {
+                System.err.println("Sound file not found!");
+                return;
+            }
 
+            MediaPlayer hoverSoundPlayer = new MediaPlayer(new Media(resource.toString()));
+            hoverSoundPlayer.setOnError(() -> System.err.println("Error in MediaPlayer: " + hoverSoundPlayer.getError().getMessage()));
+            hoverSoundPlayer.setVolume(1.0); // Set volume (range 0.0 to 1.0)
+            hoverSoundPlayer.play();
+
+            // Reset the MediaPlayer after playing
+            hoverSoundPlayer.setOnEndOfMedia(() -> {
+                hoverSoundPlayer.stop();
+                hoverSoundPlayer.dispose();
+            });
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Exception in playHoverSound method", e);
+        }
+    }
 
 }
