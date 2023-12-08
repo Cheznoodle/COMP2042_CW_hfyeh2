@@ -62,8 +62,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
 
-    public static final int LEFT  = 1;
-    public static final int RIGHT = 2;
+//    public static final int LEFT  = 1;
+//    public static final int RIGHT = 2;
 
     private Button load = new Button("Load Game");
     private Button newGame = new Button("Start New Game");
@@ -397,37 +397,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
-    /**
-     * Moves the player's paddle in a specified direction.
-     * Creates a new thread for the movement to provide smooth control.
-     *
-     * @param direction The direction to move the paddle (LEFT or RIGHT).
-     */
-    public void move(Direction direction) {
-        new Thread(() -> {
-            int sleepTime = 4;
-            for (int i = 0; i < 30; i++) {
-                // Check for right boundary
-                if (direction == Direction.RIGHT && xBreak + breakWidth < sceneWidth) {
-                    xBreak++;
-                }
-                // Check for left boundary
-                else if (direction == Direction.LEFT && xBreak > 0) {
-                    xBreak--;
-                }
-
-                centerBreakX = xBreak + halfBreakWidth;
-                try {
-                    Thread.sleep(sleepTime);
-                } catch (InterruptedException e) {
-                    LOGGER.log(Level.SEVERE, "Interrupted exception in move method", e);
-                    Thread.currentThread().interrupt();
-                }
-                if (i >= 20) {
-                    sleepTime = i;
-                }
-            }
-        }).start();
+    public void updatePaddlePosition(int delta) {
+        // Update xBreak within the bounds of the scene
+        if ((delta > 0 && xBreak + breakWidth < sceneWidth) || (delta < 0 && xBreak > 0)) {
+            xBreak += delta;
+            centerBreakX = xBreak + halfBreakWidth;
+        }
     }
 
     public void togglePause() {
