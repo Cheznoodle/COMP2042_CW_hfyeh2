@@ -1,4 +1,4 @@
-package brickGame.imageEffects;
+package brickGame.View.imageEffects;
 
 import brickGame.soundEffects.SoundEffectUtil;
 import javafx.application.Platform;

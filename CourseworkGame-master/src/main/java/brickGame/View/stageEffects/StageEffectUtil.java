@@ -1,4 +1,4 @@
-package brickGame.stageEffects;
+package brickGame.View.stageEffects;
 
 import javafx.application.Platform;
 import javafx.stage.Stage;

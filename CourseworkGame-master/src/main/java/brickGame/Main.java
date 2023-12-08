@@ -25,7 +25,6 @@ import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
 import javafx.scene.layout.VBox;
-import javafx.geometry.Pos;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,11 +33,11 @@ import javafx.scene.layout.StackPane;
 
 import brickGame.soundEffects.SoundEffectUtil;
 
-import brickGame.imageEffects.ImageEffectUtil;
+import brickGame.View.imageEffects.ImageEffectUtil;
 
 import brickGame.Controller.GameController;
 
-import brickGame.stageEffects.StageEffectUtil;
+import brickGame.View.stageEffects.StageEffectUtil;
 
 
 /**
