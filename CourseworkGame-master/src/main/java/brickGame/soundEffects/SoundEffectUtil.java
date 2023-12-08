@@ -14,6 +14,9 @@ public class SoundEffectUtil {
 
     private static boolean isMuted = false;
 
+    // Declare MediaPlayer for hover sound as a class member
+    private static MediaPlayer hoverSoundPlayer;
+
     public static void toggleMute() { // New method
         isMuted = !isMuted;
     }
@@ -96,28 +99,35 @@ public class SoundEffectUtil {
         });
     }
 
-    // Method to play hover button sound effect
-    public static void playHoverSound() {
+    // Static block to initialize hover sound MediaPlayer
+    static {
         try {
             URL resource = SoundEffectUtil.class.getResource("/soundFX/hoverSound.mp3");
             if (resource == null) {
-                System.err.println("Sound file not found!");
-                return;
+                LOGGER.log(Level.SEVERE, "Sound file not found: /hoverSound.mp3");
+            } else {
+                hoverSoundPlayer = new MediaPlayer(new Media(resource.toExternalForm()));
+                hoverSoundPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + hoverSoundPlayer.getError().getMessage()));
+                hoverSoundPlayer.setVolume(1.0); // Set volume (range 0.0 to 1.0)
             }
-
-            MediaPlayer hoverSoundPlayer = new MediaPlayer(new Media(resource.toString()));
-            hoverSoundPlayer.setOnError(() -> System.err.println("Error in MediaPlayer: " + hoverSoundPlayer.getError().getMessage()));
-            hoverSoundPlayer.setVolume(1.0); // Set volume (range 0.0 to 1.0)
-            hoverSoundPlayer.play();
-
-            // Reset the MediaPlayer after playing
-            hoverSoundPlayer.setOnEndOfMedia(() -> {
-                hoverSoundPlayer.stop();
-                hoverSoundPlayer.dispose();
-            });
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "Exception in playHoverSound method", e);
+            LOGGER.log(Level.SEVERE, "Exception in static initializer for hoverSoundPlayer", e);
         }
+    }
+
+    // Method to play hover button sound effect
+    public static void playHoverSound() {
+        if (hoverSoundPlayer == null) {
+            LOGGER.log(Level.SEVERE, "Hover sound player not initialized");
+            return;
+        }
+
+        if (isMuted) return; // Check mute state
+
+        Platform.runLater(() -> {
+            hoverSoundPlayer.stop(); // Stop any currently playing sound
+            hoverSoundPlayer.play(); // Play the sound
+        });
     }
 
 }

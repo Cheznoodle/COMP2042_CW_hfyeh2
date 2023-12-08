@@ -69,5 +69,8 @@
     -fx-scale-y: 1.2; /* Scales the button in the Y direction */
     -fx-cursor: hand; /* Changes the cursor to a hand when hovering */
     -fx-effect: dropshadow(gaussian, rgba(255,253,228,100.0), 20, 0, 0, 0); /* Adds a pink glowing border effect */
+
+    /* Transition effect */
+    -fx-transition: scale 2.5s ease-in-out;
 }
 
