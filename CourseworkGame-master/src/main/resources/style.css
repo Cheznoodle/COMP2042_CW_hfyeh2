@@ -57,7 +57,7 @@
 .button {
     -fx-background-color: #ff6347;
     -fx-text-fill: #FFFFFF;
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
     -fx-padding: 10px 20px;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
@@ -68,6 +68,6 @@
     -fx-scale-x: 1.2; /* Scales the button in the X direction */
     -fx-scale-y: 1.2; /* Scales the button in the Y direction */
     -fx-cursor: hand; /* Changes the cursor to a hand when hovering */
-    -fx-effect: dropshadow(gaussian, rgba(255,253,228,10.0), 20, 0, 0, 0); /* Adds a pink glowing border effect */
+    -fx-effect: dropshadow(gaussian, rgba(255,253,228,100.0), 20, 0, 0, 0); /* Adds a pink glowing border effect */
 }
 

@@ -23,4 +23,20 @@ public class UserInterface {
 
         return pauseMenuVBox;
     }
+
+    public static VBox createStartMenu(Button load, Button newGame, Button exitGame) {
+
+        // Set preferred size for buttons
+        load.setPrefSize(200, 40); // Width and height
+        newGame.setPrefSize(200, 40);
+        exitGame.setPrefSize(200, 40);
+
+        VBox startMenuVBox = new VBox(80);
+        startMenuVBox.setAlignment(Pos.CENTER); // Center the VBox in the scene
+
+        // Assume load, newGame, and exitGame buttons are initialized and passed as parameters
+        startMenuVBox.getChildren().addAll(load, newGame, exitGame);
+
+        return startMenuVBox;
+    }
 }

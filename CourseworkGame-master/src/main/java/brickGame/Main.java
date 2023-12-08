@@ -65,10 +65,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
 
-    private Button load = new Button("Load Game");
-    private Button newGame = new Button("Start New Game");
-
-    private Button exitGame = new Button("Exit Game");
+    private Button load;
+    private Button newGame;
+    private Button exitGame;
 
     private StackPane layeredRoot; // New StackPane to manage layers
     private VBox startMenuVBox; // Class-level variable for the VBox
@@ -142,10 +141,22 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
 
+        load = new Button("Load Game");
+        newGame = new Button("Start New Game");
+        exitGame = new Button("Exit Game");
+
+        // Attach hover listeners
+        attachHoverListener(load);
+        attachHoverListener(newGame);
+        attachHoverListener(exitGame);
+
+        // Use the method from UserInterface to create the start menu
+        startMenuVBox = UserInterface.createStartMenu(load, newGame, exitGame);
+
         // Create the layered root
         layeredRoot = new StackPane();
         root = new Pane(); // Your existing root pane
-        createStartMenu(); // Call the method to create the start menu
+
 
         // Add the game root and the start menu to the layered root
         layeredRoot.getChildren().addAll(root, startMenuVBox);
@@ -179,12 +190,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             initBreak();
             initBoard();
 
-            load = new Button("Load Game");
-            newGame = new Button("Start New Game");
-            exitGame = new Button("Exit Game");
-
-            // Call the method to create the start menu
-//            createStartMenu();
 
         }
 
@@ -284,27 +289,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
-    private void createStartMenu() {
-        startMenuVBox = new VBox(80);
-        load = new Button("Load Game");
-        newGame = new Button("Start New Game");
-        exitGame = new Button("Exit Game");
-
-        // Attach hover listeners
-        attachHoverListener(load);
-        attachHoverListener(newGame);
-        attachHoverListener(exitGame);
-
-        startMenuVBox.getChildren().addAll(load, newGame, exitGame);
-        startMenuVBox.setAlignment(Pos.CENTER); // Center the VBox in the scene
-
-        // startMenuVBox.setPrefWidth(200); // Example width
-        // startMenuVBox.setPrefHeight(150); // Example height
-
-        // Add the VBox to the root pane
-        root.getChildren().add(startMenuVBox);
-    }
-
     // Method to attach hover listener to a button
     private void attachHoverListener(Button button) {
         button.setOnMouseEntered(e -> SoundEffectUtil.playHoverSound());
@@ -397,6 +381,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 Media media = new Media(resource.toString());
                 backgroundMediaPlayer = new MediaPlayer(media);
                 backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
+
+                // Set volume here, 0.5 for 50% volume
+                backgroundMediaPlayer.setVolume(0.5);
+
                 backgroundMediaPlayer.play();
             } catch (Exception e) {
                 // Replace printStackTrace with a logging statement
