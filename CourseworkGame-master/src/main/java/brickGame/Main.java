@@ -1,5 +1,6 @@
 package brickGame;
 
+import brickGame.View.UserInterface;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -37,6 +38,8 @@ import brickGame.imageEffects.ImageEffectUtil;
 
 import brickGame.Controller.GameController;
 
+import brickGame.stageEffects.StageEffectUtil;
+
 
 /**
  * Main class for the Brick Game.
@@ -61,9 +64,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
-
-//    public static final int LEFT  = 1;
-//    public static final int RIGHT = 2;
 
     private Button load = new Button("Load Game");
     private Button newGame = new Button("Start New Game");
@@ -151,7 +151,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         layeredRoot.getChildren().addAll(root, startMenuVBox);
 
         // Initialize the pause menu
-        initializePauseMenu();
+        Runnable togglePauseAction = () -> togglePause(); // Define the Runnable for toggling pause
+        pauseMenuVBox = UserInterface.initializePauseMenu(primaryStage, sceneWidth, sceneHeight, togglePauseAction);
+
+        // Add the pause menu to the main layout
+        layeredRoot.getChildren().add(pauseMenuVBox);
 
         // Add the pause menu to the layered root but make it invisible initially
         //layeredRoot.getChildren().add(pauseMenuVBox);
@@ -279,36 +283,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
-    /**
-     * Shakes the game stage to create a visual effect.
-     * This effect is typically used to indicate game events like losing a heart.
-     */
-    private void shakeStage() {
-        final double originalX = primaryStage.getX();
-        final double originalY = primaryStage.getY();
-        final int shakeDistance = 5;
-        final int shakeCycles = 10;
-
-        for (int i = 0; i < shakeCycles; i++) {
-            Platform.runLater(() -> {
-                primaryStage.setX(originalX + Math.random() * shakeDistance - shakeDistance / 2.0);
-                primaryStage.setY(originalY + Math.random() * shakeDistance - shakeDistance / 2.0);
-            });
-
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-
-            Platform.runLater(() -> {
-                primaryStage.setX(originalX);
-                primaryStage.setY(originalY);
-            });
-        }
-    }
-
-
 
     private void createStartMenu() {
         startMenuVBox = new VBox(80);
@@ -336,22 +310,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         button.setOnMouseEntered(e -> SoundEffectUtil.playHoverSound());
     }
 
-    private void initializePauseMenu() {
-        pauseMenuVBox = new VBox(10);
-        pauseMenuVBox.setAlignment(Pos.CENTER);
-        // Center the VBox in the middle of the scene
-        pauseMenuVBox.setTranslateX((sceneWidth - pauseMenuVBox.getWidth()) / 2.0);
-        pauseMenuVBox.setTranslateY((sceneHeight - pauseMenuVBox.getHeight()) / 2.0);
-
-        Label pauseLabel = new Label("Game Paused");
-        Button resumeButton = new Button("Resume Game");
-        resumeButton.setOnAction(e -> togglePause());
-        pauseMenuVBox.getChildren().addAll(pauseLabel, resumeButton);
-        pauseMenuVBox.setVisible(false); // Initially invisible
-
-        // Add the pause menu to the main layout
-        layeredRoot.getChildren().add(pauseMenuVBox);
-    }
 
     public void toggleSound() {
         if (backgroundMediaPlayer != null) {
@@ -531,7 +489,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         collideToLeftBlock = false;
         collideToTopBlock = false;
     }
-    //REFACTOR DONE
+
 
     //REFACTOR BELOW
     private void setPhysicsToBall() {
@@ -561,7 +519,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 //TODO gameover
                 heart--;
                 SoundEffectUtil.playMinusHeartSoundEffect();
-                shakeStage();
+                StageEffectUtil.shakeStage(primaryStage);
                 ImageEffectUtil.showHeartDeductedImage(root, sceneWidth, sceneHeight);
 //                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
 
