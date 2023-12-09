@@ -1,5 +1,6 @@
 package brickGame;
 
+import brickGame.Model.GameEngine;
 import brickGame.View.UserInterface;
 import javafx.application.Application;
 import javafx.application.Platform;

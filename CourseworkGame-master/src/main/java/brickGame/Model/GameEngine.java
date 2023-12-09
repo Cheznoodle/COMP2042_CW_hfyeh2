@@ -1,4 +1,4 @@
-package brickGame;
+package brickGame.Model;
 
 /**
  * Represents the game engine for a brick game.
