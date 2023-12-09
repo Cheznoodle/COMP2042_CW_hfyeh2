@@ -1,20 +1,86 @@
-# COMP2042_CW_hfyeh2
 
-***Compilation Instructions:***
-Step 1) Press `Code` dropdown menu and download zip file.
+# Prerequisites
 
-Using Intellij:
-Step 2) Import project into workspace.
+* Ensure Java JDK 19 is installed on your system. If not, download and install it from the [Oracle website](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) or any other preferred source
+* Internet connection for downloading software and dependencies.
 
-Step 3) Go to File > Project Structure > Global Libraries > Click on '+' icon > Select javafx-sdk lib > Press 'Apply' then 'OK'
+## Step 1: Installing IntelliJ IDEA
 
-Step 4) Configure Java SDK, select the preferred version
+1. Download IntelliJ IDEA:
+* Visit the [JetBrains Webite](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
 
-Step 5) Press 'Configure Maven Tools'
+2. Install IntelliJ IDEA:
+* Run the downloaded installer and follow the installation prompts.
 
-Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
+## Step 2: Configuring JavaFX SDK
 
-***Implemented and Working Properly:***
+1. Download JavaFX SDK:
+* Visit the [OpenJFX Website](https://openjfx.io/) and download the latest JavaFX SDK.
+
+2. Extract JavaFX SDK:
+* Extract the downloaded ZIP file to a desired location on your system.
+
+3. Configure JavaFX in IntelliJ IDEA:
+* Open IntelliJ IDEA.
+* Create a new project or open an existing one.
+* Go to `File > Project Structure > Libraries`.
+* Click the `+` sign and select `Java`.
+* Navigate to the `lib` folder inside the extracted JavaFX SDK directory, select it, and click `OK`.
+
+## Step 3: Setting up JDK in IntelliJ IDEA
+1. Open IntelliJ IDEA:
+* Launch IntelliJ IDEA on your computer.
+
+2. Access Project Structure:
+* If you have a project open, go to `File > Project Structure`.
+* For a new setup without a project, go to `Configure > Project Defaults > Project Structure`.
+
+3. Add JDK 19:
+* In the `Project Structure` dialog, select the `SDKs` under the `Platform Settings`.
+* Click the `+` sign at the top of the pane and select `JDK`.
+* In the file chooser, navigate to the location where JDK 19 is installed on your system and select the JDK’s root directory. IntelliJ IDEA will automatically detect the JDK version.
+* Click `OK` to add JDK 19 to IntelliJ IDEA.
+
+## Step 4: Configuring Your Project to Use JDK 19
+1. Set Project SDK:
+* Still in the `Project Structure` dialog, select `Project` from the left sidebar.
+* In the `Project SDK` section, select the newly added JDK 19 from the dropdown list.
+
+2. Set Project Language Level:
+* In the same `Project` settings, adjust the `Project language level` to match JDK 19. Choose the level that provides the features you need for development.
+
+3. Apply and Close:
+* Click `Apply` and then `OK` to save the changes and close the dialog.
+
+## Step 5: Configuring Maven
+1. Configure Maven Settings:
+* In IntelliJ IDEA, go to `File > Settings` to open the settings dialog.
+
+2. Search for "Maven":
+* In the search bar, type "Maven" to quickly locate the Maven settings.
+
+3. Check Maven Home Directory:
+* Verify that the "Maven home directory" is correctly set to the path where Maven is installed on your system. IntelliJ IDEA usually detects this automatically.
+
+4. Click "Apply" and "OK":
+* Click the `Apply` button to save the Maven settings and then click `OK` to close the settings dialog.
+
+## Step 6: Load Maven Libraries
+1. Open the Maven Tool Window:
+* In the right sidebar, click on the "Maven" tab to open the Maven tool window.
+
+2. Reimport Dependencies:
+* Click on the circular arrow icon ("Reimport") in the Maven tool window. This will trigger IntelliJ IDEA to fetch and load all the project's Maven dependencies.
+
+3. Wait for Dependencies to Download:
+* IntelliJ IDEA will download the necessary libraries and dependencies specified in the project's pom.xml file. Wait for this process to complete.
+
+4. Verify Dependencies:
+* You can expand the "External Libraries" section in the Project view to see the loaded Maven dependencies.
+
+## Step 7: Build and Run the Project
+
+# Implemented and Working Properly:
 1) Added Background Image
 2) Added Background Sound
 3) Added Game Start Menu
@@ -27,17 +93,17 @@ Step 6) Go to `Main.java`, press Green Triangle to build, then run the game.
 10) Ball spawn is fixed to the center of the scene
 11) Added more interactive start menu buttons
 
-***Implemented but Not Working Properly:***
+# Implemented but Not Working Properly:
 1) Pause button menu
 2) Load Game function
 3) Save Game function
 
-***Features Not Implemented:***
+# Features Not Implemented:
 1) Special block multiplier
 
-***New Java Classes:***
+# New Java Classes:
 
-***Modified Java Classes:***
+# Modified Java Classes:
 
 ***Unexpected Problems:***
 1) JavaFX runtime error (NullExceptionPointer)
