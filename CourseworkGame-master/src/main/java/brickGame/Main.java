@@ -650,9 +650,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 ArrayList<BlockSerializable> blockSerializable = new ArrayList<>();
                 for (Block block : blocks) {
                     if (!block.isDestroyed()) {
-                        blockSerializable.add(new BlockSerializable(block.getRow(), block.getColumn(), block.getType()));
+                        String colorString = block.getColor().toString(); // Convert color to string
+                        blockSerializable.add(new BlockSerializable(block.getRow(), block.getColumn(), block.getType(), colorString));
                     }
                 }
+
                 outputStream.writeObject(blockSerializable);
 
                 LOGGER.info("Game saved successfully to " + file.getPath());
@@ -703,8 +705,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 blocks.clear();
                 chocos.clear();
                 for (BlockSerializable ser : blockSerializable) {
-                    int r = new Random().nextInt(colors.length);
-                    blocks.add(new Block(ser.row, ser.j, colors[r], ser.type));
+//                    int r = new Random().nextInt(colors.length);
+                    Color color = Color.valueOf(ser.colorString); // Convert string back to color
+                    blocks.add(new Block(ser.row, ser.j, color, ser.type));
                 }
 
                 LOGGER.info("Game loaded successfully from " + file.getPath());

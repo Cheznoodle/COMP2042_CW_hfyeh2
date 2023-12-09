@@ -143,6 +143,15 @@ public class Block implements Serializable {
         return NO_HIT;
     }
 
+    /**
+     * Gets the color of the block.
+     *
+     * @return The color of the block.
+     */
+    public Color getColor() {
+        return color;
+    }
+
     // Getters and Setters for the block's properties
     public int getRow() {
         return row;
