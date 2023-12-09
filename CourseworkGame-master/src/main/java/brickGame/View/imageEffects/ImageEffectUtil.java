@@ -11,19 +11,18 @@ import javafx.util.Duration;
 import javafx.geometry.Pos;
 
 /**
- * Provides utility functions for displaying various image effects in the game.
- * These effects include showing images for different game events like heart addition or deduction,
- * bonuses, etc.
+ * Provides utility functions for displaying image effects in the game.
+ * Includes methods for showing heart deduction, addition, bonus, and golden ball effects.
  */
 public class ImageEffectUtil {
 
     /**
-     * Shows an image effect for heart deduction in the game.
-     * The image appears and fades out to visually represent the loss of a heart.
+     * Displays an image effect for heart deduction in the game.
+     * The image fades in and out to indicate the loss of a heart.
      *
      * @param root        The main pane where the image will be displayed.
-     * @param sceneWidth  The width of the scene to position the image.
-     * @param sceneHeight The height of the scene to position the image.
+     * @param sceneWidth  Width of the scene for image positioning.
+     * @param sceneHeight Height of the scene for image positioning.
      */
     public static void showHeartDeductedImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {
@@ -73,12 +72,12 @@ public class ImageEffectUtil {
     }
 
     /**
-     * Shows an image effect for heart addition in the game.
-     * It's accompanied by a sound effect and represents gaining a heart.
+     * Displays an image effect for heart addition in the game.
+     * Accompanied by a sound effect, it signifies gaining a heart.
      *
      * @param root        The main pane where the image will be displayed.
-     * @param sceneWidth  The width of the scene to position the image.
-     * @param sceneHeight The height of the scene to position the image.
+     * @param sceneWidth  Width of the scene for image positioning.
+     * @param sceneHeight Height of the scene for image positioning.
      */
     public static void showHeartAddedImage(Pane root, int sceneWidth, int sceneHeight) {
         // Play heart added sound effect
@@ -131,12 +130,12 @@ public class ImageEffectUtil {
     }
 
     /**
-     * Displays a bonus image effect in the game.
-     * This effect is used when the player earns a bonus.
+     * Shows an image effect for earning a bonus in the game.
+     * This effect is used to visually represent a bonus being collected.
      *
      * @param root        The main pane where the image will be displayed.
-     * @param sceneWidth  The width of the scene to position the image.
-     * @param sceneHeight The height of the scene to position the image.
+     * @param sceneWidth  Width of the scene for image positioning.
+     * @param sceneHeight Height of the scene for image positioning.
      */
     public static void showBonusImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {
@@ -186,12 +185,12 @@ public class ImageEffectUtil {
     }
 
     /**
-     * Shows an image effect for the golden ball bonus in the game.
-     * This effect indicates a special power-up or bonus.
+     * Displays an image effect for the golden ball bonus in the game.
+     * It indicates a special power-up or bonus achieved by the player.
      *
      * @param root        The main pane where the image will be displayed.
-     * @param sceneWidth  The width of the scene to position the image.
-     * @param sceneHeight The height of the scene to position the image.
+     * @param sceneWidth  Width of the scene for image positioning.
+     * @param sceneHeight Height of the scene for image positioning.
      */
     public static void showGoldenBallImage(Pane root, int sceneWidth, int sceneHeight) {
         Platform.runLater(() -> {

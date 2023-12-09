@@ -3,6 +3,7 @@ package brickGame.Model;
 /**
  * Represents the game engine for a brick game.
  * Manages game logic, rendering, physics, and timing through separate threads.
+ * This class controls the core loop of the game and handles synchronization between different aspects of the game.
  */
 public class GameEngine {
 
@@ -14,21 +15,21 @@ public class GameEngine {
     private Thread physicsThread;
     private Thread timeThread;
 
-    private volatile boolean running = false; // Flag to control the threads
+    private volatile boolean running = false; // Flag to control the game loop
     private long time = 0;
 
-    private volatile boolean isPaused = false;
+    private volatile boolean isPaused = false; // Flag to manage game pause state
 
     /**
-     * Sets the action listener for game updates.
-     * @param onAction Interface instance containing methods for game update actions.
+     * Assigns a listener for game actions.
+     * @param onAction Interface instance containing callback methods for game actions.
      */
     public void setOnAction(OnAction onAction) {
         this.onAction = onAction;
     }
 
     /**
-     * Sets the frames per second for the game.
+     * Sets the frames per second for the game loop.
      * @param fps Frames per second.
      */
     public void setFps(int fps) {
@@ -36,7 +37,8 @@ public class GameEngine {
     }
 
     /**
-     * Starts the update thread for handling game logic.
+     * Starts the game logic update thread.
+     * Responsible for running the main game loop and triggering update actions.
      */
     private synchronized void Update() {
         updateThread = new Thread(() -> {
@@ -62,14 +64,16 @@ public class GameEngine {
     }
 
     /**
-     * Initializes the game state using the action listener.
+     * Performs initial setup for the game state.
+     * Called once at the start of the game.
      */
     private void Initialize() {
         onAction.onInit();
     }
 
     /**
-     * Starts the thread for physics calculations in the game.
+     * Starts the physics calculations thread.
+     * Responsible for managing physics-related updates in the game.
      */
     private synchronized void PhysicsCalculation() {
         physicsThread = new Thread(() -> {
@@ -95,7 +99,8 @@ public class GameEngine {
     }
 
     /**
-     * Starts the game engine, initiating threads for updating game state, rendering, and physics calculations.
+     * Initiates and starts the game engine.
+     * Starts all necessary threads for game logic, rendering, and physics calculations.
      */
     public void start() {
         running = true;
@@ -108,7 +113,8 @@ public class GameEngine {
     }
 
     /**
-     * Stops the game engine, terminating all threads in a graceful manner.
+     * Stops the game engine.
+     * Terminates all threads gracefully and stops the game loop.
      */
     public void stop() {
         running = false;
@@ -119,7 +125,7 @@ public class GameEngine {
     }
 
     /**
-     * Safely joins a given thread, ensuring it stops gracefully.
+     * Joins a thread to ensure it completes its execution.
      * @param thread The thread to join.
      */
     private void joinThread(Thread thread) {
@@ -133,7 +139,8 @@ public class GameEngine {
     }
 
     /**
-     * Starts the rendering thread for the game's graphical output.
+     * Starts the rendering thread.
+     * Handles graphical output and updates for the game.
      */
     private synchronized void Render() {
         renderThread = new Thread(() -> {
@@ -149,7 +156,7 @@ public class GameEngine {
                 }
                 try {
                     onAction.onRender();
-                    Thread.sleep(fps); // Adjust as needed for rendering
+                    Thread.sleep(fps);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -159,7 +166,8 @@ public class GameEngine {
     }
 
     /**
-     * Manages and updates the in-game time.
+     * Manages the in-game time and updates it continuously.
+     * Responsible for tracking the passage of time within the game.
      */
     private void TimeStart() {
         timeThread = new Thread(() -> {
@@ -176,23 +184,33 @@ public class GameEngine {
         timeThread.start();
     }
 
+    /**
+     * Pauses the game, stopping updates in all threads.
+     */
     public synchronized void pause() {
         isPaused = true;
     }
 
+    /**
+     * Resumes the game, allowing all threads to continue updates.
+     */
     public synchronized void resume() {
         isPaused = false;
         notifyAll();
     }
 
+    /**
+     * Checks if the game is currently paused.
+     * @return True if the game is paused, false otherwise.
+     */
     public boolean isPaused() {
         return isPaused;
     }
 
 
     /**
-     * Interface defining methods for handling various actions during the game's execution.
-     * Methods include updates for game logic, rendering, initialization, physics, and time tracking.
+     * Interface defining callback methods for various game actions.
+     * These methods are triggered during the game loop to handle updates, rendering, initialization, physics, and time tracking.
      */
     public interface OnAction {
         void onUpdate();

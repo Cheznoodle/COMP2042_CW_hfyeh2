@@ -128,7 +128,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     Stage  primaryStage;
 
 
-
     /**
      * Initializes and starts the game.
      * This method sets up the primary stage, initializes game elements,
@@ -169,7 +168,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         layeredRoot.getChildren().add(pauseMenuVBox);
 
         // Add the pause menu to the layered root but make it invisible initially
-        //layeredRoot.getChildren().add(pauseMenuVBox);
         pauseMenuVBox.setVisible(false);
 
         //Call the Method in Application's Start Method
@@ -315,18 +313,18 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
                 int type;
                 if (r % 10 == 1) {
-                    type = Block.getBlockChoco(); // Updated
+                    type = Block.getBlockChoco();
                 } else if (r % 10 == 2) {
                     if (!isExistHeartBlock) {
-                        type = Block.getBlockHeart(); // Updated
+                        type = Block.getBlockHeart();
                         isExistHeartBlock = true;
                     } else {
-                        type = Block.getBlockNormal(); // Updated
+                        type = Block.getBlockNormal();
                     }
                 } else if (r % 10 == 3) {
-                    type = Block.getBlockStar(); // Updated
+                    type = Block.getBlockStar();
                 } else {
-                    type = Block.getBlockNormal(); // Updated
+                    type = Block.getBlockNormal();
                 }
                 blocks.add(new Block(j, i, colors[r % (colors.length)], type));
             }
@@ -363,15 +361,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-    
-
-
     /**
      * Plays background sound for the game.
      * The sound loops indefinitely until stopped.
      */
     private void playBackgroundSound() {
-        if (backgroundMediaPlayer == null) { // Only initialize if not already done
+        if (backgroundMediaPlayer == null) {
             try {
                 URL resource = getClass().getResource("/backgroundSound/wii.mp3");
                 if (resource == null) {
@@ -382,19 +377,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 backgroundMediaPlayer = new MediaPlayer(media);
                 backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
 
-                // Set volume here, 0.5 for 50% volume
                 backgroundMediaPlayer.setVolume(0.5);
 
                 backgroundMediaPlayer.play();
             } catch (Exception e) {
-                // Replace printStackTrace with a logging statement
+
                 LOGGER.log(Level.SEVERE, "Exception in playBackgroundSound method", e);
             }
         }
     }
-
-
-
 
 
     /**
@@ -447,8 +438,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         return new ImagePattern(new Image(imagePath));
     }
 
-
-    //ADD ENUMERATION OR A STATE OBJECT FOR THE BALL'S VARIOUS STATES
     private boolean goDownBall                  = true;
     private boolean goRightBall                 = true;
     private boolean collideToBreak = false;
@@ -462,9 +451,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private double vX = 1.000;
     private double vY = 1.000;
-    //REFACTOR ABOVE
 
-    //REFACTOR DONE
     private void resetCollideFlags() {
 
         collideToBreak = false;
@@ -478,10 +465,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         collideToTopBlock = false;
     }
 
-
-    //REFACTOR BELOW
     private void setPhysicsToBall() {
-        //v = ((time - hitTime) / 1000.000) + 1.000;
 
         if (goDownBall) {
             yBall += vY;
@@ -496,7 +480,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (yBall <= 0) {
-            //vX = 1.000;
+
             resetCollideFlags();
             goDownBall = true;
             return;
@@ -504,12 +488,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (yBall >= sceneHeight) {
             goDownBall = false;
             if (!isGoldStatus) {
-                //TODO gameover
+
                 heart--;
                 SoundEffectUtil.playMinusHeartSoundEffect();
                 StageEffectUtil.shakeStage(primaryStage);
                 ImageEffectUtil.showHeartDeductedImage(root, sceneWidth, sceneHeight);
-//                new Score().show(sceneWidth / 2.0, sceneHeight / 2.0, -1, this);
+
 
                 if (heart == 0) {
                     new Score().showGameOver(this);
@@ -517,11 +501,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
 
             }
-            //return;
+
         }
 
         if (yBall >= yBreak - ballRadius) {
-            //System.out.println("Collide1");
+
             if (xBall >= xBreak && xBall <= xBreak + breakWidth) {
                 hitTime = time;
                 resetCollideFlags();
@@ -531,30 +515,30 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 double relation = (xBall - centerBreakX) / (breakWidth / 2.0);
 
                 if (Math.abs(relation) <= 0.3) {
-                    //vX = 0;
+
                     vX = Math.abs(relation);
                 } else if (Math.abs(relation) > 0.3 && Math.abs(relation) <= 0.7) {
                     vX = (Math.abs(relation) * 1.5) + (level / 3.500);
-                    //System.out.println("vX " + vX);
+
                 } else {
                     vX = (Math.abs(relation) * 2) + (level / 3.500);
-                    //System.out.println("vX " + vX);
+
                 }
 
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
-                //System.out.println("Collide2");
+
             }
         }
 
         if (xBall >= sceneWidth) {
             resetCollideFlags();
-            //vX = 1.000;
+
             collideToRightWall = true;
         }
 
         if (xBall <= 0) {
             resetCollideFlags();
-            //vX = 1.000;
+
             collideToLeftWall = true;
         }
 
@@ -592,14 +576,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     }
-    //REFACTOR ABOVE
 
 
-    //WHAT TO DO IN LAST LEVEL?
+
+
     private void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
-            //TODO win level todo...
-            //System.out.println("You Win");
+
+
 
             nextLevel();
         }
@@ -705,7 +689,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 blocks.clear();
                 chocos.clear();
                 for (BlockSerializable ser : blockSerializable) {
-//                    int r = new Random().nextInt(colors.length);
+
                     Color color = Color.valueOf(ser.colorString); // Convert string back to color
                     blocks.add(new Block(ser.row, ser.j, color, ser.type));
                 }
@@ -868,9 +852,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
 
-
-        //TODO hit to break and some work here....
-        //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
     }
 
     @Override
@@ -921,8 +902,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
             choco.y += ((time - choco.timeCreated) / 1000.000) + 1.000;
         }
-
-        //System.out.println("time is:" + time + " goldTime is " + goldTime);
 
     }
 

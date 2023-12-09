@@ -8,19 +8,31 @@ import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Utility class for handling sound effects in the game.
+ * It provides methods to play different sound effects and manage the mute state.
+ */
 public class SoundEffectUtil {
 
     private static final Logger LOGGER = Logger.getLogger(SoundEffectUtil.class.getName());
 
-    private static boolean isMuted = false;
+    private static boolean isMuted = false; // Flag to manage the mute state of the sound effects
 
-    // Declare MediaPlayer for hover sound as a class member
+    // MediaPlayer for hover sound effect
     private static MediaPlayer hoverSoundPlayer;
 
+    /**
+     * Toggles the mute state of sound effects.
+     * If muted, all sound effects will be disabled.
+     */
     public static void toggleMute() { // New method
         isMuted = !isMuted;
     }
 
+    /**
+     * Plays the sound effect for adding a heart.
+     * This method checks if the sound is muted before playing the effect.
+     */
     public static void playAddHeartSoundEffect() {
         if (isMuted) return; // Check mute state
 
@@ -41,6 +53,10 @@ public class SoundEffectUtil {
         }
     }
 
+    /**
+     * Plays the sound effect for losing a heart.
+     * This method checks if the sound is muted before playing the effect.
+     */
     public static void playMinusHeartSoundEffect() {
         if (isMuted) return; // Check mute state
 
@@ -70,6 +86,10 @@ public class SoundEffectUtil {
         });
     }
 
+    /**
+     * Plays the sound effect for collecting a bonus item.
+     * This method checks if the sound is muted before playing the effect.
+     */
     public static void playBonusSoundEffect() {
         if (isMuted) return; // Check mute state
 
@@ -99,7 +119,10 @@ public class SoundEffectUtil {
         });
     }
 
-    // Static block to initialize hover sound MediaPlayer
+    /**
+     * Initializes the MediaPlayer for the hover sound effect.
+     * This static block loads the hover sound resource and sets up the MediaPlayer.
+     */
     static {
         try {
             URL resource = SoundEffectUtil.class.getResource("/soundFX/hoverSound.mp3");
@@ -108,14 +131,17 @@ public class SoundEffectUtil {
             } else {
                 hoverSoundPlayer = new MediaPlayer(new Media(resource.toExternalForm()));
                 hoverSoundPlayer.setOnError(() -> LOGGER.log(Level.SEVERE, "Error in MediaPlayer: " + hoverSoundPlayer.getError().getMessage()));
-                hoverSoundPlayer.setVolume(1.0); // Set volume (range 0.0 to 1.0)
+                hoverSoundPlayer.setVolume(1.0);
             }
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Exception in static initializer for hoverSoundPlayer", e);
         }
     }
 
-    // Method to play hover button sound effect
+    /**
+     * Plays the hover button sound effect.
+     * This method is triggered when the mouse hovers over interactive elements in the game.
+     */
     public static void playHoverSound() {
         if (hoverSoundPlayer == null) {
             LOGGER.log(Level.SEVERE, "Hover sound player not initialized");
