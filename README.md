@@ -7,7 +7,7 @@
 ## Step 1: Installing IntelliJ IDEA
 
 1. Download IntelliJ IDEA:
-* Visit the [JetBrains Webite](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
+* Visit the [JetBrains Website](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
 
 2. Install IntelliJ IDEA:
 * Run the downloaded installer and follow the installation prompts.
@@ -81,33 +81,47 @@
 ## Step 7: Build and Run the Project
 
 # Implemented and Working Properly:
-1) Added Background Image
-2) Added Background Sound
-3) Added Game Start Menu
-4) Added image effects when the ball hits the heart block, deducted heart, bonus ball, golden ball block
-5) Added sound effects when the ball hits the heart block, deducted heart, bonus ball, golden ball block
-6) Added pause button
-7) Changes font style and background color to heart, score, level label
-8) Shake stage when the heart is deducted
-9) Mute sound button when the user presses 'M'
-10) Ball spawn is fixed to the center of the scene
-11) Added more interactive start menu buttons
+1) Added Background Image.
+2) Added Background Sound.
+3) Added Game Start Menu.
+4) Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block.
+5) Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block.
+6) Added a pause button when the user presses the 'ESC' key.
+7) Changes font style and background color to heart, score, and level label.
+8) Shake stage when the heart is deducted.
+9) Mute sound button when the user presses the 'M' key.
+10) Ball spawn is fixed to the center of the scene.
+11) Added more interactive start menu buttons.
+12) Added sound effects when the user hovers over a button.
 
 # Implemented but Not Working Properly:
-1) Pause button menu
-2) Load Game function
+1) Pause button menu (pause menu will not display)
+2) Load Game function (The game will skip levels occasionally after loading a saved game and levels may not progress to the next level even though all blocks are hit)
 3) Save Game function
 
 # Features Not Implemented:
-1) Special block multiplier
+1) Special block multiplier (e.g. 2x multiplier)
+2) Timer
 
 # New Java Classes:
+1) GameController.java (handles user input/control)
+2) SoundEffectUtil.java (handles power-up sound effects)
+3) ImageEffectUtil.java (handles power-up effects)
+4) StageEffectUtil.java (handles stage scene effects)
+5) UserInterface.java (handles VBox menu's)
 
 # Modified Java Classes:
+1) Main.java
+2) Block.java
+3) BlockSerializable.java
+4) Bonus.java
+5) LoadSave.java
+6) Score.java
+7) GameEngine.java
 
 ***Unexpected Problems:***
 1) JavaFX runtime error (NullExceptionPointer)
 2) The ball would freeze but the game is playing in the background.
 3) Sound effects would occasionally be played halfway or not at all.
 4) The game would end randomly crashing when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many.
-5) The ball velocity is faster After loading a save game file. As well as the levels would occasionally skip from a certain level to a much higher level.
+5) The ball velocity is faster After loading a save game file. Also, the levels would occasionally skip from a certain level to a much higher level.
