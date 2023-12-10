@@ -144,193 +144,193 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 # Modified Java Classes:
 1) Main.java
    
-**Changes made:**
-
--Applied refactoring techniques
-
--Applied lambda expressions
-
-**Explanation:**
-
--Enhanced Readability: Makes code easier to understand.
-
--Reduced Complexity: Simplifies complex code structures.
-
--Increased Maintainability: Easier to update and maintain.
-
--Improved Performance: Optimizes code for efficiency.
-
--Error Reduction: Helps identify and fix potential bugs.
-
--Conciseness: Reduces boilerplate code.
-
--Functional Programming: Facilitates functional programming paradigms in Java.
-
--Scalability: Enhances code scalability with cleaner and more modular code.
+      **Changes made:**
+      
+      -Applied refactoring techniques
+      
+      -Applied lambda expressions
+      
+      **Explanation:**
+      
+      -Enhanced Readability: Makes code easier to understand.
+      
+      -Reduced Complexity: Simplifies complex code structures.
+      
+      -Increased Maintainability: Easier to update and maintain.
+      
+      -Improved Performance: Optimizes code for efficiency.
+      
+      -Error Reduction: Helps identify and fix potential bugs.
+      
+      -Conciseness: Reduces boilerplate code.
+      
+      -Functional Programming: Facilitates functional programming paradigms in Java.
+      
+      -Scalability: Enhances code scalability with cleaner and more modular code.
    
 2) Block.java
    
-**Changes made:**
-
--Applied encapsulation
-
--Added constants
-
--Added resource management
-
-**Explanation:**
-
--Data Hiding: Prevents outside access to implementation details.
-
--Increased Flexibility: Allows internal changes without affecting external code.
-
--Enhanced Security: Controls how data is accessed or modified.
-
--Maintainability: Simplifies understanding and maintenance of code.
-
--Readability: Improves code readability and understanding.
-
--Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
-
--Efficiency: Proper resource handling and disposal to avoid memory leaks.
-
--Error Handling: Ensures resources are closed or released even if errors occur.
-
--Consistency: Standardizes resource usage patterns.
+      **Changes made:**
+      
+      -Applied encapsulation
+      
+      -Added constants
+      
+      -Added resource management
+      
+      **Explanation:**
+      
+      -Data Hiding: Prevents outside access to implementation details.
+      
+      -Increased Flexibility: Allows internal changes without affecting external code.
+      
+      -Enhanced Security: Controls how data is accessed or modified.
+      
+      -Maintainability: Simplifies understanding and maintenance of code.
+      
+      -Readability: Improves code readability and understanding.
+      
+      -Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
+      
+      -Efficiency: Proper resource handling and disposal to avoid memory leaks.
+      
+      -Error Handling: Ensures resources are closed or released even if errors occur.
+      
+      -Consistency: Standardizes resource usage patterns.
 
 3) BlockSerializable.java
    
-**Changes made:**
-
--Added a string variable called 'colorString'
-
-**Explanation:**
-
--To store the current colors of the blocks of a level when the save game function is activated
+      **Changes made:**
+      
+      -Added a string variable called 'colorString'
+      
+      **Explanation:**
+      
+      -To store the current colors of the blocks of a level when the save game function is activated
 
 4) Bonus.java
    
-**Changes made:**
-
--Added exception handling
-
--Added thread management
-
--Removed code duplication
-
--Applied lambda expression
-
--Applied JavaFX application thread
-
-**Explanation:**
-
--Robustness: Improves application stability by handling runtime errors.
-
--Controlled Error Management: Allows centralized management of error handling.
-
--User Communication: Provides meaningful feedback to users on exceptions.
-
--Performance: Enhances performance in multi-core systems.
-
--Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
-
--Resource Sharing: Efficient use of CPU and memory resources.
-
--Maintainability: Easier to maintain and modify.
-
--Consistency: Ensures uniformity in code logic.
-
--Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
-
--Conciseness: Reduces boilerplate code.
-
--Functional Programming: Facilitates functional programming paradigms.
-
--Readability: Improves code readability.
-
--UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
-
--Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
-
--Consistency: Maintains consistent state in GUI applications.
+      **Changes made:**
+      
+      -Added exception handling
+      
+      -Added thread management
+      
+      -Removed code duplication
+      
+      -Applied lambda expression
+      
+      -Applied JavaFX application thread
+      
+      **Explanation:**
+      
+      -Robustness: Improves application stability by handling runtime errors.
+      
+      -Controlled Error Management: Allows centralized management of error handling.
+      
+      -User Communication: Provides meaningful feedback to users on exceptions.
+      
+      -Performance: Enhances performance in multi-core systems.
+      
+      -Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
+      
+      -Resource Sharing: Efficient use of CPU and memory resources.
+      
+      -Maintainability: Easier to maintain and modify.
+      
+      -Consistency: Ensures uniformity in code logic.
+      
+      -Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
+      
+      -Conciseness: Reduces boilerplate code.
+      
+      -Functional Programming: Facilitates functional programming paradigms.
+      
+      -Readability: Improves code readability.
+      
+      -UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
+      
+      -Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
+      
+      -Consistency: Maintains consistent state in GUI applications.
 
 5) LoadSave.java
     
-**Changes made:**
-
--Applied data validation
-
--Separate File I/O from logic
-
-**Explanation:**
-
--Data Integrity: Maintains the quality and accuracy of data.
-
--Error Prevention: Reduces the likelihood of errors during runtime.
-
--User Feedback: Provides immediate feedback to users for incorrect inputs.
-
--Modularity: Separates concerns for clearer, more maintainable code.
-
--Testability: Eases testing by isolating file I/O from business logic.
-
--Reusability: Enhances code reusability and scalability.
+      **Changes made:**
+      
+      -Applied data validation
+      
+      -Separate File I/O from logic
+      
+      **Explanation:**
+      
+      -Data Integrity: Maintains the quality and accuracy of data.
+      
+      -Error Prevention: Reduces the likelihood of errors during runtime.
+      
+      -User Feedback: Provides immediate feedback to users for incorrect inputs.
+      
+      -Modularity: Separates concerns for clearer, more maintainable code.
+      
+      -Testability: Eases testing by isolating file I/O from business logic.
+      
+      -Reusability: Enhances code reusability and scalability.
 
 6) Score.java
 
-***Changes made:**
-
--Added animation management
-
--Applied method refactoring
-
--Added thread safety
-
--Added animation libraries
-
-**Explanation:**
-
--User Experience: Enhances UI interactivity and visual appeal.
-
--Dynamic Content: Enables the creation of dynamic and responsive interfaces.
-
--Cleaner Code: Increases readability and reduces complexity.
-
--Easier Maintenance: Simplifies debugging and updating code.
-
--Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
-
--Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
-
--Application Stability: Ensures reliable operation under concurrent access.
-
--Performance: Can improve performance in multi-core systems.
-
--Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
-
--Time Efficiency: Simplify the process of implementing sophisticated animations.
+      ***Changes made:**
+      
+      -Added animation management
+      
+      -Applied method refactoring
+      
+      -Added thread safety
+      
+      -Added animation libraries
+      
+      **Explanation:**
+      
+      -User Experience: Enhances UI interactivity and visual appeal.
+      
+      -Dynamic Content: Enables the creation of dynamic and responsive interfaces.
+      
+      -Cleaner Code: Increases readability and reduces complexity.
+      
+      -Easier Maintenance: Simplifies debugging and updating code.
+      
+      -Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
+      
+      -Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
+      
+      -Application Stability: Ensures reliable operation under concurrent access.
+      
+      -Performance: Can improve performance in multi-core systems.
+      
+      -Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
+      
+      -Time Efficiency: Simplify the process of implementing sophisticated animations.
 
 7) GameEngine.java
     
-**Changes made:**
-
--Added FPS calculation
-
--Separate Game Logic and Rendering
-
-**Explanation:**
-
--Performance Monitoring: Provides insights into the application's rendering performance.
-
--User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
-
--Resource Management: Helps in optimizing resource usage based on the frame rate.
-
--Modularity: Enhances the maintainability and scalability of the code.
-
--Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
-
--Flexibility: Easier to make changes in the game mechanics or graphics independently.
+      **Changes made:**
+      
+      -Added FPS calculation
+      
+      -Separate Game Logic and Rendering
+      
+      **Explanation:**
+      
+      -Performance Monitoring: Provides insights into the application's rendering performance.
+      
+      -User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
+      
+      -Resource Management: Helps in optimizing resource usage based on the frame rate.
+      
+      -Modularity: Enhances the maintainability and scalability of the code.
+      
+      -Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
+      
+      -Flexibility: Easier to make changes in the game mechanics or graphics independently.
 
 # Unexpected Problems:
 1) JavaFX runtime error (NullExceptionPointer)
