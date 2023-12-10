@@ -119,7 +119,7 @@
 6) Score.java
 7) GameEngine.java
 
-***Unexpected Problems:***
+# Unexpected Problems:
 1) JavaFX runtime error (NullExceptionPointer)
 2) The ball would freeze but the game is playing in the background.
 3) Sound effects would occasionally be played halfway or not at all.
