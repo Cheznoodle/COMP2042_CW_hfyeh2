@@ -21,7 +21,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 
@@ -170,7 +169,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         pauseMenuVBox.setVisible(false);
 
         //Call the Method in Application's Start Method
-        playBackgroundSound();
+        SoundEffectUtil.playBackgroundSound("/backgroundSound/wii.mp3");
 
         if (!loadFromSave) {
             level++;
@@ -296,12 +295,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     /**
      * Toggles the sound effects and background music on or off.
+     * This method allows the user to enable or disable all game sounds.
      */
     public void toggleSound() {
-        if (backgroundMediaPlayer != null) {
-            backgroundMediaPlayer.setMute(!backgroundMediaPlayer.isMute());
-        }
         SoundEffectUtil.toggleMute(); // Toggle mute for sound effects
+        if (SoundEffectUtil.isMuted()) {
+            SoundEffectUtil.muteBackgroundMusic(); // Mute the background music
+        } else {
+            SoundEffectUtil.unmuteBackgroundMusic(); // Unmute the background music
+        }
     }
 
 
@@ -363,41 +365,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (engine.isPaused()) {
             engine.resume();
             pauseMenuVBox.setVisible(false);
-            if (backgroundMediaPlayer != null) {
-                backgroundMediaPlayer.play(); // Resume the background sound
-            }
+            SoundEffectUtil.playBackgroundMusic(); // Resume the background sound
         } else {
             engine.pause();
             pauseMenuVBox.setVisible(true);
-            if (backgroundMediaPlayer != null) {
-                backgroundMediaPlayer.pause(); // Pause the background sound
-            }
-        }
-    }
-
-    /**
-     * Plays background sound for the game.
-     * The sound loops indefinitely until stopped.
-     */
-    private void playBackgroundSound() {
-        if (backgroundMediaPlayer == null) {
-            try {
-                URL resource = getClass().getResource("/backgroundSound/wii.mp3");
-                if (resource == null) {
-                    System.err.println("Audio file not found!");
-                    return;
-                }
-                Media media = new Media(resource.toString());
-                backgroundMediaPlayer = new MediaPlayer(media);
-                backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
-
-                backgroundMediaPlayer.setVolume(0.5);
-
-                backgroundMediaPlayer.play();
-            } catch (Exception e) {
-
-                LOGGER.log(Level.SEVERE, "Exception in playBackgroundSound method", e);
-            }
+            SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
     }
 

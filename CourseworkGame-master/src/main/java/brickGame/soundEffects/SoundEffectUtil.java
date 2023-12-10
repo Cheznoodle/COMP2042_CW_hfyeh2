@@ -9,29 +9,41 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 /**
- * Utility class for handling sound effects in the game.
- * It provides methods to play different sound effects and manage the mute state.
+ * Utility class for managing sound effects and background music in the game.
+ * It provides methods to play various sound effects, manage the mute state,
+ * and control background music playback.
  */
 public class SoundEffectUtil {
 
     private static final Logger LOGGER = Logger.getLogger(SoundEffectUtil.class.getName());
 
-    private static boolean isMuted = false; // Flag to manage the mute state of the sound effects
+    // Boolean flag to manage the mute state of the sound effects.
+    private static boolean isMuted = false;
 
-    // MediaPlayer for hover sound effect
+    // MediaPlayer instances for different sound effects and background music.
     private static MediaPlayer hoverSoundPlayer;
+    private static MediaPlayer backgroundMediaPlayer;
 
     /**
-     * Toggles the mute state of sound effects.
-     * If muted, all sound effects will be disabled.
+     * Toggles the mute state of all sound effects in the game.
+     * When muted, all sound effects will be disabled.
      */
     public static void toggleMute() { // New method
         isMuted = !isMuted;
     }
 
     /**
-     * Plays the sound effect for adding a heart.
-     * This method checks if the sound is muted before playing the effect.
+     * Checks if the sound effects are currently muted.
+     *
+     * @return true if sound effects are muted, false otherwise.
+     */
+    public static boolean isMuted() {
+        return isMuted;
+    }
+
+    /**
+     * Plays the sound effect for adding a heart to the player.
+     * The sound effect will not play if the sound is muted.
      */
     public static void playAddHeartSoundEffect() {
         if (isMuted) return; // Check mute state
@@ -55,7 +67,7 @@ public class SoundEffectUtil {
 
     /**
      * Plays the sound effect for losing a heart.
-     * This method checks if the sound is muted before playing the effect.
+     * The sound effect will not play if the sound is muted.
      */
     public static void playMinusHeartSoundEffect() {
         if (isMuted) return; // Check mute state
@@ -88,7 +100,7 @@ public class SoundEffectUtil {
 
     /**
      * Plays the sound effect for collecting a bonus item.
-     * This method checks if the sound is muted before playing the effect.
+     * The sound effect will not play if the sound is muted.
      */
     public static void playBonusSoundEffect() {
         if (isMuted) return; // Check mute state
@@ -121,7 +133,8 @@ public class SoundEffectUtil {
 
     /**
      * Initializes the MediaPlayer for the hover sound effect.
-     * This static block loads the hover sound resource and sets up the MediaPlayer.
+     * This static block loads the hover sound resource and prepares the MediaPlayer for playback.
+     * It sets up the MediaPlayer to handle the hover sound effect used in the game.
      */
     static {
         try {
@@ -140,7 +153,8 @@ public class SoundEffectUtil {
 
     /**
      * Plays the hover button sound effect.
-     * This method is triggered when the mouse hovers over interactive elements in the game.
+     * This method is triggered when the mouse hovers over interactive elements in the game,
+     * providing an auditory feedback for the user interaction.
      */
     public static void playHoverSound() {
         if (hoverSoundPlayer == null) {
@@ -154,6 +168,74 @@ public class SoundEffectUtil {
             hoverSoundPlayer.stop(); // Stop any currently playing sound
             hoverSoundPlayer.play(); // Play the sound
         });
+    }
+
+    /**
+     * Plays background music for the game.
+     * This method initiates playback of a specified audio file, looping it indefinitely.
+     * The method ensures only one instance of the background music is playing at any time.
+     *
+     * @param resourcePath The path to the audio file to be played as background music.
+     */
+    public static void playBackgroundSound(String resourcePath) {
+        if (backgroundMediaPlayer == null) {
+            try {
+                URL resource = SoundEffectUtil.class.getResource(resourcePath);
+                if (resource == null) {
+                    LOGGER.log(Level.SEVERE, "Audio file not found: " + resourcePath);
+                    return;
+                }
+                Media media = new Media(resource.toExternalForm());
+                backgroundMediaPlayer = new MediaPlayer(media);
+                backgroundMediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Loop indefinitely
+                backgroundMediaPlayer.setVolume(0.5);
+                backgroundMediaPlayer.play();
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Exception in playBackgroundSound method", e);
+            }
+        }
+    }
+
+    /**
+     * Pauses the currently playing background music.
+     * This method is used to pause the background music when the game is not in the foreground
+     * or during certain game events where music should be paused.
+     */
+    public static void pauseBackgroundMusic() {
+        if (backgroundMediaPlayer != null && backgroundMediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+            backgroundMediaPlayer.pause(); // Pause the media if it's playing.
+        }
+    }
+
+    /**
+     * Resumes playing the background music.
+     * This method is used to resume the background music after it has been paused.
+     */
+    public static void playBackgroundMusic() {
+        if (backgroundMediaPlayer != null && backgroundMediaPlayer.getStatus() != MediaPlayer.Status.PLAYING) {
+            backgroundMediaPlayer.play(); // Resume playback if not already playing.
+        }
+    }
+
+    /**
+     * Mutes the background music.
+     * This method is used to mute the background music without stopping its playback,
+     * useful for temporarily silencing the music without losing the current playback position.
+     */
+    public static void muteBackgroundMusic() {
+        if (backgroundMediaPlayer != null) {
+            backgroundMediaPlayer.setMute(true); // Mute the media.
+        }
+    }
+
+    /**
+     * Unmutes the background music.
+     * This method is used to restore the sound of the background music after it has been muted.
+     */
+    public static void unmuteBackgroundMusic() {
+        if (backgroundMediaPlayer != null) {
+            backgroundMediaPlayer.setMute(false); // Unmute the media.
+        }
     }
 
 }
