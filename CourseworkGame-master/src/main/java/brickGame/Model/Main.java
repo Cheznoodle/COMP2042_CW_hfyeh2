@@ -1,6 +1,9 @@
-package brickGame;
+package brickGame.Model;
 
-import brickGame.Model.GameEngine;
+import brickGame.Block;
+import brickGame.BlockSerializable;
+import brickGame.Bonus;
+import brickGame.Score;
 import brickGame.View.UserInterface;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -31,7 +34,7 @@ import java.util.logging.Logger;
 
 import javafx.scene.layout.StackPane;
 
-import brickGame.soundEffects.SoundEffectUtil;
+import brickGame.Model.soundEffects.SoundEffectUtil;
 
 import brickGame.View.imageEffects.ImageEffectUtil;
 

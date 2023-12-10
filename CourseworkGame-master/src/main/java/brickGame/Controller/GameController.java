@@ -6,7 +6,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import brickGame.Main;
+import brickGame.Model.Main;
 
 /**
  * This class serves as the controller for the game, handling user input through keyboard events.

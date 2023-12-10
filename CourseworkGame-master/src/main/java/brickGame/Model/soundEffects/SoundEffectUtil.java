@@ -1,4 +1,4 @@
-package brickGame.soundEffects;
+package brickGame.Model.soundEffects;
 
 import java.net.URL;
 import java.util.logging.Level;

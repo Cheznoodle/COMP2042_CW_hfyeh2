@@ -1,5 +1,7 @@
 package brickGame;
 
+import brickGame.Model.Main;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
