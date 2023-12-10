@@ -43,11 +43,12 @@ import brickGame.View.stageEffects.StageEffectUtil;
 
 /**
  * Main class for the Brick Game.
- * This class sets up the game environment, manages game states, and handles user interactions.
- * It creates the main game window, initializes game components, and starts the game loop.
+ * Sets up the game environment, manages game states, handles user interactions,
+ * and creates the main game window. This class is the entry point for the application.
  */
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
 
+    // Class variable declarations
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     private int level = 0;
@@ -129,12 +130,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     /**
-     * Initializes and starts the game.
-     * This method sets up the primary stage, initializes game elements,
-     * and handles the main game loop and events.
-     *
-     * @param primaryStage The primary stage for this application.
-     * @throws Exception if an error occurs during startup.
+     * Starts and initializes the game application.
+     * Sets up the primary stage, initializes game elements, and handles the main game loop.
+     * @param primaryStage The primary stage for this JavaFX application.
+     * @throws Exception if an error occurs during initialization.
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -287,12 +286,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
 
-    // Method to attach hover listener to a button
+    /**
+     * Attaches a hover sound effect listener to a button.
+     * @param button The button to attach the listener to.
+     */
     private void attachHoverListener(Button button) {
         button.setOnMouseEntered(e -> SoundEffectUtil.playHoverSound());
     }
 
-
+    /**
+     * Toggles the sound effects and background music on or off.
+     */
     public void toggleSound() {
         if (backgroundMediaPlayer != null) {
             backgroundMediaPlayer.setMute(!backgroundMediaPlayer.isMute());
@@ -331,12 +335,19 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
+    /**
+     * Handles key events for the game, delegating to the GameController.
+     * @param event The KeyEvent to handle.
+     */
     @Override
     public void handle(KeyEvent event) {
         gameController.handle(event);
     }
 
-
+    /**
+     * Updates the position of the player's paddle in response to user input.
+     * @param delta The amount to move the paddle.
+     */
     public void updatePaddlePosition(int delta) {
         // Update xBreak within the bounds of the scene
         if ((delta > 0 && xBreak + breakWidth < sceneWidth) || (delta < 0 && xBreak > 0)) {
@@ -345,6 +356,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
+    /**
+     * Toggles the game's pause state, pausing or resuming the game.
+     */
     public void togglePause() {
         if (engine.isPaused()) {
             engine.resume();
@@ -389,10 +403,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     /**
-     * The main entry point for the application.
-     * Launches the JavaFX application.
-     *
-     * @param args Command-line arguments (not used).
+     * Main method to launch the JavaFX application.
+     * @param args Command-line arguments.
      */
     public static void main(String[] args) {
         launch(args);
@@ -415,8 +427,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
     /**
-     * Initializes the player's paddle (breaker).
-     * Sets the initial position and graphical representation of the paddle.
+     * Initializes the player's paddle (breaker) with its starting position and appearance.
      */
     private void initBreak() {
         rect = new Rectangle();
@@ -579,16 +590,19 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
 
-
+    /**
+     * Checks if all blocks have been destroyed and proceeds to the next level if so.
+     */
     private void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
-
-
 
             nextLevel();
         }
     }
 
+    /**
+     * Saves the current game state to a file.
+     */
     public void saveGame() {
         new Thread(() -> {
             // Define the relative path for the directory
@@ -648,7 +662,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }).start();
     }
 
-
+    /**
+     * Loads a saved game state from a file.
+     */
     private void loadGame() {
         // Define the relative path for the directory and file
         String relativeDir = "saves";
@@ -710,7 +726,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
+    /**
+     * Advances the game to the next level, resetting necessary variables and states.
+     */
     private void nextLevel() {
         Platform.runLater(new Runnable() {
             @Override
@@ -743,6 +761,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
     }
 
+    /**
+     * Restarts the entire game, resetting all game variables and states.
+     */
     public void restartGame() {
 
         try {
@@ -769,7 +790,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
+    /**
+     * Updates the game state, typically called in each frame.
+     */
     @Override
     public void onUpdate() {
         Platform.runLater(new Runnable() {
@@ -854,17 +877,25 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
+    /**
+     * Handles rendering of the game, if necessary.
+     */
     @Override
     public void onRender() {
 
     }
 
-
+    /**
+     * Performs initial setup for the game.
+     */
     @Override
     public void onInit() {
 
     }
 
+    /**
+     * Stops the game, typically called when the application is closing.
+     */
     @Override
     public void stop() {
         if (backgroundMediaPlayer != null) {
@@ -872,7 +903,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
+    /**
+     * Updates the physics aspects of the game, such as ball movement and collision detection.
+     */
     @Override
     public void onPhysicsUpdate() {
         checkDestroyedCount();
@@ -905,7 +938,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
-
+    /**
+     * Updates the in-game timer.
+     * @param time The current time value.
+     */
     @Override
     public void onTime(long time) {
         this.time = time;
