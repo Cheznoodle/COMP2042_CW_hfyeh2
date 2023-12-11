@@ -75,6 +75,9 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 2. Reimport All Maven Projects:
 * Click the refresh button to reimport all Maven projects. This action downloads and sets up all the necessary dependencies.
 
+### Note: 
+* If after reimporting Maven Library/Dependencies, you experience errors & are unable to run the Main.java. Kindly re-import the javafx sdk library.
+
 ### Step 7: Build and Run the Project
 
 1. Build the Project:
@@ -356,9 +359,13 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
          
          -Flexibility: Easier to make changes in the game mechanics or graphics independently.
 
+
+## Note:
+* If you experience any kind of error (runtime or game freeze). Kindly re-run the game.
+
 # Unexpected Problems:
 1) JavaFX runtime error (NullExceptionPointer)
-*Attempt Fix: Tried to initialize all the JavaFX elements but unfortunately error persists.
+*Attempt Fix: Tried initializing all the JavaFX elements, but unfortunately, the error persists.
 
 2) The ball would freeze but the game is playing in the background.
 *Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
