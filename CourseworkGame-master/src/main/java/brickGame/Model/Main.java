@@ -32,6 +32,10 @@ import javafx.scene.layout.VBox;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaView;
+
+
 import javafx.scene.layout.StackPane;
 
 import brickGame.Model.soundEffects.SoundEffectUtil;
@@ -374,6 +378,28 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             pauseMenuVBox.setVisible(true);
             SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
+    }
+
+    public void playGameOverVideo() {
+        String path = getClass().getResource("/videos/diedVideo.mp4").toExternalForm(); // Ensure the path is correct
+        Media media = new Media(path);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        MediaView mediaView = new MediaView(mediaPlayer);
+
+        // Set the size and preserve the aspect ratio
+        mediaView.setFitWidth(500);
+        mediaView.setFitHeight(800);
+        mediaView.setPreserveRatio(true);
+
+        root.getChildren().add(mediaView);
+
+        mediaPlayer.play();
+
+        mediaPlayer.setOnEndOfMedia(() -> {
+            root.getChildren().remove(mediaView);
+            mediaPlayer.dispose();
+        });
     }
 
 

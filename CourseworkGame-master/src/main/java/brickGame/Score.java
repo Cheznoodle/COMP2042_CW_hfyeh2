@@ -101,6 +101,9 @@ public class Score {
             restart.setOnAction(event -> main.restartGame());
 
             main.root.getChildren().addAll(label, restart);
+
+            // Now, play the game over video
+            main.playGameOverVideo();
         });
     }
 
