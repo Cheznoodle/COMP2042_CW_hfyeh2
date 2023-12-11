@@ -19,33 +19,21 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javafx.scene.media.MediaPlayer;
 import java.net.URL;
-
 import javafx.scene.layout.VBox;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaView;
-
-
 import javafx.scene.layout.StackPane;
-
 import brickGame.Model.soundEffects.SoundEffectUtil;
-
 import brickGame.View.imageEffects.ImageEffectUtil;
-
 import brickGame.Controller.GameController;
-
 import brickGame.View.stageEffects.StageEffectUtil;
-
 
 /**
  * Main class for the Brick Game.
@@ -313,7 +301,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
     /**
      * Initializes the game board by creating and placing blocks.
      * The number and types of blocks depend on the current game level.
@@ -380,6 +367,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
+    /**
+     * Plays a game over video using JavaFX media components.
+     * This method loads a video file from the '/videos' directory within the application's resources.
+     * It creates a MediaPlayer to play the video and a MediaView to display it.
+     * The video is displayed with a specific width (500px) and height (800px), and its aspect ratio is preserved.
+     * After the video finishes playing, it is removed from the root pane to free up resources.
+     * This method is intended to be called when the game reaches a game-over state.
+     * Note: If the video file is not found or cannot be loaded, a runtime exception may be thrown.
+     *
+     * @throws NullPointerException if the video file path is incorrect or if the file is missing.
+     */
     public void playGameOverVideo() {
         String path = getClass().getResource("/videos/diedVideo.mp4").toExternalForm(); // Ensure the path is correct
         Media media = new Media(path);
