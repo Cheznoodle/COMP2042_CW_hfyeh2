@@ -120,26 +120,26 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 # Features Not Implemented:
 1) Special block multiplier (e.g. 2x multiplier)
    * Reason for failure of implementation:
-     No sufficient time to test and implement the feature properly 
+     No sufficient time to test and implement the feature properly. 
 3) Timer
     * Reason for failure of implementation:
-     No sufficient time to test and implement the feature properly 
+     No sufficient time to test and implement the feature properly.
 
 # New Java Classes:
 1) GameController.java (handles user input/control)
    * Location: `brickGame > Controller > GameController`
    
-2) SoundEffectUtil.java (handles power-up sound effects)
-   * Location: `brickGame > Model > soundEffects > SoundEffectUtil`
+2) SoundEffectUtil.java (handles power-up sound effects).
+   * Location: `brickGame > Model > soundEffects > SoundEffectUtil`.
    
 3) ImageEffectUtil.java (handles power-up effects)
-   * Location: `brickGame > View > imageEffects > ImageEffectUtil`
+   * Location: `brickGame > View > imageEffects > ImageEffectUtil`.
    
 4) StageEffectUtil.java (handles stage scene effects)
-   * Location: `brickGame > View > stageEffects > StageEffectUtil`
+   * Location: `brickGame > View > stageEffects > StageEffectUtil`.
    
 5) UserInterface.java (handles VBox menu's)
-    * Location: `brickGame > View > UserInterface`
+    * Location: `brickGame > View > UserInterface`.
 
 # Modified Java Classes:
 1) Main.java
@@ -334,7 +334,16 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 
 # Unexpected Problems:
 1) JavaFX runtime error (NullExceptionPointer)
+*Attempt Fix: Tried to initialize all the JavaFX elements but unfortunately error persists.
+
 2) The ball would freeze but the game is playing in the background.
+*Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
+
 3) Sound effects would occasionally be played halfway or not at all.
+*Attempt Fix: Tried to add a queue for sound effects so it would not class but the bug persists.
+
 4) The game would end randomly crashing when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many.
+*Attempt Fix: Unknown fix. Could not find the root problem.
+
 5) The ball velocity is faster After loading a save game file. Also, the levels would occasionally skip from a certain level to a much higher level.
+*Attempt Fix: Tried to save the ball velocity as a variable in the saveGame method but did not work accordingly.
