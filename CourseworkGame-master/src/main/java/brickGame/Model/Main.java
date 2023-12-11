@@ -154,7 +154,22 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         // Initialize the pause menu
         Runnable togglePauseAction = () -> togglePause(); // Define the Runnable for toggling pause
-        pauseMenuVBox = UserInterface.initializePauseMenu(primaryStage, sceneWidth, sceneHeight, togglePauseAction);
+
+        // Define the Runnable for the exit action
+        Runnable exitAction = () -> {
+
+            Platform.exit();
+        };
+
+        pauseMenuVBox = UserInterface.initializePauseMenu(primaryStage, togglePauseAction, exitAction);
+
+        Platform.runLater(() -> {
+            double xCenter = (sceneWidth - pauseMenuVBox.getWidth()) / 2.0;
+            double yCenter = (sceneHeight - pauseMenuVBox.getHeight()) / 2.0;
+            pauseMenuVBox.setLayoutX(xCenter);
+            pauseMenuVBox.setLayoutY(yCenter);
+        });
+
 
         // Add the pause menu to the main layout
 //        layeredRoot.getChildren().add(pauseMenuVBox);
@@ -358,12 +373,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (engine.isPaused()) {
             engine.resume();
             pauseMenuVBox.setVisible(false);
-            System.out.println(engine.isPaused());
+//            System.out.println(engine.isPaused());
             SoundEffectUtil.playBackgroundMusic(); // Resume the background sound
         } else {
             engine.pause();
             pauseMenuVBox.setVisible(true);
-            System.out.println(engine.isPaused());
+//            System.out.println(engine.isPaused());
             SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
     }

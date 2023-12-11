@@ -46,6 +46,19 @@
     -fx-background-insets: 10;
 }
 
+#pauseLabel {
+/*-fx-border-color: black;
+    -fx-border-width: 2px;*/
+    -fx-label-padding: 10px;
+    -fx-margin: -50px;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
+    -fx-font-size: 30px;
+
+}
+
 #startMenuVBox {
     -fx-background-color: rgba(255, 255, 255, 0.7);
     -fx-padding: 20px;
@@ -73,4 +86,6 @@
     /* Transition effect */
     -fx-transition: scale 2.5s ease-in-out;
 }
+
+
 
