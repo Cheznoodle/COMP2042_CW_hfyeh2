@@ -100,9 +100,13 @@ public class Score {
             restart.setTranslateY(300);
             restart.setOnAction(event -> main.restartGame());
 
-            main.root.getChildren().addAll(label, restart);
+            Button exit = new Button("Exit");
+            exit.setTranslateX(220);
+            exit.setTranslateY(350 + 20);
+            exit.setOnAction(event -> Platform.exit()); // Action to exit the application
 
-            // Now, play the game over video
+            main.root.getChildren().addAll(label, restart, exit);
+
             main.playGameOverVideo();
         });
     }

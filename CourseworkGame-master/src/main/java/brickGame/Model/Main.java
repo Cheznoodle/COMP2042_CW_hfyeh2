@@ -1,7 +1,8 @@
 package brickGame.Model;
 
 import brickGame.View.Block;
-import brickGame.Bonus;
+import brickGame.View.Bonus;
+import brickGame.View.BlockSerializable;
 import brickGame.View.Score;
 import brickGame.View.UserInterface;
 import javafx.application.Application;
@@ -171,9 +172,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
 
 
-        // Add the pause menu to the main layout
-//        layeredRoot.getChildren().add(pauseMenuVBox);
-
         // Add the pause menu to the layered root but make it invisible initially
         pauseMenuVBox.setVisible(false);
 
@@ -293,7 +291,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     }
 
-
     /**
      * Attaches a hover sound effect listener to a button.
      * @param button The button to attach the listener to.
@@ -323,7 +320,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < level + 1; j++) {
                 int r = new Random().nextInt(500);
-
 
                 int type;
                 if (r % 10 == 1) {
@@ -373,12 +369,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (engine.isPaused()) {
             engine.resume();
             pauseMenuVBox.setVisible(false);
-//            System.out.println(engine.isPaused());
             SoundEffectUtil.playBackgroundMusic(); // Resume the background sound
         } else {
             engine.pause();
             pauseMenuVBox.setVisible(true);
-//            System.out.println(engine.isPaused());
             SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
     }
@@ -425,7 +419,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         launch(args);
     }
 
-
     /**
      * Initializes the ball for the game.
      * Sets the initial position and graphical representation of the ball.
@@ -439,7 +432,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         ball.setRadius(ballRadius);
         ball.setFill(loadImagePattern("ball.png"));
     }
-
 
     /**
      * Initializes the player's paddle (breaker) with its starting position and appearance.
@@ -600,10 +592,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             goDownBall = true;
         }
 
-
     }
-
-
 
     /**
      * Checks if all blocks have been destroyed and proceeds to the next level if so.

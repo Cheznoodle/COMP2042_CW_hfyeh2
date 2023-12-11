@@ -1,7 +1,6 @@
-package brickGame;
+package brickGame.Model;
 
-import brickGame.Model.BlockSerializable;
-import brickGame.Model.Main;
+import brickGame.View.BlockSerializable;
 
 import java.io.File;
 import java.io.FileInputStream;
