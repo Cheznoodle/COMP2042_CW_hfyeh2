@@ -84,29 +84,41 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 * Execute `Main.java` from the `brickGame.Model` package to start the game.
 
 # Implemented and Working Properly:
-1) **Added Background Image** (A football field background is displayed as the background image).
+1) **Added Background Image**
+   *A football field background is displayed as the background image.
    
-2) **Added Background Sound** (The wii game music track is played as the background sound.
+3) **Added Background Sound**
+   *The wii game music track is played as the background sound.
  
-3) **Added Game Start Menu** (Three buttons that display "Load Game", "Start New Game", and "Exit Game" after the game just started running).
+5) **Added Game Start Menu**
+   *Three buttons that display "Load Game", "Start New Game", and "Exit Game" after the game just started running.
  
-4) **Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block** (PNG images will display according to the power-up which is activated by the player).
+7) **Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+   *PNG images will display according to the power-up which is activated by the player.
  
-5) **Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block** (mp3 sound effects work simultaneously some when a power-up is activated by the player).
+9) **Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+    *mp3 sound effects work simultaneously some when a power-up is activated by the player.
  
-6) **Added a pause button when the user presses the 'ESC' key** (The player can pause the gameplay by pressing the ESCAPE key).
+11) **Added a pause button when the user presses the 'ESC' key**
+    *The player can pause the gameplay by pressing the ESCAPE key.
  
-7) **Changes font style and background color to heart, score, and level label** (Added CSS styles to change the visual style of the game).
+13) **Changes font style and background color to heart, score, and level label**
+    *Added CSS styles to change the visual style of the game.
  
-8) **Shake stage when the heart is deducted** (The stage will rumble when a heart is deducted from the player).
+15) **Shake stage when the heart is deducted**
+    *The stage will rumble when a heart is deducted from the player.
  
-9) **Mute sound button when the user presses the 'M' key** (The player can mute the sound of the game when he/she presses the M key).
+17) **Mute sound button when the user presses the 'M' key**
+    *The player can mute the sound of the game when he/she presses the M key.
  
-10) **Ball spawn is fixed to the center of the scene** (Ball always spawns in the middle of the scene at the start of every level).
+19) **Ball spawn is fixed to the center of the scene**
+    *Ball always spawns in the middle of the scene at the start of every level.
  
-11) **Added more interactive start menu buttons** (Buttons enlarge when the player hovers over them).
+21) **Added more interactive start menu buttons**
+    *Buttons enlarge when the player hovers over them.
  
-12) **Added sound effects when the user hovers over a button** (A sound effect will play when the player hovers over a button in the start menu).
+23) **Added sound effects when the user hovers over a button**
+    *A sound effect will play when the player hovers over a button in the start menu.
 
 # Implemented but Not Working Properly:
 1) Pause button menu (pause menu will not display).
