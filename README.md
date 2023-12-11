@@ -364,17 +364,17 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 * If you experience any kind of error (runtime or game freeze). Kindly re-run the game.
 
 # Unexpected Problems:
-1) JavaFX runtime error (NullExceptionPointer)
-*Attempt Fix: Tried initializing all the JavaFX elements, but unfortunately, the error persists.
+1) JavaFX runtime error (NullExceptionPointer)  
+      *Attempt Fix: Tried initializing all the JavaFX elements, but unfortunately, the error persists.
 
 2) The ball would freeze but the game is playing in the background.
-*Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
+      *Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
 
 3) Sound effects would occasionally be played halfway or not at all.
-*Attempt Fix: Tried to add a queue for sound effects so it would not class but the bug persists.
+      *Attempt Fix: Tried to add a queue for sound effects so it would not class but the bug persists.
 
 4) The game would end randomly crashing when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many.
-*Attempt Fix: Unknown fix. Could not find the root problem.
+      *Attempt Fix: Unknown fix. Could not find the root problem.
 
 5) The ball velocity is faster After loading a save game file. Also, the levels would occasionally skip from a certain level to a much higher level.
-*Attempt Fix: Tried to save the ball velocity as a variable in the saveGame method but did not work accordingly.
+      *Attempt Fix: Tried to save the ball velocity as a variable in the saveGame method but did not work accordingly.
