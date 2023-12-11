@@ -1,4 +1,4 @@
-package brickGame;
+package brickGame.View;
 
 import brickGame.Model.Main;
 import javafx.animation.KeyFrame;

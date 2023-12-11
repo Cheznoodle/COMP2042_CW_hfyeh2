@@ -1,5 +1,6 @@
 package brickGame;
 
+import brickGame.Model.BlockSerializable;
 import brickGame.Model.Main;
 
 import java.io.File;

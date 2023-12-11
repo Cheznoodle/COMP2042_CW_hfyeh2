@@ -7,4 +7,6 @@ module brickGame {
     exports brickGame;
     exports brickGame.Model;
     opens brickGame.Model to javafx.fxml;
+    exports brickGame.View;
+    opens brickGame.View to javafx.fxml;
 }

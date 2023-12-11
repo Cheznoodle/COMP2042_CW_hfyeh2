@@ -1,9 +1,8 @@
 package brickGame.Model;
 
-import brickGame.Block;
-import brickGame.BlockSerializable;
+import brickGame.View.Block;
 import brickGame.Bonus;
-import brickGame.Score;
+import brickGame.View.Score;
 import brickGame.View.UserInterface;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -158,7 +157,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         pauseMenuVBox = UserInterface.initializePauseMenu(primaryStage, sceneWidth, sceneHeight, togglePauseAction);
 
         // Add the pause menu to the main layout
-        layeredRoot.getChildren().add(pauseMenuVBox);
+//        layeredRoot.getChildren().add(pauseMenuVBox);
 
         // Add the pause menu to the layered root but make it invisible initially
         pauseMenuVBox.setVisible(false);
@@ -195,7 +194,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         heartLabel.setId("heartLabel");
         levelLabel.setId("levelLabel");
 
-        root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame);
+        root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel, load, newGame, exitGame, pauseMenuVBox);
 
         for (Block block : blocks) {
             root.getChildren().add(block.getRect());
@@ -359,10 +358,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (engine.isPaused()) {
             engine.resume();
             pauseMenuVBox.setVisible(false);
+            System.out.println(engine.isPaused());
             SoundEffectUtil.playBackgroundMusic(); // Resume the background sound
         } else {
             engine.pause();
             pauseMenuVBox.setVisible(true);
+            System.out.println(engine.isPaused());
             SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
     }
