@@ -85,39 +85,51 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 
 # Implemented and Working Properly:
 1) **Added Background Image**
+   
    *A football field background is displayed as the background image.
    
-3) **Added Background Sound**
+2) **Added Background Sound**
+   
    *The wii game music track is played as the background sound.
  
-5) **Added Game Start Menu**
+3) **Added Game Start Menu**
+   
    *Three buttons that display "Load Game", "Start New Game", and "Exit Game" after the game just started running.
  
-7) **Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+4) **Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+   
    *PNG images will display according to the power-up which is activated by the player.
  
-9) **Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+5) **Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
+    
     *mp3 sound effects work simultaneously some when a power-up is activated by the player.
  
-11) **Added a pause button when the user presses the 'ESC' key**
+6) **Added a pause button when the user presses the 'ESC' key**
+    
     *The player can pause the gameplay by pressing the ESCAPE key.
  
-13) **Changes font style and background color to heart, score, and level label**
+7) **Changes font style and background color to heart, score, and level label**
+    
     *Added CSS styles to change the visual style of the game.
  
-15) **Shake stage when the heart is deducted**
+8) **Shake stage when the heart is deducted**
+    
     *The stage will rumble when a heart is deducted from the player.
  
-17) **Mute sound button when the user presses the 'M' key**
+9) **Mute sound button when the user presses the 'M' key**
+    
     *The player can mute the sound of the game when he/she presses the M key.
  
-19) **Ball spawn is fixed to the center of the scene**
+10) **Ball spawn is fixed to the center of the scene**
+    
     *Ball always spawns in the middle of the scene at the start of every level.
  
-21) **Added more interactive start menu buttons**
+11) **Added more interactive start menu buttons**
+    
     *Buttons enlarge when the player hovers over them.
  
-23) **Added sound effects when the user hovers over a button**
+12) **Added sound effects when the user hovers over a button**
+    
     *A sound effect will play when the player hovers over a button in the start menu.
 
 # Implemented but Not Working Properly:
