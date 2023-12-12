@@ -4,13 +4,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
 import java.io.Serializable;
 
 /**
- * The {@code Block} class represents a block in a brick game.
- * Each block is characterized by its position in the grid (row and column),
- * its color, and its type. Blocks can be hit by a ball, which may alter their state.
+ * Represents a block in a brick-breaking game.
+ * Each block is defined by its position on the grid, color, and type.
+ * The block can interact with a ball, which may lead to changes in the block's state (like being destroyed).
  */
 public class Block implements Serializable {
 
@@ -42,12 +41,12 @@ public class Block implements Serializable {
     private static final int paddingH = 50;
 
     /**
-     * Constructs a new Block at a specified position in the grid, with a given color and type.
+     * Constructs a Block object with specified row, column, color, and type.
      *
-     * @param row    The row in the grid where the block is placed.
-     * @param column The column in the grid where the block is placed.
+     * @param row    The row position of the block on the grid.
+     * @param column The column position of the block on the grid.
      * @param color  The color of the block.
-     * @param type   The type of the block, which determines its behavior and appearance.
+     * @param type   The type of the block, determining its behavior and appearance.
      */
     public Block(int row, int column, Color color, int type) {
         // Initialize the block's properties
@@ -60,8 +59,8 @@ public class Block implements Serializable {
     }
 
     /**
-     * Draws the block by setting its visual representation.
-     * This includes calculating its position and applying a color or pattern based on its type.
+     * Draws the block by setting its visual representation on the game grid.
+     * Applies a color or pattern to the block based on its type.
      */
     private void draw() {
         // Set the block's position based on its grid location
@@ -85,10 +84,10 @@ public class Block implements Serializable {
     }
 
     /**
-     * Loads an image pattern based on the block's type.
+     * Loads an image pattern for the block based on its type.
      *
      * @param type The type of the block.
-     * @return An ImagePattern to fill the block, or null if there's no specific pattern.
+     * @return An ImagePattern object if a specific pattern is associated with the type; otherwise, null.
      */
     private ImagePattern loadImagePatternBasedOnType(int type) {
         // Determine the image path based on the block type
@@ -112,10 +111,11 @@ public class Block implements Serializable {
     }
 
     /**
-     * Checks if a ball hits this block.
+     * Checks if the block is hit by the ball.
      *
      * @param xBall The x-coordinate of the ball.
      * @param yBall The y-coordinate of the ball.
+     * @param ballRadius The radius of the ball.
      * @return An integer representing the side of the block that was hit, or NO_HIT if not hit.
      */
     public int checkHitToBlock(double xBall, double yBall, double ballRadius) {

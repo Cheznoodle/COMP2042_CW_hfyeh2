@@ -42,58 +42,45 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     // Class variable declarations
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-
+    // Game state variables
     private int level = 0;
-
     private double xBreak = 0.0f;
     private double centerBreakX;
     private double yBreak = 640.0f;
-
     private MediaPlayer backgroundMediaPlayer;
-
+    // Game environment dimensions and settings
     private final int breakWidth     = 130;
     private final int breakHeight    = 30;
     private final int halfBreakWidth = breakWidth / 2;
-
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
-
+    // UI components
     private Button load;
     private Button newGame;
     private Button exitGame;
-
     private StackPane layeredRoot; // New StackPane to manage layers
     private VBox startMenuVBox; // Class-level variable for the VBox
-
     private VBox pauseMenuVBox; // Pause menu container
-
+    // Game elements
     private Circle ball;
     private double xBall;
     private double yBall;
-
     private boolean isGoldStatus = false;
     private boolean isExistHeartBlock = false;
-
     private Rectangle rect;
     private final int       ballRadius = 10;
-
     private int destroyedBlockCount = 0;
-
     private final double v = 1.000;
-
     private int  heart    = 3;
     private int  score    = 0;
     private long time     = 0;
     private long hitTime  = 0;
     private long goldTime = 0;
-
     private GameEngine engine;
     public static String savePath    = "D:/save/save.mdds";
     public static String savePathDir = "D:/save/";
-
     private final ArrayList<Block> blocks = new ArrayList<>();
     private final ArrayList<Bonus> chocos = new ArrayList<>();
-
     private final Color[]          colors = new Color[]{
             Color.MAGENTA,
             Color.RED,
@@ -113,13 +100,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private Label            scoreLabel;
     private Label            heartLabel;
     private Label            levelLabel;
-
     private boolean loadFromSave = false;
-
     private GameController gameController;
-
     Stage  primaryStage;
-
 
     /**
      * Starts and initializes the game application.
@@ -350,7 +333,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     /**
      * Updates the position of the player's paddle in response to user input.
-     * @param delta The amount to move the paddle.
+     * This method adjusts the paddle's horizontal position based on the specified delta value,
+     * ensuring that the paddle stays within the bounds of the game scene.
+     *
+     * @param delta The amount to move the paddle. Positive values move the paddle to the right,
+     *              while negative values move it to the left.
      */
     public void updatePaddlePosition(int delta) {
         // Update xBreak within the bounds of the scene
@@ -361,16 +348,18 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     /**
-     * Toggles the game's pause state, pausing or resuming the game.
+     * Toggles the game's pause state. When invoked, it pauses the game if it is currently running,
+     * or resumes the game if it is currently paused.
+     * This method also handles the visibility of the pause menu and the state of the background music.
      */
     public void togglePause() {
         if (engine.isPaused()) {
             engine.resume();
-            pauseMenuVBox.setVisible(false);
+            pauseMenuVBox.setVisible(false); // Hides the pause menu when the game is resumed
             SoundEffectUtil.playBackgroundMusic(); // Resume the background sound
         } else {
             engine.pause();
-            pauseMenuVBox.setVisible(true);
+            pauseMenuVBox.setVisible(true); // Displays the pause menu when the game is paused.
             SoundEffectUtil.pauseBackgroundMusic(); // Pause the background sound
         }
     }
@@ -408,7 +397,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
     }
 
-
     /**
      * Main method to launch the JavaFX application.
      * @param args Command-line arguments.
@@ -432,15 +420,17 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     /**
-     * Initializes the player's paddle (breaker) with its starting position and appearance.
+     * Initializes the player's paddle, often referred to as the "breaker", with its starting position and graphical appearance.
+     * This method sets up the paddle as a rectangle with predefined dimensions and positions it at the bottom of the game scene.
+     * It also applies a graphical pattern to the paddle for visual appeal.
      */
     private void initBreak() {
         rect = new Rectangle();
-        rect.setWidth(breakWidth);
-        rect.setHeight(breakHeight);
-        rect.setX(xBreak);
-        rect.setY(yBreak);
-        rect.setFill(loadImagePattern("block.png"));
+        rect.setWidth(breakWidth); // Sets the width of the paddle
+        rect.setHeight(breakHeight); // Sets the height of the paddle
+        rect.setX(xBreak); // Positions the paddle horizontally based on the starting X-coordinate
+        rect.setY(yBreak); // Positions the paddle vertically at a predefined Y-coordinate.
+        rect.setFill(loadImagePattern("block.png")); // Applies an image pattern to the paddle for visual styling.
     }
 
     /**
@@ -453,7 +443,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private ImagePattern loadImagePattern(String imagePath) {
         return new ImagePattern(new Image(imagePath));
     }
-
     private boolean goDownBall                  = true;
     private boolean goRightBall                 = true;
     private boolean collideToBreak = false;
@@ -464,10 +453,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean collideToBottomBlock = false;
     private boolean collideToLeftBlock = false;
     private boolean collideToTopBlock = false;
-
     private double vX = 1.000;
     private double vY = 1.000;
 
+    /**
+     * Resets all collision flags to their default state.
+     * This method is used to clear any existing collision states of the ball with various objects,
+     * ensuring that collision detection can occur afresh in each frame of the game.
+     */
     private void resetCollideFlags() {
 
         collideToBreak = false;
@@ -481,45 +474,52 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         collideToTopBlock = false;
     }
 
+    /**
+     * Updates the physics of the ball, including its movement and collision handling.
+     * This method determines the ball's behavior based on its position, collisions with the paddle,
+     * walls, and blocks, and adjusts its direction and speed accordingly.
+     */
     private void setPhysicsToBall() {
-
+        // Ball movement: vertical direction
         if (goDownBall) {
-            yBall += vY;
+            yBall += vY; // Moves the ball downwards if directed downwards
         } else {
-            yBall -= vY;
+            yBall -= vY; // Moves the ball upwards if not directed downwards
         }
 
+        // Ball movement: horizontal direction
         if (goRightBall) {
-            xBall += vX;
+            xBall += vX; // Moves the ball to the right if directed to the right
         } else {
-            xBall -= vX;
+            xBall -= vX; // Moves the ball to the left if not directed to the right
         }
 
+        // Collision handling with the top boundary of the scene
         if (yBall <= 0) {
-
             resetCollideFlags();
             goDownBall = true;
             return;
         }
+
+        // Collision handling with the bottom boundary of the scene
         if (yBall >= sceneHeight) {
             goDownBall = false;
             if (!isGoldStatus) {
-
+                // Code for handling when the ball misses the paddle and is not in gold status
                 heart--;
                 SoundEffectUtil.playMinusHeartSoundEffect();
                 StageEffectUtil.shakeStage(primaryStage);
                 ImageEffectUtil.showHeartDeductedImage(root, sceneWidth, sceneHeight);
 
-
+                // Game over condition check
                 if (heart == 0) {
                     new Score().showGameOver(this);
                     engine.stop();
                 }
-
             }
-
         }
 
+        // Collision handling with the paddle
         if (yBall >= yBreak - ballRadius) {
 
             if (xBall >= xBreak && xBall <= xBreak + breakWidth) {
@@ -528,36 +528,34 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 collideToBreak = true;
                 goDownBall = false;
 
+                // Code to adjust the ball's horizontal velocity based on collision point
                 double relation = (xBall - centerBreakX) / (breakWidth / 2.0);
 
+                // Adjusting ball's horizontal speed based on collision point with paddle
                 if (Math.abs(relation) <= 0.3) {
-
                     vX = Math.abs(relation);
                 } else if (Math.abs(relation) > 0.3 && Math.abs(relation) <= 0.7) {
                     vX = (Math.abs(relation) * 1.5) + (level / 3.500);
-
                 } else {
                     vX = (Math.abs(relation) * 2) + (level / 3.500);
-
                 }
 
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
-
             }
         }
 
+        // Collision handling with the right and left walls
         if (xBall >= sceneWidth) {
             resetCollideFlags();
-
             collideToRightWall = true;
         }
 
         if (xBall <= 0) {
             resetCollideFlags();
-
             collideToLeftWall = true;
         }
 
+        // Updating ball direction after collisions
         if (collideToBreak) {
             goRightBall = collideToBreakAndMoveToRight;
         }

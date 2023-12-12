@@ -9,9 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Handles loading of saved game state from a file.
- * This class is responsible for reading the game's state, including various status flags,
- * level information, scores, positions, and more, from a serialized file.
+ * Responsible for loading the saved game state from a file.
+ * This class retrieves serialized data related to the game's state including flags,
+ * level information, scores, positions, and more, and updates the current game state accordingly.
  */
 public class LoadSave {
     // Logger for recording any errors that occur during the file loading process.
@@ -42,16 +42,16 @@ public class LoadSave {
     public long time;
     public long goldTime;
     public double vX;
-    public ArrayList<BlockSerializable> blocks;
+    public ArrayList<BlockSerializable> blocks; // List of serializable blocks
 
     /**
-     * Reads the saved game state from a file and updates the game state accordingly.
-     * Deserializes various game attributes from a file and loads them into the game.
+     * Reads the saved game state from a file and updates the game state attributes.
+     * Deserializes attributes such as level, scores, positions, and block information from the file.
      */
     public void read() {
-        File file = new File(Main.savePath);
+        File file = new File(Main.savePath); // Path to the saved game file
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
-            // Reading and setting each saved attribute of the game
+            // Deserializing each game attribute from the file
             level = inputStream.readInt();
             score = inputStream.readInt();
             heart = inputStream.readInt();
@@ -77,7 +77,7 @@ public class LoadSave {
             collideToLeftBlock = inputStream.readBoolean();
             collideToTopBlock = inputStream.readBoolean();
 
-            // Safe type casting with validation for deserializing the list of blocks
+            // Deserializing the list of blocks with type validation
             Object readObject = inputStream.readObject();
             if (readObject instanceof ArrayList<?> tempList) {
                 if (!tempList.isEmpty() && tempList.get(0) instanceof BlockSerializable) {

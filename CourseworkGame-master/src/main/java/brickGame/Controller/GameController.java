@@ -3,14 +3,13 @@ package brickGame.Controller;
 import brickGame.Direction;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import brickGame.Model.Main;
 
 /**
- * This class serves as the controller for the game, handling user input through keyboard events.
- * It interacts with the Main class to update the game state based on the player's actions.
+ * GameController handles keyboard inputs for the game and updates the game state accordingly.
+ * It provides functionality to move the paddle, save the game state, toggle sound, and pause the game.
  */
 public class GameController implements EventHandler<KeyEvent> {
 
@@ -18,19 +17,19 @@ public class GameController implements EventHandler<KeyEvent> {
     private Main mainClass;
 
     /**
-     * Constructs a GameController object.
+     * Constructor for GameController.
      *
-     * @param main The main class of the game, used to invoke game-related methods.
+     * @param main The main class instance of the game. This is used to invoke game-related methods.
      */
     public GameController(Main main) {
         this.mainClass = main;
     }
 
     /**
-     * Handles keyboard events for game controls.
-     * Key actions include moving left/right, pausing the game, saving the game, and toggling sound.
+     * Handles key events generated from user input.
+     * It processes input such as moving left/right, pausing the game, saving the game state, and toggling sound.
      *
-     * @param event The keyboard event triggered by the player's input.
+     * @param event The keyboard event triggered by the player.
      */
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
@@ -41,7 +40,7 @@ public class GameController implements EventHandler<KeyEvent> {
                 move(Direction.RIGHT);
                 break;
             case DOWN:
-                // setPhysicsToBall();
+
                 break;
             case S:
                 mainClass.saveGame(); // Save the current game state.
@@ -56,19 +55,19 @@ public class GameController implements EventHandler<KeyEvent> {
     }
 
     /**
-     * Initiates movement of the player's paddle in the specified direction.
-     * The movement is handled in a separate thread to ensure smooth control.
+     * Initiates the movement of the paddle based on the given direction.
+     * The movement is executed in a separate thread to ensure responsive and smooth control.
      *
-     * @param direction The direction in which the paddle should move (LEFT or RIGHT).
+     * @param direction The desired direction for the paddle movement (LEFT or RIGHT).
      */
     public void move(Direction direction) {
         new Thread(() -> {
             int sleepTime = 4; // Initial delay time between movement steps
             for (int i = 0; i < 30; i++) { // Loop to provide continuous movement
                 if (direction == Direction.RIGHT) {
-                    mainClass.updatePaddlePosition(1); // Move right
+                    mainClass.updatePaddlePosition(1); // Moves the paddle to the right.
                 } else if (direction == Direction.LEFT) {
-                    mainClass.updatePaddlePosition(-1); // Move left
+                    mainClass.updatePaddlePosition(-1); // Moves the paddle to the left.
                 }
                 try {
                     Thread.sleep(sleepTime); // Pause to control movement speed
