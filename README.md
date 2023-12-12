@@ -5,7 +5,10 @@
 Welcome to "Break Bricker," a modern twist on the classic brick-breaking game that has captivated players for generations. Merging simple yet engaging gameplay with a vibrant visual style, "Break Bricker" is an arcade-style game that challenges players to destroy a wall of bricks by skillfully directing a bouncing ball with a paddle. Perfect for gamers of all ages, it combines strategy, precision, and quick reflexes, offering endless hours of entertainment.
 
 ### How To Play:
-* Use the paddle at the bottom of the screen to keep the ball in play and direct it towards the bricks.
+* Use the <-, -> keys to control the paddle at the bottom of the screen to keep the ball in play and direct it towards the bricks.
+* Press the ESC key if you wish to pause the game & press it again if you wish the resume.
+* Press the M key if you wish to mute all sounds from the game & press it again if you wish the unmute the sound.
+* Press the S key if you wish to save the game.
 * Break all the bricks on the screen to progress to the next level.
 * Avoid letting the ball fall below the paddle - losing all balls means losing a life.
 * Strategically use power-ups to elevate your gaming experience.
@@ -18,80 +21,81 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 
 ## Step 1: Installing IntelliJ IDEA
 
-1. Download IntelliJ IDEA:
-* Visit the [JetBrains Website](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
-
-2. Install IntelliJ IDEA:
-* Run the downloaded installer and follow the installation prompts.
+   1. Download IntelliJ IDEA:
+      * Visit the [JetBrains Website](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
+   
+   2. Install IntelliJ IDEA:
+      * Run the downloaded installer and follow the installation prompts.
 
 ## Step 2: Configuring JavaFX SDK
 
-1. Download JavaFX SDK:
-* Visit the [OpenJFX Website](https://openjfx.io/) and download the latest JavaFX SDK.
-
-2. Extract JavaFX SDK:
-* Extract the downloaded ZIP file to a desired location on your system.
-
-3. Configure JavaFX in IntelliJ IDEA:
-* Open IntelliJ IDEA.
-* Create a new project or open an existing one.
-* Go to `File > Project Structure > Libraries`.
-* Click the `+` sign and select `Java`.
-* Navigate to the `lib` folder inside the extracted JavaFX SDK directory, select it, and click `OK`.
+   1. Download JavaFX SDK:
+      * Visit the [OpenJFX Website](https://openjfx.io/) and download the latest JavaFX SDK.
+   
+   2. Extract JavaFX SDK:
+      * Extract the downloaded ZIP file to a desired location on your system.
+   
+   3. Configure JavaFX in IntelliJ IDEA:
+      * Open IntelliJ IDEA.
+      * Create a new project or open an existing one.
+      * Go to `File > Project Structure > Libraries`.
+      * Click the `+` sign and select `Java`.
+      * Navigate to the `lib` folder inside the extracted JavaFX SDK directory, select it, and click `OK`.
 
 ## Step 3: Setting up JDK in IntelliJ IDEA
 
-1. Open IntelliJ IDEA:
-* Launch IntelliJ IDEA on your computer.
-
-2. Access Project Structure:
-* If you have a project open, go to `File > Project Structure`.
-* For a new setup without a project, go to `Configure > Project Defaults > Project Structure`.
-
-3. Add JDK 19:
-* In the `Project Structure` dialog, select the `SDKs` under the `Platform Settings`.
-* Click the `+` sign at the top of the pane and select `JDK`.
-* In the file chooser, navigate to the location where JDK 19 is installed on your system and select the JDK’s root directory. IntelliJ IDEA will automatically detect the JDK version.
-* Click `OK` to add JDK 19 to IntelliJ IDEA.
+   1. Open IntelliJ IDEA:
+      * Launch IntelliJ IDEA on your computer.
+   
+   2. Access Project Structure:
+      * If you have a project open, go to `File > Project Structure`.
+      * For a new setup without a project, go to `Configure > Project Defaults > Project Structure`.
+   
+   3. Add JDK 19:
+      * In the `Project Structure` dialog, select the `SDKs` under the `Platform Settings`.
+      * Click the `+` sign at the top of the pane and select `JDK`.
+      * In the file chooser, navigate to the location where JDK 19 is installed on your system and select the JDK’s root directory. IntelliJ IDEA will automatically detect the JDK version.
+      * Click `OK` to add JDK 19 to IntelliJ IDEA.
 
 ## Step 4: Configuring Your Project to Use JDK 19
 
-1. Set Project SDK:
-* Still in the `Project Structure` dialog, select `Project` from the left sidebar.
-* In the `Project SDK` section, select the newly added JDK 19 from the dropdown list.
-
-2. Set Project Language Level:
-* In the same `Project` settings, adjust the `Project language level` to match JDK 19. Choose the level that provides the features you need for development.
-
-3. Apply and Close:
-* Click `Apply` and then `OK` to save the changes and close the dialog.
+   1. Set Project SDK:
+      * Still in the `Project Structure` dialog, select `Project` from the left sidebar.
+      * In the `Project SDK` section, select the newly added JDK 19 from the dropdown list.
+      
+   2. Set Project Language Level:
+      * In the same `Project` settings, adjust the `Project language level` to match JDK 19. Choose the level that provides the features you need for development.
+   
+   3. Apply and Close:
+      * Click `Apply` and then `OK` to save the changes and close the dialog.
 
 ## Step 5: Configuring Maven
-1. Configure Maven in IntelliJ:
-* Go to `File > Settings`.
-* Search for "Maven" and ensure the "Maven home directory" points to the correct installation path.
 
-2. Apply and Confirm:
-* Click `Apply` and `OK` to save the Maven configuration.
+   1. Configure Maven in IntelliJ:
+      * Go to `File > Settings`.
+      * Search for "Maven" and ensure the "Maven home directory" points to the correct installation path.
+      
+   2. Apply and Confirm:
+      * Click `Apply` and `OK` to save the Maven configuration.
 
 ## Step 6: Import Maven Dependencies
 
-1. Open Maven Tool Window:
-* Use the Maven tab in the right sidebar of IntelliJ IDEA.
-
-2. Reimport All Maven Projects:
-* Click the refresh button to reimport all Maven projects. This action downloads and sets up all the necessary dependencies.
+   1. Open Maven Tool Window:
+      * Use the Maven tab in the right sidebar of IntelliJ IDEA.
+   
+   2. Reimport All Maven Projects:
+      * Click the refresh button to reimport all Maven projects. This action downloads and sets up all the necessary dependencies.
 
 ### Note: 
-* If after reimporting Maven Library/Dependencies, you experience errors & are unable to run the Main.java. Kindly re-import the javafx sdk library.
+* If after reimporting Maven Library/Dependencies, you experience errors & are unable to run the Main.java. Kindly add & re-import the javafx sdk library.
 
 ## Step 7: Build and Run the Project
 
-1. Build the Project:
-* Use IntelliJ IDEA's build feature to compile the project.
-
-2. Run the Application:
-* Execute `Main.java` from the `brickGame.Model` package to start the game.
+   1. Build the Project:
+      * Use IntelliJ IDEA's build feature to compile the project.
+   
+   2. Run the Application:
+      * Execute `Main.java` from the `brickGame.Model` package to start the game.
 
 # Implemented and Working Properly:
 
@@ -241,11 +245,11 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
    
       **Changes made:**
       
-         -> Applied encapsulation
+         - Applied encapsulation
          
-         -> Added constants
+         - Added constants
          
-         -> Added resource management
+         - Added resource management
       
       **Explanation:**
       
@@ -402,25 +406,25 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
          -> Flexibility: It is easier to make changes in the game mechanics or graphics independently.
 
 ## Note:
-* If you experience any kind of error (runtime or game freeze). Kindly re-run the game.
+* If you experience any kind of error (runtime or game freeze). Kindly close & re-run the game.
 
 # Unexpected Problems:
 1) JavaFX runtime error (NullExceptionPointer)
      
-      *Attempt Fix: Tried initializing all the JavaFX elements, but unfortunately, the error persists.
+      * Attempt Fix: Tried initializing all the JavaFX elements, but unfortunately, the error persists.
 
 2) The ball would freeze but the game is playing in the background.
    
-      *Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
+      * Attempt Fix: Unable to detect a bug, as there is no error message or warning in the terminal.
 
 3) Sound effects would occasionally be played halfway or not at all.
    
-      *Attempt Fix: Tried to add a queue for sound effects so it would not class but the bug persists.
+      * Attempt Fix: Tried to add a queue for sound effects so it would not class but the bug persists.
 
 4) The game would end randomly crashing when the ball hit the bottom, causing the heart to be deducted even though the heart counter was many.
    
-      *Attempt Fix: Unknown fix. Could not find the root problem.
+      * Attempt Fix: Unknown fix. Could not find the root problem.
 
 5) The ball velocity is faster After loading a save game file. Also, the levels would occasionally skip from a certain level to a much higher level.
     
-      *Attempt Fix: Tried to save the ball velocity as a variable in the saveGame method but did not work accordingly.
+      * Attempt Fix: Tried to save the ball velocity as a variable in the saveGame method but did not work accordingly.
