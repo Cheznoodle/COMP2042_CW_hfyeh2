@@ -1,8 +1,6 @@
 package brickGame.Model;
 
-import brickGame.View.Block;
 import brickGame.View.Bonus;
-import brickGame.View.BlockSerializable;
 import brickGame.View.Score;
 import brickGame.View.UserInterface;
 import javafx.application.Application;

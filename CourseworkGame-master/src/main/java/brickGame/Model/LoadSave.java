@@ -1,7 +1,5 @@
 package brickGame.Model;
 
-import brickGame.View.BlockSerializable;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
