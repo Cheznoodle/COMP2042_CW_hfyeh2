@@ -86,7 +86,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
    2. Reimport All Maven Projects:
       * Click the refresh button to reimport all Maven projects. This action downloads and sets up all the necessary dependencies.
 
-### Note: 
+## Note: 
 
 * If after reimporting Maven Library/Dependencies, you experience errors & are unable to run the Main.java. Kindly add & re-import the javafx sdk library.
 
