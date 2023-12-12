@@ -9,9 +9,9 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 /**
- * Manages the display of scores and messages within the game.
- * This class is responsible for showing score updates, game-over messages, and win messages
- * with animation effects on the game screen.
+ * Manages the display of scores, messages, and game status notifications within the game.
+ * This class is responsible for animating and showing score updates, game-over messages,
+ * win messages, and other interactive elements on the game screen.
  */
 public class Score {
 
@@ -23,12 +23,13 @@ public class Score {
     private static final double SCALE_INCREMENT = 0.1;
 
     /**
-     * Displays a score indicator at a specified location in the game.
+     * Displays a score indicator at a specified location on the game screen.
+     * Animates the score label for visual emphasis.
      *
-     * @param x     The x-coordinate for the score display.
-     * @param y     The y-coordinate for the score display.
-     * @param score The score to display.
-     * @param main  Reference to the main game class for accessing the game's root pane.
+     * @param x     The x-coordinate where the score should be displayed.
+     * @param y     The y-coordinate where the score should be displayed.
+     * @param score The numerical value of the score to be displayed.
+     * @param main  Reference to the main game class, used for adding the label to the game's root pane.
      */
     public void show(final double x, final double y, int score, final Main main) {
         String sign = (score >= 0) ? "+" : "";
@@ -37,10 +38,11 @@ public class Score {
     }
 
     /**
-     * Displays a message on the screen at a predefined position.
+     * Displays a text message on the game screen.
+     * The message is displayed at a predefined central position with animation.
      *
-     * @param message The message to be displayed.
-     * @param main    Reference to the main game class for accessing the game's root pane.
+     * @param message The text message to be displayed.
+     * @param main    Reference to the main game class, used for adding the label to the game's root pane.
      */
     public void showMessage(String message, final Main main) {
         Label label = createLabel(message, MESSAGE_X, MESSAGE_Y);
@@ -48,12 +50,13 @@ public class Score {
     }
 
     /**
-     * Creates a label with specified text and position.
+     * Creates and returns a new label with specified text and position.
+     * This label is used for displaying scores and messages.
      *
-     * @param text The text for the label.
-     * @param x    The x-coordinate for the label.
-     * @param y    The y-coordinate for the label.
-     * @return The created label.
+     * @param text The text to be displayed in the label.
+     * @param x    The x-coordinate for positioning the label.
+     * @param y    The y-coordinate for positioning the label.
+     * @return The newly created label.
      */
     private Label createLabel(String text, double x, double y) {
         Label label = new Label(text);
@@ -63,10 +66,11 @@ public class Score {
     }
 
     /**
-     * Animates a label by increasing its scale and fading it out, then adds it to the game's root pane.
+     * Animates a label with scaling and fading effects, then adds it to the game's root pane.
+     * This method is used to visually emphasize score updates and messages.
      *
-     * @param label The label to animate.
-     * @param main  Reference to the main game class for adding the label to the game's root pane.
+     * @param label The label to animate and display.
+     * @param main  Reference to the main game class, used for adding the animated label to the game's root pane.
      */
     private void animateAndAddLabel(final Label label, final Main main) {
         Platform.runLater(() -> {
@@ -83,9 +87,10 @@ public class Score {
     }
 
     /**
-     * Displays the 'Game Over' message with a restart button on the screen.
+     * Displays the 'Game Over' message on the screen along with options to restart or exit the game.
+     * This method is called when the player loses all lives or fails to complete the game.
      *
-     * @param main Reference to the main game class for adding elements to the game's root pane.
+     * @param main Reference to the main game class, used for adding elements to the game's root pane.
      */
     public void showGameOver(final Main main) {
         Platform.runLater(() -> {
@@ -113,8 +118,9 @@ public class Score {
 
     /**
      * Displays the 'You Win' message on the screen.
+     * This method is called when the player successfully completes the game.
      *
-     * @param main Reference to the main game class for adding elements to the game's root pane.
+     * @param main Reference to the main game class, used for adding the winning message to the game's root pane.
      */
     public void showWin(final Main main) {
         Platform.runLater(() -> {

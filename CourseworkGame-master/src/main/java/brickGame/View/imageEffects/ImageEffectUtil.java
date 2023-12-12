@@ -236,10 +236,5 @@ public class ImageEffectUtil {
             fadeOut.setOnFinished(event -> root.getChildren().remove(imageContainer));
         });
 
-
     }
-
-
-
-
 }
