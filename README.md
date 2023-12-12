@@ -16,7 +16,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 * Ensure Java JDK 19 is installed on your system. If not, download and install it from the [Oracle website](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) or any other preferred source
 * Internet connection for downloading software and dependencies.
 
-### Step 1: Installing IntelliJ IDEA
+## Step 1: Installing IntelliJ IDEA
 
 1. Download IntelliJ IDEA:
 * Visit the [JetBrains Website](https://www.jetbrains.com/idea/download/?section=windows) and download the latest version of IntelliJ IDEA (Community or Ultimate Edition).
@@ -24,7 +24,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 2. Install IntelliJ IDEA:
 * Run the downloaded installer and follow the installation prompts.
 
-### Step 2: Configuring JavaFX SDK
+## Step 2: Configuring JavaFX SDK
 
 1. Download JavaFX SDK:
 * Visit the [OpenJFX Website](https://openjfx.io/) and download the latest JavaFX SDK.
@@ -39,7 +39,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 * Click the `+` sign and select `Java`.
 * Navigate to the `lib` folder inside the extracted JavaFX SDK directory, select it, and click `OK`.
 
-### Step 3: Setting up JDK in IntelliJ IDEA
+## Step 3: Setting up JDK in IntelliJ IDEA
 
 1. Open IntelliJ IDEA:
 * Launch IntelliJ IDEA on your computer.
@@ -54,7 +54,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 * In the file chooser, navigate to the location where JDK 19 is installed on your system and select the JDK’s root directory. IntelliJ IDEA will automatically detect the JDK version.
 * Click `OK` to add JDK 19 to IntelliJ IDEA.
 
-### Step 4: Configuring Your Project to Use JDK 19
+## Step 4: Configuring Your Project to Use JDK 19
 
 1. Set Project SDK:
 * Still in the `Project Structure` dialog, select `Project` from the left sidebar.
@@ -66,7 +66,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 3. Apply and Close:
 * Click `Apply` and then `OK` to save the changes and close the dialog.
 
-### Step 5: Configuring Maven
+## Step 5: Configuring Maven
 1. Configure Maven in IntelliJ:
 * Go to `File > Settings`.
 * Search for "Maven" and ensure the "Maven home directory" points to the correct installation path.
@@ -74,7 +74,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 2. Apply and Confirm:
 * Click `Apply` and `OK` to save the Maven configuration.
 
-### Step 6: Import Maven Dependencies
+## Step 6: Import Maven Dependencies
 
 1. Open Maven Tool Window:
 * Use the Maven tab in the right sidebar of IntelliJ IDEA.
@@ -85,7 +85,7 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
 ### Note: 
 * If after reimporting Maven Library/Dependencies, you experience errors & are unable to run the Main.java. Kindly re-import the javafx sdk library.
 
-### Step 7: Build and Run the Project
+## Step 7: Build and Run the Project
 
 1. Build the Project:
 * Use IntelliJ IDEA's build feature to compile the project.
@@ -190,21 +190,21 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - Enhanced Readability: Makes code easier to understand.
+         - _Enhanced Readability:_ Makes code easier to understand.
          
-         - Reduced Complexity: Simplifies complex code structures.
+         - _Reduced Complexity:_ Simplifies complex code structures.
          
-         - Increased Maintainability: Easier to update and maintain.
+         - _Increased Maintainability:_ Easier to update and maintain.
          
-         - Improved Performance: Optimizes code for efficiency.
+         - _Improved Performance:_ Optimizes code for efficiency.
          
-         - Error Reduction: Helps identify and fix potential bugs.
+         - _Error Reduction:_ Helps identify and fix potential bugs.
          
-         - Conciseness: Reduces boilerplate code.
+         - _Conciseness:_ Reduces boilerplate code.
          
-         - Functional Programming: Facilitates functional programming paradigms in Java.
+         - _Functional Programming:_ Facilitates functional programming paradigms in Java.
          
-         - Scalability: Enhances code scalability with cleaner and more modular code.
+         - _Scalability:_ Enhances code scalability with cleaner and more modular code.
    
 2) Block.java
    
@@ -218,23 +218,23 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - Data Hiding: Prevents outside access to implementation details.
+         - _Data Hiding:_ Prevents outside access to implementation details.
          
-         - Increased Flexibility: Allows internal changes without affecting external code.
+         - _Increased Flexibility:_ Allows internal changes without affecting external code.
          
-         - Enhanced Security: Controls how data is accessed or modified.
+         - _Enhanced Security:_ Controls how data is accessed or modified.
          
-         - Maintainability: Simplifies understanding and maintenance of code.
+         - _Maintainability:_ Simplifies understanding and maintenance of code.
          
-         - Readability: Improves code readability and understanding.
+         - _Readability:_ Improves code readability and understanding.
          
-         - Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
+         - _Avoiding Magic Numbers:_ Replaces unclear literal numbers or strings with named constants.
          
-         - Efficiency: Proper resource handling and disposal to avoid memory leaks.
+         - _Efficiency:_ Proper resource handling and disposal to avoid memory leaks.
          
-         - Error Handling: Ensures resources are closed or released even if errors occur.
+         - _Error Handling:_ Ensures resources are closed or released even if errors occur.
          
-         -Consistency: Standardizes resource usage patterns.
+         - _Consistency:_ Standardizes resource usage patterns.
 
 3) BlockSerializable.java
    
@@ -262,35 +262,35 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - Robustness: Improves application stability by handling runtime errors.
+         - _Robustness:_ Improves application stability by handling runtime errors.
          
-         - Controlled Error Management: Allows centralized management of error handling.
+         - _Controlled Error Management:_ Allows centralized management of error handling.
          
-         - User Communication: Provides meaningful feedback to users on exceptions.
+         - _User Communication:_ Provides meaningful feedback to users on exceptions.
          
-         - Performance: Enhances performance in multi-core systems.
+         - _Performance:_ Enhances performance in multi-core systems.
          
-         - Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
+         - _Asynchronous Processing:_ Enables executing tasks in parallel, improving responsiveness.
          
-         - Resource Sharing: Efficient use of CPU and memory resources.
+         - _Resource Sharing:_ Efficient use of CPU and memory resources.
          
-         - Maintainability: Easier to maintain and modify.
+         - _Maintainability:_ Easier to maintain and modify.
          
-         - Consistency: Ensures uniformity in code logic.
+         - _Consistency:_ Ensures uniformity in code logic.
          
-         - Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
+         - _Reduced Errors:_ Minimizes bugs as changes need to be made in fewer places.
          
-         - Conciseness: Reduces boilerplate code.
+         - _Conciseness:_ Reduces boilerplate code.
          
-         - Functional Programming: Facilitates functional programming paradigms.
+         - _Functional Programming:_ Facilitates functional programming paradigms.
          
-         - Readability: Improves code readability.
+         - _Readability:_ Improves code readability.
          
-         - UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
+         - _UI Responsiveness:_ Keeps the UI responsive by separating long-running tasks from UI updates.
          
-         - Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
+         - _Thread Safety:_ Ensures GUI components are safely managed within the JavaFX thread.
          
-         - Consistency: Maintains consistent state in GUI applications.
+         - _Consistency:_ Maintains consistent state in GUI applications.
 
 5) LoadSave.java
     
@@ -302,17 +302,17 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - Data Integrity: Maintains the quality and accuracy of data.
+         - _Data Integrity:_ Maintains the quality and accuracy of data.
          
-         - Error Prevention: Reduces the likelihood of errors during runtime.
+         - _Error Prevention:_ Reduces the likelihood of errors during runtime.
          
-         - User Feedback: Provides immediate feedback to users for incorrect inputs.
+         - _User Feedback:_ Provides immediate feedback to users for incorrect inputs.
          
-         - Modularity: Separates concerns for clearer, more maintainable code.
+         - _Modularity:_ Separates concerns for clearer, more maintainable code.
          
-         - Testability: Eases testing by isolating file I/O from business logic.
+         - _Testability:_ Eases testing by isolating file I/O from business logic.
          
-         - Reusability: Enhances code reusability and scalability.
+         - _Reusability:_ Enhances code reusability and scalability.
 
 6) Score.java
 
@@ -328,25 +328,25 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - User Experience: Enhances UI interactivity and visual appeal.
+         - _User Experience:_ Enhances UI interactivity and visual appeal.
          
-         - Dynamic Content: Enables the creation of dynamic and responsive interfaces.
+         - _Dynamic Content:_ Enables the creation of dynamic and responsive interfaces.
          
-         - Cleaner Code: Increases readability and reduces complexity.
+         - _Cleaner Code:_ Increases readability and reduces complexity.
          
-         - Easier Maintenance: Simplifies debugging and updating code.
+         - _Easier Maintenance:_ Simplifies debugging and updating code.
          
-         - Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
+         - _Enhanced Reusability:_ Encourages reuse of code through clearer, more concise methods.
          
-         - Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
+         - _Concurrency Control:_ Avoids conflicts and data corruption in multi-threaded environments.
          
-         - Application Stability: Ensures reliable operation under concurrent access.
+         - _Application Stability:_ Ensures reliable operation under concurrent access.
          
-         - Performance: Can improve performance in multi-core systems.
+         - _Performance:_ Can improve performance in multi-core systems.
          
-         - Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
+         - _Enhanced Features:_ Offer more capabilities beyond the standard JavaFX animations.
          
-         - Time Efficiency: Simplify the process of implementing sophisticated animations.
+         - _Time Efficiency:_ Simplify the process of implementing sophisticated animations.
 
 7) GameEngine.java
     
@@ -358,17 +358,17 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - Performance Monitoring: Provides insights into the application's rendering performance.
+         - _Performance Monitoring:_ Provides insights into the application's rendering performance.
          
-         - User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
+         - _User Experience:_ Ensures a smooth visual experience by maintaining a stable frame rate.
          
-         - Resource Management: Helps in optimizing resource usage based on the frame rate.
+         - _Resource Management:_ Helps in optimizing resource usage based on the frame rate.
          
-         - Modularity: Enhances the maintainability and scalability of the code.
+         - _Modularity:_ Enhances the maintainability and scalability of the code.
          
-         - Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
+         - _Parallel Development:_ Allows different teams to work on game logic and rendering simultaneously.
          
-         - Flexibility: Easier to make changes in the game mechanics or graphics independently.
+         - _Flexibility:_ Easier to make changes in the game mechanics or graphics independently.
 
 
 ## Note:
