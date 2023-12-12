@@ -1,0 +1,90 @@
+/* Root style for the entire application */
+.root {
+    -fx-background-image: url('backgroundimage/bg.png'); /* Background image for the application */
+    -fx-background-size: cover; /* Scales the background image to cover the entire area */
+    -fx-background-position: center; /* Centers the background image */
+    -fx-background-repeat: no-repeat; /* Prevents repeating the background image */
+}
+
+/* Style for a special root element, possibly indicating a special game mode */
+.goldRoot {
+    -fx-background-color: #4b4a08; /* Sets a gold-like background color */
+}
+
+/* General style for all labels */
+.label {
+    -fx-text-fill: #000; /* Text color set to black */
+    -fx-label-padding: 8px; /* Padding around the text in the label */
+    -fx-font-size: 15px; /* Font size of the label text */
+    -fx-font-family: Georgia; /* Font family for the label text */
+    -fx-font-weight: 400; /* Font weight (normal) for the label text */
+}
+
+/* Specific style for the score label */
+#scoreLabel {
+    -fx-background-color: white; /* Background color */
+    -fx-background-radius: 3; /* Rounded corners radius */
+    -fx-opacity: 1; /* Full opacity */
+    -fx-background-insets: 10; /* Space between the border and the content */
+}
+
+/* Specific style for the heart label */
+#heartLabel {
+    /* Similar to scoreLabel */
+    -fx-background-color: white;
+    -fx-background-radius: 3;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
+}
+
+/* Specific style for the level label */
+#levelLabel {
+    /* Similar to scoreLabel, but with added label-padding and margin */
+    -fx-label-padding: 10px;
+    -fx-margin: -50px;
+    -fx-background-color: white;
+    -fx-background-radius: 3;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
+}
+
+/* Specific style for the pause label */
+#pauseLabel {
+    /* Similar to levelLabel, but with a larger font size and rounded corners */
+    -fx-label-padding: 10px;
+    -fx-margin: -50px;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-opacity: 1;
+    -fx-background-insets: 10;
+    -fx-font-size: 30px; /* Larger font size */
+}
+
+/* Style for the start menu VBox */
+#startMenuVBox {
+    -fx-background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    -fx-padding: 20px; /* Padding around the VBox content */
+    -fx-border-color: black; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-alignment: center; /* Center alignment of the VBox content */
+}
+
+/* General style for buttons */
+.button {
+    -fx-background-color: #ff6347; /* Background color of the button */
+    -fx-text-fill: #FFFFFF; /* Text color (white) */
+    -fx-font-size: 20px; /* Font size */
+    -fx-padding: 10px 20px; /* Padding inside the button */
+    -fx-background-radius: 10px; /* Rounded corners radius */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); /* Drop shadow effect */
+}
+
+/* Style for buttons when hovered over */
+.button:hover {
+    -fx-background-color: #e55347; /* Slightly different background color */
+    -fx-scale-x: 1.2; /* Scales the button horizontally */
+    -fx-scale-y: 1.2; /* Scales the button vertically */
+    -fx-cursor: hand; /* Changes the cursor to a hand icon */
+    -fx-effect: dropshadow(gaussian, rgba(255,253,228,100.0), 20, 0, 0, 0); /* Pink glowing border effect */
+    -fx-transition: scale 2.5s ease-in-out; /* Smooth scaling transition */
+}

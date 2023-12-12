@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45bef261-2fef-483d-a20a-d81590a4566b" name="Changes" comment="Push .gitignore" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="changeBackground" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Cheznoodle&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="1863e2dd-99ce-4b62-a3f5-9d69fe71eae5" />
+        <option name="url" value="https://github.com/Cheznoodle/COMP2042_CW_hfyeh2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2XtGPmLopAj5afxW8aPlWQ7STLy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ethan Ho/Downloads/javafx-sdk-21.0.1/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ethan Ho\IdeaProjects\COMP2042_CW_hfyeh2\CourseworkGame-master\src\main\resources\videos" />
+      <recent name="C:\Users\Ethan Ho\IdeaProjects\COMP2042_CW_hfyeh2\CourseworkGame-master\src\main\resources\soundFX" />
+      <recent name="C:\Users\Ethan Ho\IdeaProjects\COMP2042_CW_hfyeh2\CourseworkGame-master\src\main\resources" />
+      <recent name="C:\Users\Ethan Ho\IdeaProjects\COMP2042_CW_hfyeh2\CourseworkGame-master\src\main\resources\paddle" />
+      <recent name="C:\Users\Ethan Ho\IdeaProjects\COMP2042_CW_hfyeh2\CourseworkGame-master\src\main\resources\backgroundImage" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-20.0.2-corretto-20.0.2.1-8336523bb0d9-e34d2934" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="45bef261-2fef-483d-a20a-d81590a4566b" name="Changes" comment="" />
+      <created>1699440941051</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699440941051</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Main.java&#10;- Added a feature that shakes the stage whenever a heart is deducted (Use combination of `TranslateTransition`)">
+      <option name="closed" value="true" />
+      <created>1701099760709</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1701099760709</updated>
+    </task>
+    <task id="LOCAL-00027" summary="style.css&#10;- Changed font style and added bold attribute">
+      <option name="closed" value="true" />
+      <created>1701101924180</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701101924180</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Main.java&#10;- Added label ID for score, heart, level&#10;&#10;style.css&#10;- Changed padding, margin attribute, border color, border width">
+      <option name="closed" value="true" />
+      <created>1701103575039</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1701103575039</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Main.java&#10;- Added `showHeartDeductedImage` method to display an image when heart is deducted alongside a smooth transition in, transition out&#10;&#10;Block.java&#10;- Added ballRadius to make sure block hit is more consistent">
+      <option name="closed" value="true" />
+      <created>1701147256610</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1701147256610</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Main.java&#10;- Solved warning &quot;Explicit type argument can be replaced with &lt;&gt;&quot; &#10;&#10;- Solved warning &quot;invocation 'toExternalForm' may produce 'NullPointerException'&quot; by checking if the resource is null before calling to `toExternalForm()` &amp; adding error handling&#10;&#10;- Solved warning &quot; 'sceneHeight / 2': integer division in floating-point context&quot;&#10;&#10;- Solved warning &quot; 'loadFromSave == false' can be simplified to '!loadFromSave' can be simplified to '!loadFromSave'&quot; by simplifying conditional check&#10;&#10;- Solved warning &quot;statement lambda can be replaced with expression lambda&quot; by simplifying the lambda expression&#10;&#10;- Solved warning &quot;anonymous new Runnable() can be replaced with lambda&quot; by adding a lambda">
+      <option name="closed" value="true" />
+      <created>1701183958660</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1701183958660</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Main.java&#10;- Remove the -1 score display whenever heart deducted">
+      <option name="closed" value="true" />
+      <created>1701187052568</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701187052568</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Main.java&#10;- Added some Javadocs">
+      <option name="closed" value="true" />
+      <created>1701222951299</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701222951299</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Main.java&#10;- Added `showHeartAddedImage` method &amp; method call to display a png image with animation when a heart is added&#10;&#10;- Added `showBonusImage` method &amp; method call to display a png image with animation when a bonus ball is activated">
+      <option name="closed" value="true" />
+      <created>1701237513271</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1701237513271</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Main.java&#10;- Added `showGoldenBallImage` method &amp; method call to display a png image when the golden ball is activated">
+      <option name="closed" value="true" />
+      <created>1701246375809</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1701246375809</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Main.java&#10;- Adjusted the naming of png image in resources &amp; applied to changes to `showGoldenBallMethod` method">
+      <option name="closed" value="true" />
+      <created>1701246600769</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1701246600769</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Main.java&#10;- Adjusted code so the flush() and close() methods are only called if outputStream is not null, which prevents the NullPointerException&#10;&#10;- Replaced e.printStackTrace() with logging statements for consistency">
+      <option name="closed" value="true" />
+      <created>1701247332267</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1701247332267</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Main.java&#10;- Changed background&#10;&#10;style.css&#10;- Change style">
+      <option name="closed" value="true" />
+      <created>1701318558562</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701318558562</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Main.java&#10;- Created a method `createStartMenu()` to create Vbox&#10;- Add it to the scene &#10;- Initialized the buttons in the `start` method&#10;- Insert call method for `createStartMenu()` in the `start` method&#10;- Declared Vbox startMenuVBox at the class level&#10;- Initialize the VBox in `createStartMenu()` method with a spacing of 80 &#10;- Center the VBox in the scene&#10;- Add VBox to the root pane&#10;- Resolved full root pane by using StackPane as the root container to allow layering of different elements on top of each other&#10;- Added original root `Pane` and the `startMenuVBox` are added to `layeredRoot`&#10;- Added more Javadocs&#10;&#10;style.css&#10;- Added styling for the buttons">
+      <option name="closed" value="true" />
+      <created>1701329925159</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1701329925159</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Main.java&#10;- Added `playSoundEffect` method &amp; method call to play a sound effect when a heart is added">
+      <option name="closed" value="true" />
+      <created>1701335041368</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1701335041368</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Main.java&#10;- Modify handle(KeyEvent event) method to toggle game's pause state when Esc key is pressed&#10;&#10;GameEngine.java&#10;- Added a boolean flag to represent pause state&#10;- Added a pause/resume method&#10;- Modify existing threads to check for pause state in Update, PhysicsCalculation, and Render methods&#10;- Added isPaused Getter">
+      <option name="closed" value="true" />
+      <created>1701340614356</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1701340614357</updated>
+    </task>
+    <task id="LOCAL-00041" summary="GameEngine.java&#10;- Corrected indentations">
+      <option name="closed" value="true" />
+      <created>1701418748489</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1701418748489</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Main.java &amp; style.css&#10;- Added a white background to the score, level, heart labels">
+      <option name="closed" value="true" />
+      <created>1701421601733</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1701421601733</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Main.java&#10;- Modified the `togglePause()` method to pause the background sound as well when pause button is pressed using MediaPlayer">
+      <option name="closed" value="true" />
+      <created>1701423874305</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1701423874305</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Main.java&#10;- Add playAddHeartSoundEffect() method &amp; method call to play a sound effect when a heart is added&#10;- Add playMinusHeartSoundEffect() method &amp; method call to play a sound effect when a heart is deducted">
+      <option name="closed" value="true" />
+      <created>1701497802346</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1701497802346</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Main.java&#10;- Added playBonusSoundEffect() method &amp; method call to play a sound effect when bonus is activated&#10;&#10;style.css&#10;- Update style attributes">
+      <option name="closed" value="true" />
+      <created>1701507255072</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1701507255072</updated>
+    </task>
+    <task id="LOCAL-00046" summary="SoundEffectUtil.java&#10;- Added a java class to manage the sound effects">
+      <option name="closed" value="true" />
+      <created>1701614615462</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1701614615462</updated>
+    </task>
+    <task id="LOCAL-00047" summary="ImageEffectUtil.java&#10;- Create a new java class &amp; transfer the image effect methods from Main.java&#10;&#10;SoundEffectUtil.java &amp; Main.java&#10;- Added a mute sound key when user presses 'M' key">
+      <option name="closed" value="true" />
+      <created>1701786429106</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1701786429106</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Main.java (saveGame &amp; loadGame method)&#10;&#10;- Implement the use of relative paths instead of hardcoded paths for save game function.&#10;- Decided on a directory name (i.e Saves) within the project's directory to store the saved game files. &#10;- Decided on name of save file (i.e save.mdds).&#10;- Added ObjectOutputStream to ensure the stream is closed properly after the operation, even if an exception occurs.&#10;- Added code to the method to use a seperate thread to perform file operations, preventing the UI from freezing during the save process.">
+      <option name="closed" value="true" />
+      <created>1701832965107</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1701832965107</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Seperated resource elements into different folders and updated the paths accordingly">
+      <option name="closed" value="true" />
+      <created>1701835106699</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1701835106699</updated>
+    </task>
+    <task id="LOCAL-00050" summary="ImageEffectUtil.java&#10;- Added Javadocs">
+      <option name="closed" value="true" />
+      <created>1701845809460</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1701845809461</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Main.java &amp; style.css&#10;- Made the button enlarge when user hovers">
+      <option name="closed" value="true" />
+      <created>1701873888793</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1701873888793</updated>
+    </task>
+    <task id="LOCAL-00052" summary="- Moved the handle method from Main.java into a java class called GameController.java under Controller package to handle the user input of paddle&#10;&#10;- Created an enum to  improve readability and maintainability &#10;&#10;SoundEffectUtil.java&#10;- Added a sound effect when hover over a button in start menu (not working)">
+      <option name="closed" value="true" />
+      <created>1701967988563</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1701967988564</updated>
+    </task>
+    <task id="LOCAL-00053" summary="- Transfered the move method from Main.java into GameController.java">
+      <option name="closed" value="true" />
+      <created>1702022629669</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1702022629670</updated>
+    </task>
+    <task id="LOCAL-00054" summary="- Transfered the shakeStage method from Main.java into a java class called StageEffectUtil.java in a package under brickGame package called stageEffects&#10;&#10;- Transfered the initializePauseMenu method from Main.java into a java class called UserInterface.java in a package under brickGame package called View">
+      <option name="closed" value="true" />
+      <created>1702027781823</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1702027781823</updated>
+    </task>
+    <task id="LOCAL-00055" summary="- Transfered createStartMenu from Main.java to UserInterface.java&#10;&#10;- Updated style.css (increase button size, button font size)&#10;&#10;- Fixed hover button sound (working partially)">
+      <option name="closed" value="true" />
+      <created>1702045122503</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1702045122503</updated>
+    </task>
+    <task id="LOCAL-00056" summary="- Transfered classes &amp; packages into Modal-View-Controller packages">
+      <option name="closed" value="true" />
+      <created>1702047261693</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1702047261693</updated>
+    </task>
+    <task id="LOCAL-00057" summary="SoundEffectUtil.java&#10;- MediaPlayer instance is initialized outside the playHoverSound method. This is so sound effect can be play immediately without delay caused by loading and initializing the media each time">
+      <option name="closed" value="true" />
+      <created>1702048337343</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1702048337344</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Applied MVC">
+      <option name="closed" value="true" />
+      <created>1702097946873</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1702097946873</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Main.java&#10;- Modified saveGame method (to convert Block color into a string using toString method)&#10;- Modified loadGame method (to convert the color string back to a Color object when loading each Block)&#10;&#10;BlockSerializable.java&#10;- Included a String colorString field. This field will be used to store the color of the Block as a String &#10;&#10;Block.java&#10;- Added a method getColor in the Block class to return Color of the block">
+      <option name="closed" value="true" />
+      <created>1702101662040</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1702101662040</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Added Javadocs &amp; comments">
+      <option name="closed" value="true" />
+      <created>1702132789632</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1702132789632</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Added Javadocs &amp; comments">
+      <option name="closed" value="true" />
+      <created>1702181625418</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1702181625419</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Added additional Javadocs &amp; transfered playBackgroundSound method from Main.java to SoundEffectUtil.java">
+      <option name="closed" value="true" />
+      <created>1702186402502</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1702186402502</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Applied MVC &amp; organised java classes into respective packages">
+      <option name="closed" value="true" />
+      <created>1702187003233</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1702187003233</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Added playGameOverVideo method to play a mp4 file when player loses game">
+      <option name="closed" value="true" />
+      <created>1702274685140</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1702274685141</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Added Javadocs to playGameOverVideo method">
+      <option name="closed" value="true" />
+      <created>1702276135480</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1702276135480</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Applied MVC &amp; fixed pause menu (Able to Display Now)">
+      <option name="closed" value="true" />
+      <created>1702286424145</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1702286424145</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Fixed the pause menu to be in the center of the scene">
+      <option name="closed" value="true" />
+      <created>1702289158402</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1702289158403</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Added exit button at Game Over scene and applied MVC to other java classes">
+      <option name="closed" value="true" />
+      <created>1702300431282</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1702300431283</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Added comments to style.css">
+      <option name="closed" value="true" />
+      <created>1702367213996</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1702367213996</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Transfered Java Classes">
+      <option name="closed" value="true" />
+      <created>1702373361958</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1702373361960</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Added javadocs &amp; comments">
+      <option name="closed" value="true" />
+      <created>1702377874377</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1702377874379</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Added javadocs &amp; comments">
+      <option name="closed" value="true" />
+      <created>1702378488941</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1702378488941</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Remove unwanted resource">
+      <option name="closed" value="true" />
+      <created>1702379599179</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1702379599180</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Push .gitignore">
+      <option name="closed" value="true" />
+      <created>1702382059475</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1702382059475</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Main.java (saveGame &amp; loadGame method)&#10;&#10;- Implement the use of relative paths instead of hardcoded paths for save game function.&#10;- Decided on a directory name (i.e Saves) within the project's directory to store the saved game files. &#10;- Decided on name of save file (i.e save.mdds).&#10;- Added ObjectOutputStream to ensure the stream is closed properly after the operation, even if an exception occurs.&#10;- Added code to the method to use a seperate thread to perform file operations, preventing the UI from freezing during the save process." />
+    <MESSAGE value="Seperated resource elements into different folders and updated the paths accordingly" />
+    <MESSAGE value="ImageEffectUtil.java&#10;- Added Javadocs" />
+    <MESSAGE value="Main.java &amp; style.css&#10;- Made the button enlarge when user hovers" />
+    <MESSAGE value="- Moved the handle method from Main.java into a java class called GameController.java under Controller package to handle the user input of paddle&#10;&#10;- Created an enum to  improve readability and maintainability &#10;&#10;SoundEffectUtil.java&#10;- Added a sound effect when hover over a button in start menu (not working)" />
+    <MESSAGE value="- Transfered the move method from Main.java into GameController.java" />
+    <MESSAGE value="- Transfered the shakeStage method from Main.java into a java class called StageEffectUtil.java in a package under brickGame package called stageEffects&#10;&#10;- Transfered the initializePauseMenu method from Main.java into a java class called UserInterface.java in a package under brickGame package called View" />
+    <MESSAGE value="- Transfered createStartMenu from Main.java to UserInterface.java&#10;&#10;- Updated style.css (increase button size, button font size)&#10;&#10;- Fixed hover button sound (working partially)" />
+    <MESSAGE value="- Transfered classes &amp; packages into Modal-View-Controller packages" />
+    <MESSAGE value="SoundEffectUtil.java&#10;- MediaPlayer instance is initialized outside the playHoverSound method. This is so sound effect can be play immediately without delay caused by loading and initializing the media each time" />
+    <MESSAGE value="Applied MVC" />
+    <MESSAGE value="Main.java&#10;- Modified saveGame method (to convert Block color into a string using toString method)&#10;- Modified loadGame method (to convert the color string back to a Color object when loading each Block)&#10;&#10;BlockSerializable.java&#10;- Included a String colorString field. This field will be used to store the color of the Block as a String &#10;&#10;Block.java&#10;- Added a method getColor in the Block class to return Color of the block" />
+    <MESSAGE value="Added Javadocs &amp; comments" />
+    <MESSAGE value="Added additional Javadocs &amp; transfered playBackgroundSound method from Main.java to SoundEffectUtil.java" />
+    <MESSAGE value="Applied MVC &amp; organised java classes into respective packages" />
+    <MESSAGE value="Added playGameOverVideo method to play a mp4 file when player loses game" />
+    <MESSAGE value="Added Javadocs to playGameOverVideo method" />
+    <MESSAGE value="Applied MVC &amp; fixed pause menu (Able to Display Now)" />
+    <MESSAGE value="Fixed the pause menu to be in the center of the scene" />
+    <MESSAGE value="Added exit button at Game Over scene and applied MVC to other java classes" />
+    <MESSAGE value="Added comments to style.css" />
+    <MESSAGE value="Transfered Java Classes" />
+    <MESSAGE value="Added javadocs &amp; comments" />
+    <MESSAGE value="Remove unwanted resource" />
+    <MESSAGE value="Push .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push .gitignore" />
+  </component>
+</project>
