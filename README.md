@@ -2,7 +2,14 @@
 
 ### Description:
 
-Brick Game is a JavaFX-based application where users can play a brick-breaking game with various levels and challenges.
+Welcome to "Break Bricker," a modern twist on the classic brick-breaking game that has captivated players for generations. Merging simple yet engaging gameplay with a vibrant visual style, "Break Bricker" is an arcade-style game that challenges players to destroy a wall of bricks by skillfully directing a bouncing ball with a paddle. Perfect for gamers of all ages, it combines strategy, precision, and quick reflexes, offering endless hours of entertainment.
+
+### How To Play:
+* Use the paddle at the bottom of the screen to keep the ball in play and direct it towards the bricks.
+* Break all the bricks on the screen to progress to the next level.
+* Avoid letting the ball fall below the paddle - losing all balls means losing a life.
+* Strategically use power-ups to elevate your gaming experience.
+* Plan your moves to hit hard-to-reach bricks and create maximum impact.
 
 # Prerequisites
 
@@ -87,59 +94,63 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
 * Execute `Main.java` from the `brickGame.Model` package to start the game.
 
 # Implemented and Working Properly:
+
 1) **Added Background Image**
    
-   -A football field background is displayed as the background image.
+   - A football field background is displayed as the background image.
    
 2) **Added Background Sound**
    
-   -The wii game music track is played as the background sound.
+   - The wii game music track is played as the background sound.
  
 3) **Added Game Start Menu**
    
-   -Three buttons that display "Load Game", "Start New Game", and "Exit Game" after the game just started running.
+   - Three buttons that display "Load Game", "Start New Game", and "Exit Game" after the game just started running.
  
 4) **Added image effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
    
-   -PNG images will display according to the power-up which is activated by the player.
+   - PNG images will display according to the power-up which is activated by the player.
  
 5) **Added sound effects when the ball hits the heart block, deducted heart, bonus ball, and golden ball block**
     
-    -mp3 sound effects work simultaneously some when a power-up is activated by the player.
+    - mp3 sound effects work simultaneously some when a power-up is activated by the player.
  
 6) **Added a pause button when the user presses the 'ESC' key**
     
-    -The player can pause the gameplay by pressing the ESCAPE key.
+    - The player can pause the gameplay by pressing the ESCAPE key.
  
 7) **Changes font style and background color to heart, score, and level label**
     
-    -Added CSS styles to change the visual style of the game.
+    - Added CSS styles to change the visual style of the game.
  
 8) **Shake stage when the heart is deducted**
     
-    -The stage will rumble when a heart is deducted from the player.
+    - The stage will rumble when a heart is deducted from the player.
  
 9) **Mute sound button when the user presses the 'M' key**
     
-    -The player can mute the sound of the game when he/she presses the M key.
+    - The player can mute the sound of the game when he/she presses the M key.
  
 10) **Ball spawn is fixed to the center of the scene**
     
-    -Ball always spawns in the middle of the scene at the start of every level.
+    - Ball always spawns in the middle of the scene at the start of every level.
  
 11) **Added more interactive start menu buttons**
     
-    -Buttons enlarge when the player hovers over them.
+    - Buttons enlarge when the player hovers over them.
  
 12) **Added sound effects when the user hovers over a button**
     
-    -A sound effect will play when the player hovers over a button in the start menu.
+    - A sound effect will play when the player hovers over a button in the start menu.
 
 # Implemented but Not Working Properly:
+
 1) Pause button menu (pause menu will not display).
-   * Did not manage to fully utilize and convert elements using 'root' to 'layeredRoot' which allows for layering of UI elements. 
+   * Did not manage to fully utilize and convert elements using 'root' to 'layeredRoot' which allows for layering of UI elements.
+     
 2) Load Game function
    * The game will skip levels occasionally after loading a saved game and levels may not progress to the next level even though all blocks are hit
+     
 3) Save Game function
    * Does not save power-up in the current state.
    * Example: When saving the game that has the golden ball activated. The golden ball will reset to a normal ball after loading the game using the save file.
@@ -173,55 +184,55 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
    
       **Changes made:**
       
-         -Applied refactoring techniques
+         - Applied refactoring techniques
          
-         -Applied lambda expressions
+         - Applied lambda expressions
       
       **Explanation:**
       
-         -Enhanced Readability: Makes code easier to understand.
+         - Enhanced Readability: Makes code easier to understand.
          
-         -Reduced Complexity: Simplifies complex code structures.
+         - Reduced Complexity: Simplifies complex code structures.
          
-         -Increased Maintainability: Easier to update and maintain.
+         - Increased Maintainability: Easier to update and maintain.
          
-         -Improved Performance: Optimizes code for efficiency.
+         - Improved Performance: Optimizes code for efficiency.
          
-         -Error Reduction: Helps identify and fix potential bugs.
+         - Error Reduction: Helps identify and fix potential bugs.
          
-         -Conciseness: Reduces boilerplate code.
+         - Conciseness: Reduces boilerplate code.
          
-         -Functional Programming: Facilitates functional programming paradigms in Java.
+         - Functional Programming: Facilitates functional programming paradigms in Java.
          
-         -Scalability: Enhances code scalability with cleaner and more modular code.
+         - Scalability: Enhances code scalability with cleaner and more modular code.
    
 2) Block.java
    
       **Changes made:**
       
-         -Applied encapsulation
+         - Applied encapsulation
          
-         -Added constants
+         - Added constants
          
-         -Added resource management
+         - Added resource management
       
       **Explanation:**
       
-         -Data Hiding: Prevents outside access to implementation details.
+         - Data Hiding: Prevents outside access to implementation details.
          
-         -Increased Flexibility: Allows internal changes without affecting external code.
+         - Increased Flexibility: Allows internal changes without affecting external code.
          
-         -Enhanced Security: Controls how data is accessed or modified.
+         - Enhanced Security: Controls how data is accessed or modified.
          
-         -Maintainability: Simplifies understanding and maintenance of code.
+         - Maintainability: Simplifies understanding and maintenance of code.
          
-         -Readability: Improves code readability and understanding.
+         - Readability: Improves code readability and understanding.
          
-         -Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
+         - Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
          
-         -Efficiency: Proper resource handling and disposal to avoid memory leaks.
+         - Efficiency: Proper resource handling and disposal to avoid memory leaks.
          
-         -Error Handling: Ensures resources are closed or released even if errors occur.
+         - Error Handling: Ensures resources are closed or released even if errors occur.
          
          -Consistency: Standardizes resource usage patterns.
 
@@ -229,135 +240,135 @@ Brick Game is a JavaFX-based application where users can play a brick-breaking g
    
       **Changes made:**
       
-         -Added a string variable called 'colorString'
+         - Added a string variable called 'colorString'
       
       **Explanation:**
       
-         -To store the current colors of the blocks of a level when the save game function is activated
+         - To store the current colors of the blocks of a level when the save game function is activated
 
 4) Bonus.java
    
       **Changes made:**
       
-         -Added exception handling
+         - Added exception handling
          
-         -Added thread management
+         - Added thread management
          
-         -Removed code duplication
+         - Removed code duplication
          
-         -Applied lambda expression
+         - Applied lambda expression
          
-         -Applied JavaFX application thread
+         - Applied JavaFX application thread
       
       **Explanation:**
       
-         -Robustness: Improves application stability by handling runtime errors.
+         - Robustness: Improves application stability by handling runtime errors.
          
-         -Controlled Error Management: Allows centralized management of error handling.
+         - Controlled Error Management: Allows centralized management of error handling.
          
-         -User Communication: Provides meaningful feedback to users on exceptions.
+         - User Communication: Provides meaningful feedback to users on exceptions.
          
-         -Performance: Enhances performance in multi-core systems.
+         - Performance: Enhances performance in multi-core systems.
          
-         -Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
+         - Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
          
-         -Resource Sharing: Efficient use of CPU and memory resources.
+         - Resource Sharing: Efficient use of CPU and memory resources.
          
-         -Maintainability: Easier to maintain and modify.
+         - Maintainability: Easier to maintain and modify.
          
-         -Consistency: Ensures uniformity in code logic.
+         - Consistency: Ensures uniformity in code logic.
          
-         -Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
+         - Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
          
-         -Conciseness: Reduces boilerplate code.
+         - Conciseness: Reduces boilerplate code.
          
-         -Functional Programming: Facilitates functional programming paradigms.
+         - Functional Programming: Facilitates functional programming paradigms.
          
-         -Readability: Improves code readability.
+         - Readability: Improves code readability.
          
-         -UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
+         - UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
          
-         -Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
+         - Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
          
-         -Consistency: Maintains consistent state in GUI applications.
+         - Consistency: Maintains consistent state in GUI applications.
 
 5) LoadSave.java
     
       **Changes made:**
       
-         -Applied data validation
+         - Applied data validation
          
-         -Separate File I/O from logic
+         - Separate File I/O from logic
       
       **Explanation:**
       
-         -Data Integrity: Maintains the quality and accuracy of data.
+         - Data Integrity: Maintains the quality and accuracy of data.
          
-         -Error Prevention: Reduces the likelihood of errors during runtime.
+         - Error Prevention: Reduces the likelihood of errors during runtime.
          
-         -User Feedback: Provides immediate feedback to users for incorrect inputs.
+         - User Feedback: Provides immediate feedback to users for incorrect inputs.
          
-         -Modularity: Separates concerns for clearer, more maintainable code.
+         - Modularity: Separates concerns for clearer, more maintainable code.
          
-         -Testability: Eases testing by isolating file I/O from business logic.
+         - Testability: Eases testing by isolating file I/O from business logic.
          
-         -Reusability: Enhances code reusability and scalability.
+         - Reusability: Enhances code reusability and scalability.
 
 6) Score.java
 
       ***Changes made:**
       
-         -Added animation management
+         - Added animation management
          
-         -Applied method refactoring
+         - Applied method refactoring
          
-         -Added thread safety
+         - Added thread safety
          
-         -Added animation libraries
+         - Added animation libraries
       
       **Explanation:**
       
-         -User Experience: Enhances UI interactivity and visual appeal.
+         - User Experience: Enhances UI interactivity and visual appeal.
          
-         -Dynamic Content: Enables the creation of dynamic and responsive interfaces.
+         - Dynamic Content: Enables the creation of dynamic and responsive interfaces.
          
-         -Cleaner Code: Increases readability and reduces complexity.
+         - Cleaner Code: Increases readability and reduces complexity.
          
-         -Easier Maintenance: Simplifies debugging and updating code.
+         - Easier Maintenance: Simplifies debugging and updating code.
          
-         -Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
+         - Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
          
-         -Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
+         - Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
          
-         -Application Stability: Ensures reliable operation under concurrent access.
+         - Application Stability: Ensures reliable operation under concurrent access.
          
-         -Performance: Can improve performance in multi-core systems.
+         - Performance: Can improve performance in multi-core systems.
          
-         -Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
+         - Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
          
-         -Time Efficiency: Simplify the process of implementing sophisticated animations.
+         - Time Efficiency: Simplify the process of implementing sophisticated animations.
 
 7) GameEngine.java
     
       **Changes made:**
       
-         -Added FPS calculation
+         - Added FPS calculation
          
-         -Separate Game Logic and Rendering
+         - Separate Game Logic and Rendering
       
       **Explanation:**
       
-         -Performance Monitoring: Provides insights into the application's rendering performance.
+         - Performance Monitoring: Provides insights into the application's rendering performance.
          
-         -User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
+         - User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
          
-         -Resource Management: Helps in optimizing resource usage based on the frame rate.
+         - Resource Management: Helps in optimizing resource usage based on the frame rate.
          
-         -Modularity: Enhances the maintainability and scalability of the code.
+         - Modularity: Enhances the maintainability and scalability of the code.
          
-         -Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
+         - Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
          
-         -Flexibility: Easier to make changes in the game mechanics or graphics independently.
+         - Flexibility: Easier to make changes in the game mechanics or graphics independently.
 
 
 ## Note:
