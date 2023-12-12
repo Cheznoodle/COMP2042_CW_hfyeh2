@@ -190,21 +190,21 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _Enhanced Readability:_ Makes code easier to understand.
+         - Enhanced Readability: Makes code easier to understand.
          
-         - _Reduced Complexity:_ Simplifies complex code structures.
+         - Reduced Complexity: Simplifies complex code structures.
          
-         - _Increased Maintainability:_ Easier to update and maintain.
+         - Increased Maintainability: Easier to update and maintain.
          
-         - _Improved Performance:_ Optimizes code for efficiency.
+         - Improved Performance: Optimizes code for efficiency.
          
-         - _Error Reduction:_ Helps identify and fix potential bugs.
+         - Error Reduction: Helps identify and fix potential bugs.
          
-         - _Conciseness:_ Reduces boilerplate code.
+         - Conciseness: Reduces boilerplate code.
          
-         - _Functional Programming:_ Facilitates functional programming paradigms in Java.
+         - Functional Programming: Facilitates functional programming paradigms in Java.
          
-         - _Scalability:_ Enhances code scalability with cleaner and more modular code.
+         - Scalability: Enhances code scalability with cleaner and more modular code.
    
 2) Block.java
    
@@ -218,23 +218,23 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _Data Hiding:_ Prevents outside access to implementation details.
+         - Data Hiding: Prevents outside access to implementation details.
          
-         - _Increased Flexibility:_ Allows internal changes without affecting external code.
+         - Increased Flexibility: Allows internal changes without affecting external code.
          
-         - _Enhanced Security:_ Controls how data is accessed or modified.
+         - Enhanced Security: Controls how data is accessed or modified.
          
-         - _Maintainability:_ Simplifies understanding and maintenance of code.
+         - Maintainability: Simplifies understanding and maintenance of code.
          
-         - _Readability:_ Improves code readability and understanding.
+         - Readability: Improves code readability and understanding.
          
-         - _Avoiding Magic Numbers:_ Replaces unclear literal numbers or strings with named constants.
+         - Avoiding Magic Numbers: Replaces unclear literal numbers or strings with named constants.
          
-         - _Efficiency:_ Proper resource handling and disposal to avoid memory leaks.
+         - Efficiency: Proper resource handling and disposal to avoid memory leaks.
          
-         - _Error Handling:_ Ensures resources are closed or released even if errors occur.
+         - Error Handling: Ensures resources are closed or released even if errors occur.
          
-         - _Consistency:_ Standardizes resource usage patterns.
+         - Consistency: Standardizes resource usage patterns.
 
 3) BlockSerializable.java
    
@@ -262,35 +262,35 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _Robustness:_ Improves application stability by handling runtime errors.
+         - Robustness: Improves application stability by handling runtime errors.
          
-         - _Controlled Error Management:_ Allows centralized management of error handling.
+         - Controlled Error Management: Allows centralized management of error handling.
          
-         - _User Communication:_ Provides meaningful feedback to users on exceptions.
+         - User Communication: Provides meaningful feedback to users on exceptions.
          
-         - _Performance:_ Enhances performance in multi-core systems.
+         - Performance: Enhances performance in multi-core systems.
          
-         - _Asynchronous Processing:_ Enables executing tasks in parallel, improving responsiveness.
+         - Asynchronous Processing: Enables executing tasks in parallel, improving responsiveness.
          
-         - _Resource Sharing:_ Efficient use of CPU and memory resources.
+         - Resource Sharing: Efficient use of CPU and memory resources.
          
-         - _Maintainability:_ Easier to maintain and modify.
+         - Maintainability: Easier to maintain and modify.
          
-         - _Consistency:_ Ensures uniformity in code logic.
+         - Consistency: Ensures uniformity in code logic.
          
-         - _Reduced Errors:_ Minimizes bugs as changes need to be made in fewer places.
+         - Reduced Errors: Minimizes bugs as changes need to be made in fewer places.
          
-         - _Conciseness:_ Reduces boilerplate code.
+         - Conciseness: Reduces boilerplate code.
          
-         - _Functional Programming:_ Facilitates functional programming paradigms.
+         - Functional Programming: Facilitates functional programming paradigms.
          
-         - _Readability:_ Improves code readability.
+         - Readability: Improves code readability.
          
-         - _UI Responsiveness:_ Keeps the UI responsive by separating long-running tasks from UI updates.
+         - UI Responsiveness: Keeps the UI responsive by separating long-running tasks from UI updates.
          
-         - _Thread Safety:_ Ensures GUI components are safely managed within the JavaFX thread.
+         - Thread Safety: Ensures GUI components are safely managed within the JavaFX thread.
          
-         - _Consistency:_ Maintains consistent state in GUI applications.
+         - Consistency: Maintains consistent state in GUI applications.
 
 5) LoadSave.java
     
@@ -302,17 +302,17 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _Data Integrity:_ Maintains the quality and accuracy of data.
+         - Data Integrity: Maintains the quality and accuracy of data.
          
-         - _Error Prevention:_ Reduces the likelihood of errors during runtime.
+         - Error Prevention: Reduces the likelihood of errors during runtime.
          
-         - _User Feedback:_ Provides immediate feedback to users for incorrect inputs.
+         - User Feedback: Provides immediate feedback to users for incorrect inputs.
          
-         - _Modularity:_ Separates concerns for clearer, more maintainable code.
+         - Modularity: Separates concerns for clearer, more maintainable code.
          
-         - _Testability:_ Eases testing by isolating file I/O from business logic.
+         - Testability: Eases testing by isolating file I/O from business logic.
          
-         - _Reusability:_ Enhances code reusability and scalability.
+         - Reusability: Enhances code reusability and scalability.
 
 6) Score.java
 
@@ -328,25 +328,25 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _User Experience:_ Enhances UI interactivity and visual appeal.
+         - User Experience: Enhances UI interactivity and visual appeal.
          
-         - _Dynamic Content:_ Enables the creation of dynamic and responsive interfaces.
+         - Dynamic Content: Enables the creation of dynamic and responsive interfaces.
          
-         - _Cleaner Code:_ Increases readability and reduces complexity.
+         - Cleaner Code: Increases readability and reduces complexity.
          
-         - _Easier Maintenance:_ Simplifies debugging and updating code.
+         - Easier Maintenance: Simplifies debugging and updating code.
          
-         - _Enhanced Reusability:_ Encourages reuse of code through clearer, more concise methods.
+         - Enhanced Reusability: Encourages reuse of code through clearer, more concise methods.
          
-         - _Concurrency Control:_ Avoids conflicts and data corruption in multi-threaded environments.
+         - Concurrency Control: Avoids conflicts and data corruption in multi-threaded environments.
          
-         - _Application Stability:_ Ensures reliable operation under concurrent access.
+         - Application Stability: Ensures reliable operation under concurrent access.
          
-         - _Performance:_ Can improve performance in multi-core systems.
+         - Performance: Can improve performance in multi-core systems.
          
-         - _Enhanced Features:_ Offer more capabilities beyond the standard JavaFX animations.
+         - Enhanced Features: Offer more capabilities beyond the standard JavaFX animations.
          
-         - _Time Efficiency:_ Simplify the process of implementing sophisticated animations.
+         - Time Efficiency: Simplify the process of implementing sophisticated animations.
 
 7) GameEngine.java
     
@@ -358,18 +358,17 @@ Welcome to "Break Bricker," a modern twist on the classic brick-breaking game th
       
       **Explanation:**
       
-         - _Performance Monitoring:_ Provides insights into the application's rendering performance.
+         - Performance Monitoring: Provides insights into the application's rendering performance.
          
-         - _User Experience:_ Ensures a smooth visual experience by maintaining a stable frame rate.
+         - User Experience: Ensures a smooth visual experience by maintaining a stable frame rate.
          
-         - _Resource Management:_ Helps in optimizing resource usage based on the frame rate.
+         - Resource Management: Helps in optimizing resource usage based on the frame rate.
          
-         - _Modularity:_ Enhances the maintainability and scalability of the code.
+         - Modularity: Enhances the maintainability and scalability of the code.
          
-         - _Parallel Development:_ Allows different teams to work on game logic and rendering simultaneously.
+         - Parallel Development: Allows different teams to work on game logic and rendering simultaneously.
          
-         - _Flexibility:_ Easier to make changes in the game mechanics or graphics independently.
-
+         - Flexibility: It is easier to make changes in the game mechanics or graphics independently.
 
 ## Note:
 * If you experience any kind of error (runtime or game freeze). Kindly re-run the game.
